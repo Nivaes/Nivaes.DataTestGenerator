@@ -7,7 +7,7 @@
     using System.Text;
     using Nivaes.DataTestGenerator.Resources;
 
-    public static class NameGenerator
+    public static class ContactGenerator
     {
         #region Propeties
         /// <summary>Reference to <see cref="Random"/>.</summary>
@@ -24,8 +24,8 @@
         #endregion
 
         #region Constructor
-        /// <summary>Static constructor of <see cref="NameGenerator"/>.</summary>
-        static NameGenerator()
+        /// <summary>Static constructor of <see cref="ContactGenerator"/>.</summary>
+        static ContactGenerator()
         {
             mRandom = new Random(DateTime.Now.Millisecond);
             mFirstNames = ReadNames(ResourceNames.FirstName);

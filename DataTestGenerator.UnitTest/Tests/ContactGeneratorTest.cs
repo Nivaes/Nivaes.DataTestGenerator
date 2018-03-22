@@ -11,7 +11,7 @@
         {
             for (int i = 0; i < 10; i++)
             {
-                var name = NameGenerator.GenerateName();
+                var name = ContactGenerator.GenerateName();
                 Debug.Print(name);
             }
         }
@@ -21,7 +21,7 @@
         {
             for (int i = 0; i < 100; i++)
             {
-                var contact = NameGenerator.GenerateContact();
+                var contact = ContactGenerator.GenerateContact();
                 Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.FirstName}  ---- {contact.SecondName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
