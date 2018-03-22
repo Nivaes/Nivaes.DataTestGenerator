@@ -4,8 +4,6 @@
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
-    using System.Linq;
-    using System.Reflection;
     using System.Text;
     using Nivaes.DataTestGenerator.Resources;
 
@@ -20,6 +18,9 @@
 
         /// <summary>List of second name.</summary>
         private static Tuple<string, double>[] mSecondNames;
+
+        /// <summary>List of email domain.</summary>
+        private static Tuple<string, double>[] mEmailDomains;
         #endregion
 
         #region Constructor
@@ -29,6 +30,8 @@
             mRandom = new Random(DateTime.Now.Millisecond);
             mFirstNames = ReadNames(ResourceNames.FirstName);
             mSecondNames = ReadNames(ResourceNames.SecondName);
+
+            mEmailDomains = new Tuple<string, double>[] { new Tuple<string, double>("gmail.com", 4), new Tuple<string, double>("outlook.com", 1), new Tuple<string, double>("hotmail.com", 1), new Tuple<string, double>("hotmail.es", 1) };
         }
 
         /// <summary>Read first name.</summary>
@@ -62,16 +65,23 @@
         #endregion
 
         #region Methods
-        /// <summary>Generate a name.</summary>
-        public static void GenerateName(out string sortName, out string longName)
+        /// <summary>Generate a contact.</summary>
+        public static Contact GenerateContact()
         {
             string firstName = RamdonName(mFirstNames);
             string secondName1 = RamdonName(mSecondNames);
             string secondName2 = RamdonName(mSecondNames);
+            string mailDomainRan = RamdonName(mEmailDomains);
 
-            longName = string.Format(CultureInfo.CurrentCulture, "{0} {1} {2}", firstName, secondName1, secondName2);
-
-            sortName = ReduceFirstName(firstName.RemovingAccents().ToLowerInvariant()) + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
+            return new Contact
+            {
+                SortName = firstName,
+                LongName = $"{firstName} {secondName1} {secondName2}",
+                FirstName = firstName,
+                SecondName = $"{secondName1} {secondName2}",
+                Email = "{sortName}@{mailDomainRan}",
+                TelephoneNumber = RandonTelephoneNumber()
+            };
         }
 
         /// <summary>Generate a name.</summary>
@@ -120,6 +130,19 @@
                         return names[i].Item1;
                 }
             }
+        }
+
+        private static string RandonTelephoneNumber()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("6");
+            for(int i = 0; i < 8; i++)
+            {
+                int ran = mRandom.Next(0, 9);
+                sb.Append(ran.ToString());
+            }
+
+            return sb.ToString();
         }
         #endregion
     }

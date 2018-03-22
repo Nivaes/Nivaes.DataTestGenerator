@@ -3,7 +3,7 @@
     using System;
     using System.Globalization;
 
-    public static class CreateTaxId
+    public static class TaxIdGenerator
     {
         #region Propeties
         /// <summary>Reference to <see cref="Random"/>.</summary>
@@ -11,8 +11,8 @@
         #endregion
 
         #region Constructor
-        /// <summary>Create a new instance of <see cref="CreateTaxId"/>.</summary>
-        static CreateTaxId()
+        /// <summary>Create a new instance of <see cref="TaxIdGenerator"/>.</summary>
+        static TaxIdGenerator()
         {
             mRandom = new Random(DateTime.Now.Millisecond);
         }

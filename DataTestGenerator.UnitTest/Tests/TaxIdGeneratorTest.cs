@@ -3,15 +3,15 @@
     using System.Diagnostics;
     using Xunit;
 
-    [Collection("CreateTaxId")]
-    public class CreateTaxIdTest
+    [Collection("TaxIdGenerator")]
+    public class TaxIdGeneratorTest
     {
         [Fact]
         public void CreateNifTest()
         {
             for (int i = 0; i < 10; i++)
             {
-                string cif = CreateTaxId.GenerateNif();
+                string cif = TaxIdGenerator.GenerateNif();
                 Debug.Print(cif);
             }
         }
@@ -22,7 +22,7 @@
         {
             for (int i = 0; i < 10; i++)
             {
-                string cif = CreateTaxId.GenerateNie();
+                string cif = TaxIdGenerator.GenerateNie();
                 Debug.Print(cif);
             }
         }
@@ -32,7 +32,7 @@
         {
             for (int i = 0; i < 10; i++)
             {
-                string cif = CreateTaxId.GenerateCif();
+                string cif = TaxIdGenerator.GenerateCif();
                 Debug.Print(cif);
             }
         }
@@ -42,7 +42,7 @@
         {
             for (int i = 0; i < 10; i++)
             {
-                string cif = CreateTaxId.GenerateTaxId();
+                string cif = TaxIdGenerator.GenerateTaxId();
                 Debug.Print(cif);
             }
         }
