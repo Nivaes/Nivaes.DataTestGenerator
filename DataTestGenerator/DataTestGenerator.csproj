@@ -5,7 +5,7 @@
     <PackageId>Nivaes.DataTestGenerator</PackageId>
     <AssemblyName>Nivaes.DataTestGenerator</AssemblyName>
     <RootNamespace>Nivaes.DataTestGenerator</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <Version>1.0.4</Version>
     <Product>Data test generator</Product>
     <Description>Tool for generating data testing.</Description>
