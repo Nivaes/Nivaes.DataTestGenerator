@@ -9,6 +9,8 @@
     <Version>1.0.3</Version>
     <Product>Data test generator</Product>
     <Description>Tool for generating data testing.</Description>
+    <Authors>Nivaes Systems</Authors>
+    <Company>Nivaes Systems</Company>
   </PropertyGroup>
 
   <ItemGroup>
