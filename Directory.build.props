@@ -3,9 +3,9 @@
     <Copyright>Copyright (c) Nivaes Systems S.L.</Copyright>
     <PackageLicenseUrl>http://opensource.org/licenses/ms-pl</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Nivaes</PackageProjectUrl>
-    <PackageIconUrl>https://imgur.com/2YS4NHc</PackageIconUrl>
+    <PackageIconUrl>https://i.imgur.com/D3CfFea.png</PackageIconUrl>
     <Authors>Nivaes Systems S.L.</Authors>
-    <Owners>MvvmCross;slodge;cheesebaron;martijn00</Owners>
+    <Owners>Nivaes</Owners>
     <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/Nivaes</RepositoryUrl>
@@ -22,14 +22,6 @@
     <Platform>AnyCPU</Platform>
     <DebugType>full</DebugType>
     <IsTestProject>$(MSBuildProjectName.Contains('UnitTest'))</IsTestProject>
-    <!--<IsLibraryProject>$(MSBuildProjectName.Contains('MvvmCross'))</IsLibraryProject>-->
   </PropertyGroup>
   
-  <!--<ItemGroup Condition="'$(IsLibraryProject)' == 'true'">
-    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.2" PrivateAssets="All" />
-  </ItemGroup>-->
-
-  <!--<ItemGroup Condition="'$(IsTestProject)' != 'true' and '$(SourceLinkEnabled)' != 'false' and '$(IsLibraryProject)' == 'true'">
-    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" /> 
-  </ItemGroup>-->
 </Project>
