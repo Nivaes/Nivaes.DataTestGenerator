@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <PackageId>Nivaes.DataTestGenerator</PackageId>
+    <AssemblyName>Nivaes.DataTestGenerator</AssemblyName>
+    <RootNamespace>Nivaes.DataTestGenerator</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\SecondName.es.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SecondName.es.csv">
+      <CustomToolNamespace>Nivaes.DataTestGenerator</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Globalization.Extensions" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\FirstName.es.csv">
+      <CustomToolNamespace>Nivaes.DataTestGenerator</CustomToolNamespace>
+    </None>
+  </ItemGroup>
+
+</Project>
