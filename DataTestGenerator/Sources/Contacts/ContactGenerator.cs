@@ -71,15 +71,16 @@
             string firstName = RamdonName(mFirstNames);
             string secondName1 = RamdonName(mSecondNames);
             string secondName2 = RamdonName(mSecondNames);
-            string mailDomainRan = RamdonName(mEmailDomains);
+            string mailDomain = RamdonName(mEmailDomains);
+            string sortName = ReduceFirstName(firstName.RemovingAccents().ToLowerInvariant()) + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
 
             return new Contact
             {
-                SortName = firstName,
+                SortName = sortName,
                 LongName = $"{firstName} {secondName1} {secondName2}",
                 FirstName = firstName,
                 SecondName = $"{secondName1} {secondName2}",
-                Email = "{sortName}@{mailDomainRan}",
+                Email = $"{sortName}@{mailDomain}",
                 TelephoneNumber = RandonTelephoneNumber()
             };
         }
@@ -91,7 +92,7 @@
             string secondName1 = RamdonName(mSecondNames);
             string secondName2 = RamdonName(mSecondNames);
 
-            return string.Format(CultureInfo.CurrentCulture, "{0} {1} {2}", firstName, secondName1, secondName2);
+            return string.Format(CultureInfo.CurrentCulture, $"{firstName} {secondName1} {secondName2}");
         }
 
         private static string ReduceFirstName(string firstName)

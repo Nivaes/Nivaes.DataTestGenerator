@@ -6,7 +6,7 @@
     <AssemblyName>Nivaes.DataTestGenerator</AssemblyName>
     <RootNamespace>Nivaes.DataTestGenerator</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Product>Data test generator</Product>
     <Description>Tool for generating data testing.</Description>
     <Authors>Nivaes Systems</Authors>
