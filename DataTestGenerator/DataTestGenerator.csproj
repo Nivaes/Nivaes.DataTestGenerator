@@ -8,12 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\FirstName.es.csv" />
     <None Remove="Resources\SecondName.es.csv" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\SecondName.es.csv">
-      <CustomToolNamespace>Nivaes.DataTestGenerator</CustomToolNamespace>
+    <EmbeddedResource Include="Resources\es\FirstName.csv">
+      <CustomToolNamespace></CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\es\SecondName.csv">
+      <CustomToolNamespace></CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
 
@@ -22,9 +26,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\FirstName.es.csv">
+    <Compile Update="Resources\ResourceNames.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourceNames.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ResourceNames.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceNames.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Nivaes.DataTestGenerator</CustomToolNamespace>
-    </None>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

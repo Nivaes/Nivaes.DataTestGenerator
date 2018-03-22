@@ -4,8 +4,10 @@
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
+    using System.Linq;
     using System.Reflection;
     using System.Text;
+    using Nivaes.DataTestGenerator.Resources;
 
     public static class NameGenerator
     {
@@ -25,28 +27,36 @@
         static NameGenerator()
         {
             mRandom = new Random(DateTime.Now.Millisecond);
-            mFirstNames = ReadNames("Nivaes.DataTestGenerator.FirstName.es.csv");
-            mSecondNames = ReadNames("Nivaes.DataTestGenerator.SecondName.es.csv");
+            mFirstNames = ReadNames(ResourceNames.FirstName);
+            mSecondNames = ReadNames(ResourceNames.SecondName);
         }
 
         /// <summary>Read first name.</summary>
-        private static Tuple<string, double>[] ReadNames(string file)
+        private static Tuple<string, double>[] ReadNames(string fileNames)
         {
-            Assembly ass = typeof(NameGenerator).GetTypeInfo().Assembly;
-            using (Stream st = ass.GetManifestResourceStream(file))
+            using (var sr = new StringReader(fileNames))
             {
-                using (StreamReader sr = new StreamReader(st, Encoding.Unicode))
+                List<Tuple<string, double>> names = new List<Tuple<string, double>>();
+                string line;
+                double n = 0;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    List<Tuple<string, double>> names = new List<Tuple<string, double>>();
-                    string line;
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        string[] values = line.Split(';');
-                        names.Add(Tuple.Create(values[0], double.Parse(values[1], CultureInfo.InvariantCulture)));
-                    }
+                    string[] values = line.Split(';');
 
-                    return names.ToArray();
+                    double p = double.Parse(values[1], CultureInfo.InvariantCulture);
+                    n += p; 
+                    names.Add(Tuple.Create(values[0], p));
                 }
+
+                List<Tuple<string, double>> namesContinum = new List<Tuple<string, double>>();
+                double j=0;
+                foreach(var name in names)
+                {
+                    j += name.Item2;
+                    namesContinum.Add(new Tuple<string, double>(name.Item1,  j / n));
+                }
+
+                return namesContinum.ToArray();
             }
         }
         #endregion
