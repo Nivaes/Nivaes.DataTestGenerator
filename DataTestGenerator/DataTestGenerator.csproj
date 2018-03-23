@@ -11,6 +11,8 @@
     <Description>Tool for generating data testing.</Description>
     <Authors>Nivaes Systems</Authors>
     <Company>Nivaes Systems</Company>
+    <PackageTags>Nivaes;DataTestGenerator</PackageTags>
+    <Copyright>Copyright (c) Nivaes Systems</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
