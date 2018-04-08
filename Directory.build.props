@@ -9,7 +9,7 @@
     <Owners>Nivaes</Owners>
     <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/Nivaes</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Nivaes/DataTestGenerator</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
     <NeutralLanguage>en</NeutralLanguage>
