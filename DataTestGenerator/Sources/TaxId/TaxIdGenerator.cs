@@ -33,6 +33,19 @@
             return LetraNie() + num.ToString("00000000", CultureInfo.InvariantCulture) + LetraNif(num);
         }
 
+        /// <summary>Genera un NIF o NIE.</summary>
+        public static string GenerateNifNie()
+        {
+            if(mRandom.NextDouble() > 0.1)
+            {
+                return GenerateNif();
+            }
+            else
+            {
+                return GenerateNie();
+            }
+        }
+
         /// <summary>Cálculo de la letra del NIF.</summary> 
         private static string LetraNif(int nif)
         {

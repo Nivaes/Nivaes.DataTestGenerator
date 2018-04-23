@@ -28,6 +28,16 @@
         }
 
         [Fact]
+        public void CreateNifNieTest()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                string cif = TaxIdGenerator.GenerateNif();
+                Debug.Print(cif);
+            }
+        }
+
+        [Fact]
         public void CreateCifTest()
         {
             for (int i = 0; i < 10; i++)
