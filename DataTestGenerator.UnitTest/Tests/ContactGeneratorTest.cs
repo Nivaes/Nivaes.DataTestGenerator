@@ -1,9 +1,9 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest.Tests
 {
+    using System.Collections.Generic;
     using System.Diagnostics;
     using Xunit;
 
-    [Collection("ContactGenerator")]
     public class ContactGeneratorTest
     {
         [Fact]
@@ -22,6 +22,36 @@
             for (int i = 0; i < 100; i++)
             {
                 var contact = ContactGenerator.GenerateContact();
+                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.FirstName}  ---- {contact.SecondName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+            }
+        }
+
+        [Fact]
+        public void ContactGeneratorTest03()
+        {
+            List<string> eMails = new List<string>();
+            for (int i = 0; i < 50; i++)
+            {
+                var contact = ContactGenerator.GenerateContact();
+
+                Assert.DoesNotContain(contact.Email, eMails);
+
+                eMails.Add(contact.Email);
+                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.FirstName}  ---- {contact.SecondName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+            }
+        }
+
+        [Fact]
+        public void ContactGeneratorTest04()
+        {
+            List<string> eMails = new List<string>();
+            for (int i = 0; i < 10000; i++)
+            {
+                var contact = ContactGenerator.GenerateExtenderContact();
+
+                Assert.DoesNotContain(contact.Email, eMails);
+
+                eMails.Add(contact.Email);
                 Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.FirstName}  ---- {contact.SecondName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }

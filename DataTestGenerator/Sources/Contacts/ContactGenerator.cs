@@ -14,24 +14,24 @@
         private static Random mRandom;
 
         /// <summary>List of first name.</summary>
-        private static Tuple<string, double>[] mFirstNames;
+        private static readonly Tuple<string, double>[] FirstNames;
 
         /// <summary>List of second name.</summary>
-        private static Tuple<string, double>[] mSecondNames;
+        private static readonly Tuple<string, double>[] SecondNames;
 
         /// <summary>List of email domain.</summary>
-        private static Tuple<string, double>[] mEmailDomains;
+        private static readonly Tuple<string, double>[] EmailDomains;
         #endregion
 
         #region Constructor
         /// <summary>Static constructor of <see cref="ContactGenerator"/>.</summary>
         static ContactGenerator()
         {
-            mRandom = new Random(DateTime.Now.Millisecond);
-            mFirstNames = ReadNames(ResourceNames.FirstName);
-            mSecondNames = ReadNames(ResourceNames.SecondName);
+            mRandom = new Random(DateTime.Now.Second * DateTime.Now.Millisecond);
+            FirstNames = ReadNames(ResourceNames.FirstName);
+            SecondNames = ReadNames(ResourceNames.SecondName);
 
-            mEmailDomains = new Tuple<string, double>[] { new Tuple<string, double>("gmail.com", 4), new Tuple<string, double>("outlook.com", 1), new Tuple<string, double>("hotmail.com", 1), new Tuple<string, double>("hotmail.es", 1) };
+            EmailDomains = new Tuple<string, double>[] { new Tuple<string, double>("gmail.com", 0.4), new Tuple<string, double>("outlook.com", 0.2), new Tuple<string, double>("hotmail.com", 0.2), new Tuple<string, double>("hotmail.es", 0.2) };
         }
 
         /// <summary>Read first name.</summary>
@@ -68,10 +68,10 @@
         /// <summary>Generate a contact.</summary>
         public static Contact GenerateContact()
         {
-            string firstName = RamdonName(mFirstNames);
-            string secondName1 = RamdonName(mSecondNames);
-            string secondName2 = RamdonName(mSecondNames);
-            string mailDomain = RamdonName(mEmailDomains);
+            string firstName = RamdonName(FirstNames);
+            string secondName1 = RamdonName(SecondNames);
+            string secondName2 = RamdonName(SecondNames);
+            string mailDomain = RamdonName(EmailDomains);
             string sortName = ReduceFirstName(firstName.RemovingAccents().ToLowerInvariant()) + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
 
             return new Contact
@@ -85,12 +85,36 @@
             };
         }
 
+        /// <summary>Generate a contact.</summary>
+        public static Contact GenerateExtenderContact()
+        {
+            string firstName = RamdonName(FirstNames);
+            string secondName1 = RamdonName(SecondNames);
+            string secondName2 = RamdonName(SecondNames);
+            string mailDomain = RamdonName(EmailDomains);
+            string sortName = ReduceFirstName(firstName.RemovingAccents().ToLowerInvariant()) + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
+            var mailName = firstName.RemovingAccents().ToLowerInvariant()
+                + "." + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
+                + "_" + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
+                + "_" + mRandom.Next(999999).ToString("000000");
+
+            return new Contact
+            {
+                SortName = sortName,
+                LongName = $"{firstName} {secondName1} {secondName2}",
+                FirstName = firstName,
+                SecondName = $"{secondName1} {secondName2}",
+                Email = $"{mailName}@{mailDomain}",
+                TelephoneNumber = RandonTelephoneNumber()
+            };
+        }
+
         /// <summary>Generate a name.</summary>
         public static string GenerateName()
         {
-            string firstName = RamdonName(mFirstNames);
-            string secondName1 = RamdonName(mSecondNames);
-            string secondName2 = RamdonName(mSecondNames);
+            string firstName = RamdonName(FirstNames);
+            string secondName1 = RamdonName(SecondNames);
+            string secondName2 = RamdonName(SecondNames);
 
             return string.Format(CultureInfo.CurrentCulture, $"{firstName} {secondName1} {secondName2}");
         }
@@ -111,7 +135,7 @@
         {
             double ran = mRandom.NextDouble();
 
-            int i = 0, j = names.Length;
+            int i = 0, j = names.Length-1;
 
             while (true)
             {
