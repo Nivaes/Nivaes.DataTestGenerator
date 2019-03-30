@@ -11,7 +11,7 @@
         {
             for (int i = 0; i < 10; i++)
             {
-                var name = ContactGenerator.GenerateName();
+                var name = ContactGenerator.Instance.GenerateName();
                 Debug.Print(name);
             }
         }
@@ -21,8 +21,8 @@
         {
             for (int i = 0; i < 100; i++)
             {
-                var contact = ContactGenerator.GenerateContact();
-                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.FirstName}  ---- {contact.SecondName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                var contact = ContactGenerator.Instance.GenerateContact();
+                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
 
@@ -32,12 +32,12 @@
             List<string> eMails = new List<string>();
             for (int i = 0; i < 50; i++)
             {
-                var contact = ContactGenerator.GenerateContact();
+                var contact = ContactGenerator.Instance.GenerateContact();
 
                 Assert.DoesNotContain(contact.Email, eMails);
 
                 eMails.Add(contact.Email);
-                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.FirstName}  ---- {contact.SecondName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
 
@@ -47,12 +47,12 @@
             List<string> eMails = new List<string>();
             for (int i = 0; i < 10000; i++)
             {
-                var contact = ContactGenerator.GenerateExtenderContact();
+                var contact = ContactGenerator.Instance.GenerateExtenderContact();
 
                 Assert.DoesNotContain(contact.Email, eMails);
 
                 eMails.Add(contact.Email);
-                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.FirstName}  ---- {contact.SecondName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
     }
