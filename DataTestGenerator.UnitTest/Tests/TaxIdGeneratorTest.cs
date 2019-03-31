@@ -1,72 +1,90 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest.Tests
 {
     using System.Collections.Generic;
-    using System.Diagnostics;
+    using FluentAssertions;
     using Xunit;
 
-    [Collection("TaxIdGenerator")]
     public class TaxIdGeneratorTest
     {
-        [Fact]
-        public void CreateNifTest()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                string cif = TaxIdGenerator.GenerateNif();
-                Debug.Print(cif);
-            }
-        }
-
-
-        [Fact]
-        public void CreateNieTest()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                string cif = TaxIdGenerator.GenerateNie();
-                Debug.Print(cif);
-            }
-        }
-
-        [Fact]
-        public void CreateNifNieTest()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                string cif = TaxIdGenerator.GenerateNif();
-                Debug.Print(cif);
-            }
-        }
-
-        [Fact]
-        public void CreateCifTest()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                string cif = TaxIdGenerator.GenerateCif();
-                Debug.Print(cif);
-            }
-        }
-
-        [Fact]
-        public void GenerateTaxIdTest()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                string taxId = TaxIdGenerator.GenerateTaxId();
-                Debug.Print(taxId);
-            }
-        }
-
-        [Fact]
-        public void TaxIdRepeatTest()
+        [Theory]
+        [InlineData(10)]
+        [InlineData(1000)]
+        [InlineData(3000)]
+        public void CreateNifTest(int n)
         {
             List<string> taxtIds = new List<string>();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < n; i++)
+            {
+                string taxId = TaxIdGenerator.GenerateNif();
+
+                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+
+                taxtIds.Add(taxId);
+            }
+        }
+
+        [Theory]
+        [InlineData(10)]
+        [InlineData(1000)]
+        [InlineData(4000)]
+        public void CreateNieTest(int n)
+        {
+            List<string> taxtIds = new List<string>();
+            for (int i = 0; i < n; i++)
+            {
+                string taxId = TaxIdGenerator.GenerateNie();
+
+                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+
+                taxtIds.Add(taxId);
+            }
+        }
+
+        [Theory]
+        [InlineData(10)]
+        [InlineData(1000)]
+        [InlineData(4000)]
+        public void CreateNifNieTest(int n)
+        {
+            List<string> taxtIds = new List<string>();
+            for (int i = 0; i < n; i++)
+            {
+                string taxId = TaxIdGenerator.GenerateNifNie();
+
+                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+
+                taxtIds.Add(taxId);
+            }
+        }
+
+        [Theory]
+        [InlineData(10)]
+        [InlineData(1000)]
+        public void CreateCifTest(int n)
+        {
+            List<string> taxtIds = new List<string>();
+            for (int i = 0; i < n; i++)
+            {
+                string taxId = TaxIdGenerator.GenerateCif();
+
+                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+
+                taxtIds.Add(taxId);
+            }
+        }
+
+        [Theory]
+        [InlineData(10)]
+        [InlineData(1000)]
+        [InlineData(2000)]
+        public void TaxIdTest(int n)
+        {
+            List<string> taxtIds = new List<string>();
+            for (int i = 0; i < n; i++)
             {
                 string taxId = TaxIdGenerator.GenerateTaxId();
 
-                Assert.DoesNotContain(taxId, taxtIds);
+                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
                 taxtIds.Add(taxId);
             }

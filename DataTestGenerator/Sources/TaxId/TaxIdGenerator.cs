@@ -22,27 +22,27 @@
         /// <summary>Genera un NIF.</summary>
         public static string GenerateNif()
         {
-            int num = mRandom.Next(1000, 100000000);
+            int num = (int)(mRandom.NextDouble() * 100000000);
             return num.ToString("00000000", CultureInfo.InvariantCulture) + LetraNif(num);
         }
 
         /// <summary>Genera un NIF.</summary>
         public static string GenerateNie()
         {
-            int num = mRandom.Next(1000, 100000000);
+            int num = (int)(mRandom.NextDouble() * 100000000);
             return LetraNie() + num.ToString("00000000", CultureInfo.InvariantCulture) + LetraNif(num);
         }
 
         /// <summary>Genera un NIF o NIE.</summary>
         public static string GenerateNifNie()
         {
-            if(mRandom.NextDouble() > 0.1)
+            if(mRandom.Next(0, 4) == 0)
             {
-                return GenerateNif();
+                return GenerateNie();
             }
             else
             {
-                return GenerateNie();
+                return GenerateNif();
             }
         }
 
@@ -64,7 +64,8 @@
         /// <summary>Genera un CIF.</summary>
         public static string GenerateCif()
         {
-            int num = mRandom.Next(1000, 10000000);
+            //int num = mRandom.Next(1000, 10000000);
+            int num = (int)(mRandom.NextDouble() * 10000000);
             string sNumbers = num.ToString("0000000", CultureInfo.InvariantCulture);
 
             int control = 10 - (ProcessedNumberOddPosition(sNumbers[0]) +
@@ -91,9 +92,9 @@
         public static string GenerateTaxId()
         {
             int num = mRandom.Next(0, 10);
-            if (num < 6)
+            if (num < 2)
                 return GenerateCif();
-            else if (num == 6)
+            else if (num < 5)
                 return GenerateNie();
             else
                 return GenerateNif();
