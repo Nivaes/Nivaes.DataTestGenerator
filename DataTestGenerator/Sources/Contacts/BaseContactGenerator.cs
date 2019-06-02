@@ -72,7 +72,7 @@
             string secondName1 = RamdonName(mFamilyNames);
             string secondName2 = RamdonName(mFamilyNames);
             string mailDomain = RamdonName(mEmailDomains);
-            string sortName = ReduceFirstName(personalName.RemovingAccents().ToLowerInvariant()) + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
+            string sortName = ReduceFirstName(personalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
 
             return new Contact
             {
@@ -92,7 +92,7 @@
             string secondName1 = RamdonName(mFamilyNames);
             string secondName2 = RamdonName(mFamilyNames);
             string mailDomain = RamdonName(mEmailDomains);
-            string sortName = ReduceFirstName(PersonalName.RemovingAccents().ToLowerInvariant()) + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
+            string sortName = ReduceFirstName(PersonalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
             var mailName = PersonalName.RemovingAccents().ToLowerInvariant()
                 + "." + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "_" + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
