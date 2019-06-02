@@ -66,44 +66,44 @@
 
         #region Methods
         /// <summary>Generate a contact.</summary>
-        public Contact GenerateContact()
+        public ContactTest GenerateContact()
         {
             string personalName = RamdonName(mPersonalNames);
-            string secondName1 = RamdonName(mFamilyNames);
-            string secondName2 = RamdonName(mFamilyNames);
+            string familyName1 = RamdonName(mFamilyNames);
+            string familyName2 = RamdonName(mFamilyNames);
             string mailDomain = RamdonName(mEmailDomains);
-            string sortName = ReduceFirstName(personalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
+            string sortName = ReduceFirstName(personalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
 
-            return new Contact
+            return new ContactTest
             {
                 SortName = sortName,
-                LongName = $"{personalName} {secondName1} {secondName2}",
+                LongName = $"{personalName} {familyName1} {familyName2}",
                 PersonalName = personalName,
-                FamilyName = $"{secondName1} {secondName2}",
+                FamilyName = $"{familyName1} {familyName2}",
                 Email = $"{sortName}@{mailDomain}",
                 TelephoneNumber = RandonTelephoneNumber()
             };
         }
 
         /// <summary>Generate a contact.</summary>
-        public Contact GenerateExtenderContact()
+        public ContactTest GenerateExtenderContact()
         {
-            string PersonalName = RamdonName(mPersonalNames);
-            string secondName1 = RamdonName(mFamilyNames);
-            string secondName2 = RamdonName(mFamilyNames);
+            string personalName = RamdonName(mPersonalNames);
+            string familyName1 = RamdonName(mFamilyNames);
+            string familyName2 = RamdonName(mFamilyNames);
             string mailDomain = RamdonName(mEmailDomains);
-            string sortName = ReduceFirstName(PersonalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
-            var mailName = PersonalName.RemovingAccents().ToLowerInvariant()
-                + "." + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
-                + "_" + secondName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
+            string sortName = ReduceFirstName(personalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
+            var mailName = personalName.RemovingAccents().ToLowerInvariant()
+                + "." + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
+                + "_" + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "_" + Random.Next(999999).ToString("000000");
 
-            return new Contact
+            return new ContactTest
             {
                 SortName = sortName,
-                LongName = $"{PersonalName} {secondName1} {secondName2}",
-                PersonalName = PersonalName,
-                FamilyName = $"{secondName1} {secondName2}",
+                LongName = $"{personalName} {familyName1} {familyName2}",
+                PersonalName = personalName,
+                FamilyName = $"{familyName1} {familyName2}",
                 Email = $"{mailName}@{mailDomain}",
                 TelephoneNumber = RandonTelephoneNumber()
             };
@@ -112,11 +112,11 @@
         /// <summary>Generate a name.</summary>
         public string GenerateName()
         {
-            string firstName = RamdonName(mPersonalNames);
-            string secondName1 = RamdonName(mFamilyNames);
-            string secondName2 = RamdonName(mFamilyNames);
+            string personalName = RamdonName(mPersonalNames);
+            string familyName1 = RamdonName(mFamilyNames);
+            string familyName2 = RamdonName(mFamilyNames);
 
-            return string.Format(CultureInfo.CurrentCulture, $"{firstName} {secondName1} {secondName2}");
+            return string.Format(CultureInfo.CurrentCulture, $"{personalName} {familyName1} {familyName2}");
         }
 
         private string ReduceFirstName(string personalName)

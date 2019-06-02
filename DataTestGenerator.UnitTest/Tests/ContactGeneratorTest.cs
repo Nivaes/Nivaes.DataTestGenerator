@@ -7,7 +7,7 @@
     public class ContactGeneratorTest
     {
         [Fact]
-        public void  ContactGeneratorTest01()
+        public void  ContactGeneratorName()
         {
             for (int i = 0; i < 10; i++)
             {
@@ -17,7 +17,7 @@
         }
 
         [Fact]
-        public void ContactGeneratorTest02()
+        public void ContactGeneratorContact01()
         {
             for (int i = 0; i < 100; i++)
             {
@@ -27,7 +27,7 @@
         }
 
         [Fact]
-        public void ContactGeneratorTest03()
+        public void ContactGeneratorContact02()
         {
             List<string> eMails = new List<string>();
             for (int i = 0; i < 50; i++)
@@ -42,7 +42,7 @@
         }
 
         [Fact]
-        public void ContactGeneratorTest04()
+        public void ContactGeneratorExtenderContactTest()
         {
             List<string> eMails = new List<string>();
             for (int i = 0; i < 10000; i++)

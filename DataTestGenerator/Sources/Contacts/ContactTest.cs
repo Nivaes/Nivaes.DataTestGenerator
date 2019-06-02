@@ -1,6 +1,6 @@
 ﻿namespace Nivaes.DataTestGenerator
 {
-    public class Contact
+    public class ContactTest
     {
         public string SortName {get; internal set;}
         public string LongName { get; internal set; }
