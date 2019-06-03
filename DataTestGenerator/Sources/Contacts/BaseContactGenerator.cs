@@ -93,7 +93,7 @@
             string familyName2 = RamdonName(mFamilyNames);
             string mailDomain = RamdonName(mEmailDomains);
             string sortName = ReduceFirstName(personalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
-            var mailName = personalName.RemovingAccents().ToLowerInvariant()
+            var mailName = personalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "." + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "_" + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "_" + Random.Next(999999).ToString("000000");
