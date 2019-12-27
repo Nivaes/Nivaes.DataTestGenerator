@@ -11,7 +11,7 @@
     {
         #region Propeties
         /// <summary>Reference to <see cref="Random"/>.</summary>
-        protected Random Random { get; private set; }
+        protected Random Random { get; }= new Random(DateTime.Now.Second * DateTime.Now.Millisecond);
 
         /// <summary>List of personal name.</summary>
         private readonly Tuple<string, double>[] mPersonalNames;
@@ -24,10 +24,9 @@
         #endregion
 
         #region Constructor
-        /// <summary>Static constructor of <see cref="ContactGenerator"/>.</summary>
-        public BaseContactGenerator()
+        /// <summary>Static constructor of <see cref="GenericTest"/>.</summary>
+        protected BaseContactGenerator()
         {
-            Random = new Random(DateTime.Now.Second * DateTime.Now.Millisecond);
             mPersonalNames = ReadNames(ResourceNames.FirstName);
             mFamilyNames = ReadNames(ResourceNames.SecondName);
 

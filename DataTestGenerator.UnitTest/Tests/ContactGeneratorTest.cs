@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Diagnostics;
     using Xunit;
+    using FluentAssertions;
 
     public class ContactGeneratorTest
     {
@@ -13,6 +14,7 @@
             {
                 var name = ContactGenerator.Instance.GenerateName();
                 Debug.Print(name);
+                name.Should().NotBeNullOrEmpty();
             }
         }
 
@@ -23,6 +25,7 @@
             {
                 var contact = ContactGenerator.Instance.GenerateContact();
                 Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                contact.Should().NotBeNull();
             }
         }
 
@@ -34,10 +37,13 @@
             {
                 var contact = ContactGenerator.Instance.GenerateContact();
 
+                contact.Should().NotBeNull();
+                eMails.Should().NotContain(contact.Email);
                 Assert.DoesNotContain(contact.Email, eMails);
 
                 eMails.Add(contact.Email);
                 Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+  
             }
         }
 
@@ -49,6 +55,8 @@
             {
                 var contact = ContactGenerator.Instance.GenerateExtenderContact();
 
+                contact.Should().NotBeNull();
+                eMails.Should().NotContain(contact.Email);
                 Assert.DoesNotContain(contact.Email, eMails);
 
                 eMails.Add(contact.Email);
