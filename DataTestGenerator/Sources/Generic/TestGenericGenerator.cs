@@ -47,10 +47,11 @@
 
         public int GenerateInt(int minValue, int maxValue) => mRandom.Next(minValue, maxValue);
 
-        public double GenerateDouble() => mRandom.NextDouble();
-
-        public double GenerateDouble(int maxValue) => GenerateDouble(0, maxValue);
-
-        public double GenerateDouble(double minValue, double maxValue) => mRandom.NextDouble() * (maxValue - minValue) + minValue;
+        public double GenerateDouble(double minValue, double maxValue)
+        {
+            var rando = mRandom.NextDouble();
+            
+            return rando * (maxValue - minValue) + minValue;
+        }
     }
 }
