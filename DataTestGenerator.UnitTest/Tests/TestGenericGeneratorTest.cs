@@ -51,6 +51,8 @@
             for (int i = 0; i < 10; i++)
             {
                 var intGenerate = TestGenericGenerator.Instance.GenerateInt();
+                intGenerate.Should().BeLessOrEqualTo(int.MaxValue);
+                intGenerate.Should().BeGreaterOrEqualTo(int.MinValue);
             }
         }
 
