@@ -43,7 +43,6 @@
 
                 eMails.Add(contact.Email);
                 Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
-  
             }
         }
 
