@@ -3,16 +3,24 @@
     using System.Diagnostics;
     using Xunit;
     using FluentAssertions;
+    using Xunit.Abstractions;
 
     public class TestGenericGeneratorTest
     {
+        private readonly ITestOutputHelper mOutput;
+
+        public TestGenericGeneratorTest(ITestOutputHelper output)
+        {
+            mOutput = output;
+        }
+
         [Fact]
         public void TestGenericGeneratorString()
         {
             for (int i = 0; i < 10; i++)
             {
                 var strGenerate = TestGenericGenerator.Instance.GenerateString();
-                Debug.Print(strGenerate);
+                mOutput.WriteLine(strGenerate);
                 strGenerate.Should().NotBeNullOrEmpty();
             }
         }
@@ -23,7 +31,7 @@
             for (int i = 1000; i < 1100; i++)
             {
                 var strGenerate = TestGenericGenerator.Instance.GenerateString(i);
-                Debug.Print(strGenerate);
+                mOutput.WriteLine(strGenerate);
                 strGenerate.Should().NotBeNullOrEmpty();
                 strGenerate.Length.Should().Be(i);
             }
@@ -37,7 +45,7 @@
                 for (int j = 1200; j < i + 1300; j++)
                 {
                     var strGenerate = TestGenericGenerator.Instance.GenerateString(i, j);
-                    Debug.Print(strGenerate);
+                    mOutput.WriteLine(strGenerate);
                     strGenerate.Should().NotBeNullOrEmpty();
                     strGenerate.Length.Should().BeGreaterOrEqualTo(i);
                     strGenerate.Length.Should().BeLessOrEqualTo(j);
@@ -51,6 +59,7 @@
             for (int i = 0; i < 10; i++)
             {
                 var intGenerate = TestGenericGenerator.Instance.GenerateInt();
+                mOutput.WriteLine($"{intGenerate}");
                 intGenerate.Should().BeLessOrEqualTo(int.MaxValue);
                 intGenerate.Should().BeGreaterOrEqualTo(int.MinValue);
             }
@@ -62,6 +71,7 @@
             for (int i = 1000; i < 100000; i++)
             {
                 var intGenerate = TestGenericGenerator.Instance.GenerateInt(i);
+                mOutput.WriteLine($"{intGenerate}");
                 intGenerate.Should().BeLessOrEqualTo(i);
             }
         }
@@ -74,6 +84,7 @@
                 for (int j = 1000; j < 1500; j++)
                 {
                     var intGenerate = TestGenericGenerator.Instance.GenerateInt(i, j);
+                    mOutput.WriteLine($"{intGenerate}");
                     intGenerate.Should().BeGreaterOrEqualTo(i);
                     intGenerate.Should().BeLessOrEqualTo(j);
                 }
@@ -88,6 +99,7 @@
                 for (double j = 12653.32158; j < 12533453.32158; j += 25783.35)
                 {
                     var doubleGenerate = TestGenericGenerator.Instance.GenerateDouble(i, j);
+                    mOutput.WriteLine($"{doubleGenerate}");
                     doubleGenerate.Should().BeInRange(i, j);
                 }
             }

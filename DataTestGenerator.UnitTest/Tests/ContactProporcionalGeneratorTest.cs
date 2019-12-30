@@ -1,18 +1,24 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest.Tests
 {
-    using System.Collections.Generic;
-    using System.Diagnostics;
     using Xunit;
+    using Xunit.Abstractions;
 
     public class ContactProporcionalGeneratorTest
     {
+        private readonly ITestOutputHelper mOutput;
+
+        public ContactProporcionalGeneratorTest(ITestOutputHelper output)
+        {
+            mOutput = output;
+        }
+
         [Fact]
         public void ContactProporcionalGeneratorTest01()
         {
             for (int i = 0; i < 10; i++)
             {
                 var name = ContactProporcionalGenerator.Instance.GenerateName();
-                Debug.Print(name);
+                mOutput.WriteLine(name);
             }
         }
 
@@ -22,7 +28,7 @@
             for (int i = 0; i < 100; i++)
             {
                 var contact = ContactProporcionalGenerator.Instance.GenerateContact();
-                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
     }

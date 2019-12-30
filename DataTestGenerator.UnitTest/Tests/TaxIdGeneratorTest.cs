@@ -3,9 +3,17 @@
     using System.Collections.Generic;
     using FluentAssertions;
     using Xunit;
+    using Xunit.Abstractions;
 
     public class TaxIdGeneratorTest
     {
+        private readonly ITestOutputHelper mOutput;
+
+        public TaxIdGeneratorTest(ITestOutputHelper output)
+        {
+            mOutput = output;
+        }
+
         [Theory]
         [InlineData(10)]
         [InlineData(1000)]
@@ -16,6 +24,8 @@
             for (int i = 0; i < n; i++)
             {
                 string taxId = TaxIdGenerator.GenerateNif();
+
+                mOutput.WriteLine(taxId);
 
                 taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
@@ -34,6 +44,8 @@
             {
                 string taxId = TaxIdGenerator.GenerateNie();
 
+                mOutput.WriteLine(taxId);
+
                 taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
                 taxtIds.Add(taxId);
@@ -51,6 +63,8 @@
             {
                 string taxId = TaxIdGenerator.GenerateNifNie();
 
+                mOutput.WriteLine(taxId);
+
                 taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
                 taxtIds.Add(taxId);
@@ -66,6 +80,8 @@
             for (int i = 0; i < n; i++)
             {
                 string taxId = TaxIdGenerator.GenerateCif();
+
+                mOutput.WriteLine(taxId);
 
                 taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
@@ -83,6 +99,8 @@
             for (int i = 0; i < n; i++)
             {
                 string taxId = TaxIdGenerator.GenerateTaxId();
+
+                mOutput.WriteLine(taxId);
 
                 taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 

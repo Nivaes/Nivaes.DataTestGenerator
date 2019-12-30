@@ -1,19 +1,26 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest.Tests
 {
     using System.Collections.Generic;
-    using System.Diagnostics;
-    using Xunit;
     using FluentAssertions;
+    using Xunit;
+    using Xunit.Abstractions;
 
     public class ContactGeneratorTest
     {
+        private readonly ITestOutputHelper mOutput;
+
+        public ContactGeneratorTest(ITestOutputHelper output)
+        {
+            mOutput = output;
+        }
+
         [Fact]
         public void  ContactGeneratorName()
         {
             for (int i = 0; i < 10; i++)
             {
                 var name = ContactGenerator.Instance.GenerateName();
-                Debug.Print(name);
+                mOutput.WriteLine(name);
                 name.Should().NotBeNullOrEmpty();
             }
         }
@@ -24,7 +31,7 @@
             for (int i = 0; i < 100; i++)
             {
                 var contact = ContactGenerator.Instance.GenerateContact();
-                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
                 contact.Should().NotBeNull();
             }
         }
@@ -42,8 +49,7 @@
                 Assert.DoesNotContain(contact.Email, eMails);
 
                 eMails.Add(contact.Email);
-                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
-  
+                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
 
@@ -60,7 +66,7 @@
                 Assert.DoesNotContain(contact.Email, eMails);
 
                 eMails.Add(contact.Email);
-                Debug.Print($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
     }
