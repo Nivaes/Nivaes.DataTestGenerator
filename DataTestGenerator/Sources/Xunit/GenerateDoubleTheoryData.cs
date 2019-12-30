@@ -8,7 +8,7 @@
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(TestGenericGenerator.Instance.GenerateDouble(maxSize, minSize));
+                base.Add(GenericGenerator.Instance.GenerateDouble(maxSize, minSize));
             }
         }
     }

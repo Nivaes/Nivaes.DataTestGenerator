@@ -45,7 +45,7 @@
             {
                 for (double j = 12653.32158; j < 12533453.32158; j += 25783.35)
                 {
-                    var doubleGenerate = TestGenericGenerator.Instance.GenerateDouble(i, j);
+                    var doubleGenerate = GenericGenerator.Instance.GenerateDouble(i, j);
                     doubleGenerate.Should().BeInRange(i, j);
                 }
             }

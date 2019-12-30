@@ -30,7 +30,7 @@
         {
             for (int i = 0; i < mDataNumber; i++)
             {
-                yield return new object[] { TestGenericGenerator.Instance.GenerateDouble(mMinValue, mMaxValue) };
+                yield return new object[] { GenericGenerator.Instance.GenerateDouble(mMinValue, mMaxValue) };
             }
         }
     }

@@ -9,14 +9,14 @@
     {
         public GenerateStringTheoryData()
         {
-            base.Add(TestGenericGenerator.Instance.GenerateString());
+            base.Add(GenericGenerator.Instance.GenerateString());
         }
 
         public GenerateStringTheoryData(int dataNumber)
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(TestGenericGenerator.Instance.GenerateString());
+                base.Add(GenericGenerator.Instance.GenerateString());
             }
         }
 
@@ -24,7 +24,7 @@
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(TestGenericGenerator.Instance.GenerateString(maxSize, minSize));
+                base.Add(GenericGenerator.Instance.GenerateString(maxSize, minSize));
             }
         }
     }

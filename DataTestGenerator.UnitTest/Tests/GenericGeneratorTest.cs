@@ -5,32 +5,32 @@
     using FluentAssertions;
     using Xunit.Abstractions;
 
-    public class TestGenericGeneratorTest
+    public class GenericGeneratorTest
     {
         private readonly ITestOutputHelper mOutput;
 
-        public TestGenericGeneratorTest(ITestOutputHelper output)
+        public GenericGeneratorTest(ITestOutputHelper output)
         {
             mOutput = output;
         }
 
         [Fact]
-        public void TestGenericGeneratorString()
+        public void GenericGeneratorString()
         {
             for (int i = 0; i < 10; i++)
             {
-                var strGenerate = TestGenericGenerator.Instance.GenerateString();
+                var strGenerate = GenericGenerator.Instance.GenerateString();
                 mOutput.WriteLine(strGenerate);
                 strGenerate.Should().NotBeNullOrEmpty();
             }
         }
 
         [Fact]
-        public void TestGenericGeneratorStringSize()
+        public void GenericGeneratorStringSize()
         {
             for (int i = 1000; i < 1100; i++)
             {
-                var strGenerate = TestGenericGenerator.Instance.GenerateString(i);
+                var strGenerate = GenericGenerator.Instance.GenerateString(i);
                 mOutput.WriteLine(strGenerate);
                 strGenerate.Should().NotBeNullOrEmpty();
                 strGenerate.Length.Should().Be(i);
@@ -38,13 +38,13 @@
         }
 
         [Fact]
-        public void TestGenericGeneratorStringIntervalSize()
+        public void GenericGeneratorStringIntervalSize()
         {
             for (int i = 1100; i < 1200; i++)
             {
                 for (int j = 1200; j < i + 1300; j++)
                 {
-                    var strGenerate = TestGenericGenerator.Instance.GenerateString(i, j);
+                    var strGenerate = GenericGenerator.Instance.GenerateString(i, j);
                     mOutput.WriteLine(strGenerate);
                     strGenerate.Should().NotBeNullOrEmpty();
                     strGenerate.Length.Should().BeGreaterOrEqualTo(i);
@@ -54,11 +54,11 @@
         }
 
         [Fact]
-        public void TestGenericGeneratorIntSize()
+        public void GenericGeneratorIntSize()
         {
             for (int i = 0; i < 10; i++)
             {
-                var intGenerate = TestGenericGenerator.Instance.GenerateInt();
+                var intGenerate = GenericGenerator.Instance.GenerateInt();
                 mOutput.WriteLine($"{intGenerate}");
                 intGenerate.Should().BeLessOrEqualTo(int.MaxValue);
                 intGenerate.Should().BeGreaterOrEqualTo(int.MinValue);
@@ -66,24 +66,24 @@
         }
 
         [Fact]
-        public void TestGenericGeneratorSize()
+        public void GenericGeneratorSize()
         {
             for (int i = 1000; i < 100000; i++)
             {
-                var intGenerate = TestGenericGenerator.Instance.GenerateInt(i);
+                var intGenerate = GenericGenerator.Instance.GenerateInt(i);
                 mOutput.WriteLine($"{intGenerate}");
                 intGenerate.Should().BeLessOrEqualTo(i);
             }
         }
 
         [Fact]
-        public void TestGenericGeneratorIntervalSize()
+        public void GenericGeneratorIntervalSize()
         {
             for (int i = 100; i < 1000; i++)
             {
                 for (int j = 1000; j < 1500; j++)
                 {
-                    var intGenerate = TestGenericGenerator.Instance.GenerateInt(i, j);
+                    var intGenerate = GenericGenerator.Instance.GenerateInt(i, j);
                     mOutput.WriteLine($"{intGenerate}");
                     intGenerate.Should().BeGreaterOrEqualTo(i);
                     intGenerate.Should().BeLessOrEqualTo(j);
@@ -98,7 +98,7 @@
             {
                 for (double j = 12653.32158; j < 12533453.32158; j += 25783.35)
                 {
-                    var doubleGenerate = TestGenericGenerator.Instance.GenerateDouble(i, j);
+                    var doubleGenerate = GenericGenerator.Instance.GenerateDouble(i, j);
                     mOutput.WriteLine($"{doubleGenerate}");
                     doubleGenerate.Should().BeInRange(i, j);
                 }

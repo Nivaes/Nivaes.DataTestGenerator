@@ -24,7 +24,7 @@
         {
             for (int i = 0; i < DataNumber; i++)
             {
-                yield return new[] { TestGenericGenerator.Instance.GenerateString(MinSize, MaxSize) };
+                yield return new[] { GenericGenerator.Instance.GenerateString(MinSize, MaxSize) };
             }
         }
     }

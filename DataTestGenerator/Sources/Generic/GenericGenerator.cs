@@ -3,19 +3,19 @@
     using System;
     using System.Text;
 
-    public sealed class TestGenericGenerator
+    public sealed class GenericGenerator
     {
         /// <summary>Reference to <see cref="mRandom"/>.</summary>
         private Random mRandom { get; } = new Random(DateTime.Now.Second * DateTime.Now.Millisecond);
 
-        private static TestGenericGenerator mTestGenericGenerator;
+        private static GenericGenerator mTestGenericGenerator;
 
-        public static TestGenericGenerator Instance
+        public static GenericGenerator Instance
         {
             get
             {
                 if (mTestGenericGenerator == null)
-                    mTestGenericGenerator = new TestGenericGenerator();
+                    mTestGenericGenerator = new GenericGenerator();
 
                 return mTestGenericGenerator;
             }

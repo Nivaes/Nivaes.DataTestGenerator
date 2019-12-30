@@ -24,7 +24,7 @@
         {
             for (int i = 0; i < DataNumber; i++)
             {
-                yield return new object[] { TestGenericGenerator.Instance.GenerateInt(MinValue, MaxValue) };
+                yield return new object[] { GenericGenerator.Instance.GenerateInt(MinValue, MaxValue) };
             }
         }
     }
