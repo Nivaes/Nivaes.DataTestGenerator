@@ -24,7 +24,8 @@
             if (timeSleep < 0)
                 timeSleep = 0;
 
-            yield return new RetryTestCase(mDiagnosticMessageSink, discoveryOptions.MethodDisplayOrDefault(), discoveryOptions.MethodDisplayOptionsOrDefault(), testMethod, maxRetries, timeSleep);
+            yield return new RetryTestCase(mDiagnosticMessageSink, discoveryOptions.MethodDisplayOrDefault(), discoveryOptions.MethodDisplayOptionsOrDefault(), testMethod,
+                maxRetries, timeSleep);
         }
     }
 }
