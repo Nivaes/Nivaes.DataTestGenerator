@@ -17,6 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Images\icon.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Resources\es\FirstName.csv">
       <CustomToolNamespace></CustomToolNamespace>
     </EmbeddedResource>
@@ -28,6 +32,7 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
     <PackageReference Include="System.Globalization.Extensions" Version="4.3.0" />
     <Compile Remove="**\UseCultureAttribute.cs" />
+    <None Include="**\UseCultureAttribute.cs" />
   </ItemGroup>
 
   <ItemGroup>
