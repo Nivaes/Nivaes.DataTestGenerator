@@ -49,10 +49,10 @@
                 {
                     delayedMessageBus.Dispose();  // Sends all the delayed messages
 
-                    await Task.Delay(mTimeSleep);
-
                     return summary;
                 }
+
+                await Task.Delay(mTimeSleep);
 
                 diagnosticMessageSink.OnMessage(new DiagnosticMessage("Execution of '{0}' failed (attempt #{1}), retrying...", DisplayName, runCount));
             }
