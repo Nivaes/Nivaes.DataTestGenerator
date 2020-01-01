@@ -8,7 +8,7 @@
     {
         public override bool SupportsDiscoveryEnumeration(IAttributeInfo dataAttribute, IMethodInfo testMethod)
         {
-            return true;
+            return false;
         }
     }
 }
