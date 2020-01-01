@@ -7,7 +7,7 @@
     /// <summary>
     /// Works just like [Fact] except that failures are retried (by default, 3 times).
     /// </summary>
-    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.RetryFactDiscoverer", "Nivaes.DataTestGenerator")]
+    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.RetryFactCaseDiscoverer", "Nivaes.DataTestGenerator")]
     public sealed class RetryFactAttribute
         : FactAttribute
     {

@@ -4,14 +4,14 @@
     using global::Xunit.Abstractions;
     using global::Xunit.Sdk;
 
-    public sealed class RetryFactDiscoverer
+    public sealed class RetryFactCaseDiscoverer
         : IXunitTestCaseDiscoverer
     {
-        readonly IMessageSink diagnosticMessageSink;
+        private readonly IMessageSink mDiagnosticMessageSink;
 
-        public RetryFactDiscoverer(IMessageSink diagnosticMessageSink)
+        public RetryFactCaseDiscoverer(IMessageSink diagnosticMessageSink)
         {
-            this.diagnosticMessageSink = diagnosticMessageSink;
+            mDiagnosticMessageSink = diagnosticMessageSink;
         }
 
         public IEnumerable<IXunitTestCase> Discover(ITestFrameworkDiscoveryOptions discoveryOptions, ITestMethod testMethod, IAttributeInfo factAttribute)
@@ -24,7 +24,7 @@
             if (timeSleep < 0)
                 timeSleep = 0;
 
-            yield return new RetryTestCase(diagnosticMessageSink, discoveryOptions.MethodDisplayOrDefault(), discoveryOptions.MethodDisplayOptionsOrDefault(), testMethod, maxRetries, timeSleep);
+            yield return new RetryTestCase(mDiagnosticMessageSink, discoveryOptions.MethodDisplayOrDefault(), discoveryOptions.MethodDisplayOptionsOrDefault(), testMethod, maxRetries, timeSleep);
         }
     }
 }
