@@ -2,8 +2,9 @@
 {
     using System.Collections.Generic;
     using FluentAssertions;
-    using Xunit;
-    using Xunit.Abstractions;
+    using global::Xunit;
+    using global::Xunit.Abstractions;
+    using Nivaes.DataTestGenerator.Xunit;
 
     public class ContactGeneratorTest
     {
@@ -58,6 +59,23 @@
         {
             List<string> eMails = new List<string>();
             for (int i = 0; i < 1000; i++)
+            {
+                var contact = ContactGenerator.Instance.GenerateExtenderContact();
+
+                contact.Should().NotBeNull();
+                eMails.Should().NotContain(contact.Email);
+                Assert.DoesNotContain(contact.Email, eMails);
+
+                eMails.Add(contact.Email);
+                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+            }
+        }
+
+        [RetryFact(MaxRetries = 5, TimeSleep = 10)]
+        public void ContactGeneratorExtenderContactRetryTest()
+        {
+            List<string> eMails = new List<string>();
+            for (int i = 0; i < 3000; i++)
             {
                 var contact = ContactGenerator.Instance.GenerateExtenderContact();
 

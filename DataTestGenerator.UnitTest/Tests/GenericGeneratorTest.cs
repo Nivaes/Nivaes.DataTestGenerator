@@ -1,9 +1,8 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest.Tests
 {
-    using System.Diagnostics;
-    using Xunit;
     using FluentAssertions;
-    using Xunit.Abstractions;
+    using global::Xunit;
+    using global::Xunit.Abstractions;
 
     public class GenericGeneratorTest
     {
@@ -31,7 +30,6 @@
             for (int i = 1000; i < 1100; i++)
             {
                 var strGenerate = GenericGenerator.Instance.GenerateString(i);
-                mOutput.WriteLine(strGenerate);
                 strGenerate.Should().NotBeNullOrEmpty();
                 strGenerate.Length.Should().Be(i);
             }
@@ -45,7 +43,6 @@
                 for (int j = 1200; j < i + 1300; j++)
                 {
                     var strGenerate = GenericGenerator.Instance.GenerateString(i, j);
-                    mOutput.WriteLine(strGenerate);
                     strGenerate.Should().NotBeNullOrEmpty();
                     strGenerate.Length.Should().BeGreaterOrEqualTo(i);
                     strGenerate.Length.Should().BeLessOrEqualTo(j);

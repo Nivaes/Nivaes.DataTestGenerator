@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
     using FluentAssertions;
-    using Xunit;
-    using Xunit.Abstractions;
+    using global::Xunit;
+    using global::Xunit.Abstractions;
 
     public class TaxIdGeneratorTest
     {

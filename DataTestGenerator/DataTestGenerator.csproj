@@ -8,7 +8,7 @@
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <Product>Data test generator</Product>
     <Description>Tool for generating data testing.</Description>
-    <PackageTags>Nivaes;DataTestGenerator</PackageTags>
+    <PackageTags>Nivaes;DataTestGenerator;xunit;test;generator;testgenerator;dni;taxgenerator</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,7 +31,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.9.0" />
-    <PackageReference Include="xunit.extensibility.core" Version="2.4.1" />
+    <PackageReference Include="xunit.extensibility.execution" Version="2.4.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,10 +1,11 @@
-﻿namespace Nivaes.DataTestGenerator
+﻿namespace Nivaes.DataTestGenerator.Xunit
 {
     using System.Collections.Generic;
     using System.Reflection;
-    using Xunit.Sdk;
+    using global::Xunit.Sdk;
 
-    public sealed class GenerateIntInlineDataAttribute : DataAttribute
+    public sealed class GenerateIntInlineDataAttribute
+        : DataAttribute
     {
         public int DataNumber { get; set; } = 1;
 

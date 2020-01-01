@@ -1,11 +1,9 @@
-﻿namespace Nivaes.DataTestGenerator
+﻿namespace Nivaes.DataTestGenerator.Xunit
 {
-    using System.Collections.Generic;
-    using System.Reflection;
-    using Xunit;
-    using Xunit.Sdk;
+    using global::Xunit;
 
-    public sealed class GenerateStringTheoryData : TheoryData<string>
+    public sealed class GenerateStringTheoryData
+        : TheoryData<string>
     {
         public GenerateStringTheoryData()
         {

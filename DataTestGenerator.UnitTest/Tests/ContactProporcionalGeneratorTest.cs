@@ -1,7 +1,7 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest.Tests
 {
-    using Xunit;
-    using Xunit.Abstractions;
+    using global::Xunit;
+    using global::Xunit.Abstractions;
 
     public class ContactProporcionalGeneratorTest
     {

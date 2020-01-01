@@ -1,8 +1,9 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest.Tests
 {
     using FluentAssertions;
-    using Xunit;
-    using Xunit.Abstractions;
+    using global::Xunit;
+    using global::Xunit.Abstractions;
+    using Nivaes.DataTestGenerator.Xunit;
 
     public class TestGenericGeneratorInlineDataAttributeTest
     {
