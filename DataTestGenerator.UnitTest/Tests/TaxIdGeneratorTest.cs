@@ -4,6 +4,7 @@
     using FluentAssertions;
     using global::Xunit;
     using global::Xunit.Abstractions;
+    using Nivaes.DataTestGenerator.Xunit;
 
     public class TaxIdGeneratorTest
     {
@@ -36,7 +37,7 @@
         [Theory]
         [InlineData(10)]
         [InlineData(1000)]
-        [InlineData(4000)]
+        [RetryInlineData(4000, MaxRetries = 3)]
         public void CreateNieTest(int n)
         {
             List<string> taxtIds = new List<string>();
@@ -73,7 +74,7 @@
 
         [Theory]
         [InlineData(10)]
-        [InlineData(1000)]
+        [RetryInlineData(1000)]
         public void CreateCifTest(int n)
         {
             List<string> taxtIds = new List<string>();

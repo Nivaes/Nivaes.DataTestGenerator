@@ -1,5 +1,7 @@
 ﻿namespace Nivaes.DataTestGenerator.Xunit
 {
+    using System;
+    using System.ComponentModel;
     using System.Threading;
     using System.Threading.Tasks;
     using global::Xunit.Abstractions;
@@ -11,6 +13,10 @@
         private int mMaxRetries;
 
         private int mTimeSleep;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("Called by the de-serializer", true)]
+        public RetryTestCase() { }
 
         public RetryTestCase(IMessageSink diagnosticMessageSink, TestMethodDisplay defaultMethodDisplay, TestMethodDisplayOptions defaultMethodDisplayOptions, ITestMethod testMethod,
             int maxRetries, int timeSleep)

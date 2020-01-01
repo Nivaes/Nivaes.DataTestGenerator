@@ -5,6 +5,7 @@
     using global::Xunit.Sdk;
 
     [DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator")]
+    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.GenerateIntCaseDiscoverer", "Nivaes.DataTestGenerator")]
     public sealed class GenerateIntInlineDataAttribute
         : DataAttribute
     {

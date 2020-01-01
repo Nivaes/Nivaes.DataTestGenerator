@@ -5,34 +5,35 @@
     using global::Xunit.Sdk;
 
     [DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator")]
+    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.GenerateDoubleCaseDiscoverer", "Nivaes.DataTestGenerator")]
     public sealed class GenerateDoubleInlineDataAttribute
         : DataAttribute
     {
-        private readonly int mDataNumber;
+        public int DataNumber { get; private set; }
 
-        private readonly double mMaxValue;
+        public double MaxValue { get; private set; }
 
-        private readonly double mMinValue;
+        public double MinValue { get; private set; }
 
         public GenerateDoubleInlineDataAttribute(double minValue, double maxValue)
         {
-            mDataNumber = 1;
-            mMinValue = minValue;
-            mMaxValue = maxValue;
+            DataNumber = 1;
+            MinValue = minValue;
+            MaxValue = maxValue;
         }
 
         public GenerateDoubleInlineDataAttribute(int dataNumber, double minValue, double maxValue)
         {
-            mDataNumber = dataNumber;
-            mMinValue = minValue;
-            mMaxValue = maxValue;
+            DataNumber = dataNumber;
+            MinValue = minValue;
+            MaxValue = maxValue;
         }
 
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
-            for (int i = 0; i < mDataNumber; i++)
+            for (int i = 0; i < DataNumber; i++)
             {
-                yield return new object[] { GenericGenerator.Instance.GenerateDouble(mMinValue, mMaxValue) };
+                yield return new object[] { GenericGenerator.Instance.GenerateDouble(MinValue, MaxValue) };
             }
         }
     }

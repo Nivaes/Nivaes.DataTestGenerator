@@ -4,24 +4,23 @@
     using global::Xunit.Abstractions;
     using global::Xunit.Sdk;
 
-    public class GenericGeneratorCase
+    public class GeneratorDoubleCase
         : XunitTestCase
     {
         private int mDataNumber { get; set; } = 1;
 
-        private int mMaxSize { get; set; } = 1;
+        private double mMaxValue { get; set; } = 1;
 
-        private int mMinSize { get; set; } = 1;
+        private double mMinValue { get; set; } = 1;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-
-        public GenericGeneratorCase(IMessageSink diagnosticMessageSink, TestMethodDisplay defaultMethodDisplay, TestMethodDisplayOptions defaultMethodDisplayOptions, ITestMethod testMethod,
-            int dataNumber, int maxSize, int minSize)
+        public GeneratorDoubleCase(IMessageSink diagnosticMessageSink, TestMethodDisplay defaultMethodDisplay, TestMethodDisplayOptions defaultMethodDisplayOptions, ITestMethod testMethod,
+            int dataNumber, double maxValue, double minValue)
             : base(diagnosticMessageSink, defaultMethodDisplay, defaultMethodDisplayOptions, testMethod, testMethodArguments: null)
         {
             mDataNumber = dataNumber;
-            mMaxSize = maxSize;
-            mMinSize = minSize;
+            mMaxValue = maxValue;
+            mMinValue = minValue;
         }
 
         public override void Serialize(IXunitSerializationInfo data)
@@ -29,8 +28,8 @@
             base.Serialize(data);
 
             data.AddValue("DataNumber", mDataNumber);
-            data.AddValue("MaxSize", mMaxSize);
-            data.AddValue("MinSize", mMinSize);
+            data.AddValue("MaxValue", mMaxValue);
+            data.AddValue("MinValue", mMinValue);
         }
 
         public override void Deserialize(IXunitSerializationInfo data)
@@ -38,8 +37,8 @@
             base.Deserialize(data);
 
             mDataNumber = data.GetValue<int>("DataNumber");
-            mMaxSize = data.GetValue<int>("MaxSize");
-            mMinSize = data.GetValue<int>("MinSize");
+            mMaxValue = data.GetValue<double>("MaxValue");
+            mMinValue = data.GetValue<double>("MinValue");
         }
     }
 }

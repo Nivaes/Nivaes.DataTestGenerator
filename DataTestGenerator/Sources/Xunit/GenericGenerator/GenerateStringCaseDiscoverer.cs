@@ -4,12 +4,12 @@
     using global::Xunit.Abstractions;
     using global::Xunit.Sdk;
 
-    public sealed class GenericGeneratorCaseDiscoverer
+    public sealed class GenerateStringCaseDiscoverer
         : IXunitTestCaseDiscoverer
     {
         private readonly IMessageSink mDiagnosticMessageSink;
 
-        public GenericGeneratorCaseDiscoverer(IMessageSink diagnosticMessageSink)
+        public GenerateStringCaseDiscoverer(IMessageSink diagnosticMessageSink)
         {
             mDiagnosticMessageSink = diagnosticMessageSink;
         }
@@ -28,7 +28,7 @@
             if (minSize < 1)
                 minSize = 1;
 
-            yield return new GenericGeneratorCase(mDiagnosticMessageSink, discoveryOptions.MethodDisplayOrDefault(), discoveryOptions.MethodDisplayOptionsOrDefault(), testMethod,
+            yield return new GeneratorStringCase(mDiagnosticMessageSink, discoveryOptions.MethodDisplayOrDefault(), discoveryOptions.MethodDisplayOptionsOrDefault(), testMethod,
                 dataNumber, maxSize, minSize);
         }
     }
