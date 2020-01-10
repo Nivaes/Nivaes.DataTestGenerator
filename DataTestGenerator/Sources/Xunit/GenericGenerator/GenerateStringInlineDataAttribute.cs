@@ -1,11 +1,13 @@
 ﻿namespace Nivaes.DataTestGenerator.Xunit
 {
+    using System;
     using System.Collections.Generic;
     using System.Reflection;
     using global::Xunit.Sdk;
 
     [DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator")]
     [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.GenerateStringCaseDiscoverer", "Nivaes.DataTestGenerator")]
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class GenerateStringInlineDataAttribute
         : DataAttribute
     {
