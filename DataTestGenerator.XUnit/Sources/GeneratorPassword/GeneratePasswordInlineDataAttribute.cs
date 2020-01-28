@@ -29,7 +29,7 @@
         {
             for (int i = 0; i < DataNumber; i++)
             {
-                yield return new[] { PasswordGenerator.Instance.CreatePassword(Length, CharacterSet) };
+                yield return new[] { PasswordGenerator.Instance.GeneratePassword(Length, CharacterSet) };
             }
         }
     }

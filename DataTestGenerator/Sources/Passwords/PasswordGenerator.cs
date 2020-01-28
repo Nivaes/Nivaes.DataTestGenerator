@@ -32,29 +32,29 @@
             }
         }
 
-        public string CreatePassword()
+        public string GeneratePassword()
         {
             var length = mRandom.Next(7, 20);
 
-            return CreatePassword(length);
+            return GeneratePassword(length);
         }
 
-        public string CreatePassword(int length)
+        public string GeneratePassword(int length)
         {
             if(length == 0)
                 length = mRandom.Next(7, 20);
 
-            return CreatePassword(length, mCharacterSet);
+            return GeneratePassword(length, mCharacterSet);
         }
 
-        public string CreatePassword(string characterSet)
+        public string GeneratePassword(string characterSet)
         {
             var length = mRandom.Next(7, 20);
 
-            return CreatePassword(length, new char[][] { characterSet.ToCharArray() });
+            return GeneratePassword(length, new char[][] { characterSet.ToCharArray() });
         }
 
-        public string CreatePassword(int length, string characterSet)
+        public string GeneratePassword(int length, string characterSet)
         {
             if(length == 0)
                 length = mRandom.Next(7, 20);
@@ -66,22 +66,22 @@
             else
                 characterSetInt = new char[][] { characterSet.ToCharArray() };
 
-            return CreatePassword(length, characterSetInt);
+            return GeneratePassword(length, characterSetInt);
         }
 
-        public string CreatePassword(IEnumerable<IEnumerable<char>> characterSet)
+        public string GeneratePassword(IEnumerable<IEnumerable<char>> characterSet)
         {
             var length = mRandom.Next(7, 20);
 
-            return CreatePassword(length, characterSet.Select(i => i.ToArray()).ToArray());
+            return GeneratePassword(length, characterSet.Select(i => i.ToArray()).ToArray());
         }
 
-        public string CreatePassword(int length, IEnumerable<IEnumerable<char>> characterSet)
+        public string GeneratePassword(int length, IEnumerable<IEnumerable<char>> characterSet)
         {
-            return CreatePassword(length, characterSet.Select(i => i.ToArray()).ToArray());
+            return GeneratePassword(length, characterSet.Select(i => i.ToArray()).ToArray());
         }
 
-        private string CreatePassword(int length, char[][] characterSets)
+        private string GeneratePassword(int length, char[][] characterSets)
         { 
             if (length <= 0)
                 throw new ArgumentException("length must not be negative", nameof(length));
@@ -109,7 +109,7 @@
             }
 
             if (characterSetUse.Cast<bool>().Any(b => !b))
-                return CreatePassword(length, characterSets);
+                return GeneratePassword(length, characterSets);
 
             return res.ToString();
         }

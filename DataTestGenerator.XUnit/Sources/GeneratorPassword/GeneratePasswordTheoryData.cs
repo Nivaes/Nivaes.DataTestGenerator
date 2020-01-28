@@ -7,14 +7,14 @@
     {
         public GeneratePasswordTheoryData()
         {
-            base.Add(PasswordGenerator.Instance.CreatePassword());
+            base.Add(PasswordGenerator.Instance.GeneratePassword());
         }
 
         public GeneratePasswordTheoryData(int dataNumber)
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(PasswordGenerator.Instance.CreatePassword());
+                base.Add(PasswordGenerator.Instance.GeneratePassword());
             }
         }
 
@@ -22,7 +22,7 @@
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(PasswordGenerator.Instance.CreatePassword(length));
+                base.Add(PasswordGenerator.Instance.GeneratePassword(length));
             }
         }
 
@@ -30,7 +30,7 @@
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(PasswordGenerator.Instance.CreatePassword(characterSet));
+                base.Add(PasswordGenerator.Instance.GeneratePassword(characterSet));
             }
         }
 
@@ -38,7 +38,7 @@
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(PasswordGenerator.Instance.CreatePassword(length, characterSet));
+                base.Add(PasswordGenerator.Instance.GeneratePassword(length, characterSet));
             }
         }
     }

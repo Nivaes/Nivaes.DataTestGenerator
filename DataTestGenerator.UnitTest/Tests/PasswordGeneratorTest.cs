@@ -17,7 +17,7 @@
         [Fact]
         public void PasswordGeneratorString01()
         {
-            var password = PasswordGenerator.Instance.CreatePassword();
+            var password = PasswordGenerator.Instance.GeneratePassword();
             mOutput.WriteLine(password);
             password.Should().NotBeNullOrEmpty();
         }
@@ -28,7 +28,7 @@
             List<string> passwords = new List<string>();
             for (int i = 0; i < 100; i++)
             {
-                var password = PasswordGenerator.Instance.CreatePassword();
+                var password = PasswordGenerator.Instance.GeneratePassword();
 
                 password.Should().NotBeNullOrEmpty();
                 passwords.Should().NotContain(password);
