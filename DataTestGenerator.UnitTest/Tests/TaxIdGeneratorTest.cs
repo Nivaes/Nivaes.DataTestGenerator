@@ -16,8 +16,8 @@
 
         [Theory]
         [InlineData(10)]
-        [InlineData(1000)]
-        [InlineData(3000)]
+        [InlineData(100)]
+        [InlineData(300)]
         public void CreateNifTest(int n)
         {
             List<string> taxtIds = new List<string>();

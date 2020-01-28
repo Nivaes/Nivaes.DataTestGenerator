@@ -36,7 +36,7 @@
 
         [Theory]
         [InlineData(10)]
-        [RetryInlineData(1000)]
+        [RetryInlineData(100)]
         public void CreateCifTest(int n)
         {
             List<string> taxtIds = new List<string>();
