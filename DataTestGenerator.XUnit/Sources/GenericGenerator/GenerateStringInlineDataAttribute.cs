@@ -5,8 +5,8 @@
     using System.Reflection;
     using global::Xunit.Sdk;
 
-    [DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator")]
-    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.GenerateStringCaseDiscoverer", "Nivaes.DataTestGenerator")]
+    [DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
+    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.GenerateStringCaseDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class GenerateStringInlineDataAttribute
         : DataAttribute

@@ -5,8 +5,8 @@
     using System.Reflection;
     using global::Xunit.Sdk;
 
-    [DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator")]
-    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.GeneratePasswordCaseDiscoverer", "Nivaes.DataTestGenerator")]
+    [DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
+    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.GeneratePasswordCaseDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class GeneratePasswordInlineDataAttribute
         : DataAttribute

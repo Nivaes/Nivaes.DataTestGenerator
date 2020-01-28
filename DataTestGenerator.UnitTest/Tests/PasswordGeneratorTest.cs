@@ -1,16 +1,13 @@
-﻿namespace Nivaes.DataTestGenerator.UnitTest.Tests
+﻿namespace Nivaes.DataTestGenerator.UnitTest
 {
     using FluentAssertions;
     using global::Xunit;
     using global::Xunit.Abstractions;
-    using Nivaes.DataTestGenerator.Xunit;
     using System.Collections.Generic;
 
     public class PasswordGeneratorTest
     {
         private readonly ITestOutputHelper mOutput;
-
-        public static GeneratePasswordTheoryData PasswordsMatrixData = new GeneratePasswordTheoryData(10, 20);
 
         public PasswordGeneratorTest(ITestOutputHelper output)
         {
@@ -39,16 +36,6 @@
                 passwords.Add(password);
                 mOutput.WriteLine(password);
             }
-        }
-
-        [Theory]
-        [InlineData("ddefff")]
-        [MemberData(nameof(PasswordsMatrixData))]
-        [GeneratePasswordInlineData(DataNumber = 3)]
-        public void PasswordGenerator03(string password)
-        {
-            mOutput.WriteLine(password);
-            password.Should().NotBeNullOrEmpty();
         }
     }
 }

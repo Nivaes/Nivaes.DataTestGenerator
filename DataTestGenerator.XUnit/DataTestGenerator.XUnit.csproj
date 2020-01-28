@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.3;netstandard2.0;netstandard2.1</TargetFrameworks>
+    <PackageId>Nivaes.DataTestGenerator.XUnit</PackageId>
+    <Title>Nivaes Data XUnit Test Generator</Title>
+    <AssemblyName>Nivaes.DataTestGenerator.Xunit</AssemblyName>
+    <RootNamespace>Nivaes.DataTestGenerator.Xunit</RootNamespace>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+    <Product>Extension of XUnit for data test generator</Product>
+    <Description>Extension of XUNit. Tool for generating data testing.</Description>
+    <PackageTags>Nivaes;DataTestGenerator;xunit;test;generator;testgenerator;dni;taxgenerator</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Images\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.9.0" />
+    <PackageReference Include="xunit.extensibility.execution" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataTestGenerator\DataTestGenerator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+    <Compile Remove="**\UseCultureAttribute.cs" />
+    <None Include="**\UseCultureAttribute.cs" />
+  </ItemGroup>
+  
+</Project>
