@@ -24,13 +24,13 @@
         #endregion
 
         #region Constructor
-        /// <summary>Static constructor of <see cref="GenericTest"/>.</summary>
+        /// <summary>Static constructor of <see cref="BaseContactGenerator"/>.</summary>
         protected BaseContactGenerator()
         {
             mPersonalNames = ReadNames(ResourceNames.FirstName);
             mFamilyNames = ReadNames(ResourceNames.SecondName);
 
-            mEmailDomains = new Tuple<string, double>[] { new Tuple<string, double>("gmail.com", 0.4), new Tuple<string, double>("outlook.com", 0.2), new Tuple<string, double>("hotmail.com", 0.2), new Tuple<string, double>("hotmail.es", 0.2) };
+            mEmailDomains = new Tuple<string, double>[] { new Tuple<string, double>("mock.com", 0.4), new Tuple<string, double>("mock.es", 0.2), new Tuple<string, double>("mock.test.com", 0.2), new Tuple<string, double>("mock.test.es", 0.2) };
         }
 
         /// <summary>Read first name.</summary>
