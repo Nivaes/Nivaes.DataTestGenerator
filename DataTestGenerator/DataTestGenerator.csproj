@@ -9,8 +9,12 @@
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <Product>Data test generator</Product>
     <Description>Tool for generating data testing.</Description>
-    <PackageTags>Nivaes;DataTestGenerator;xunit;test;generator;testgenerator;dni;taxgenerator</PackageTags>
+    <PackageTags>Nivaes;DataTestGenerator;test;generator;testgenerator;dni;taxgenerator</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Sources\UseCultureAttribute.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove="Resources\FirstName.es.csv" />
@@ -18,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Images\icon.png" Pack="true" PackagePath="\"/>
+    <None Include="Images\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,15 +36,8 @@
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
     <PackageReference Include="System.Globalization.Extensions" Version="4.3.0" />
-    <Compile Remove="**\UseCultureAttribute.cs" />
-    <None Include="**\UseCultureAttribute.cs" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="5.9.0" />
-    <PackageReference Include="xunit.extensibility.execution" Version="2.4.1" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <Compile Update="Resources\ResourceNames.Designer.cs">
       <DesignTime>True</DesignTime>

@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
-    <AssemblyName>Nivaes.DataTestGenerator.UnitTest</AssemblyName>
-    <RootNamespace>Nivaes.DataTestGenerator.UnitTest</RootNamespace>
+    <AssemblyName>Nivaes.DataTestGenerator.Xunit.UnitTest</AssemblyName>
+    <RootNamespace>Nivaes.DataTestGenerator.Xunit.UnitTest</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +20,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\DataTestGenerator\DataTestGenerator.csproj" />
+    <ProjectReference Include="..\DataTestGenerator.XUnit\DataTestGenerator.XUnit.csproj" />
   </ItemGroup>
 
 </Project>

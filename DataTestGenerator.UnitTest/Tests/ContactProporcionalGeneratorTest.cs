@@ -1,4 +1,4 @@
-﻿namespace Nivaes.DataTestGenerator.UnitTest.Tests
+﻿namespace Nivaes.DataTestGenerator.UnitTest
 {
     using global::Xunit;
     using global::Xunit.Abstractions;

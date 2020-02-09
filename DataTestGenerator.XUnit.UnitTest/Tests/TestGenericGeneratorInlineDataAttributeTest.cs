@@ -1,4 +1,4 @@
-﻿namespace Nivaes.DataTestGenerator.UnitTest.Tests
+﻿namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
     using FluentAssertions;
     using global::Xunit;
