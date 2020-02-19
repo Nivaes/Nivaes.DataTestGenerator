@@ -10,7 +10,7 @@
     /// Works just like [Fact] except that failures are retried (by default, 3 times).
     /// </summary>
     [DataDiscoverer("Xunit.Sdk.InlineDataDiscoverer", "xunit.core")]
-    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.RetryInlineCaseDiscoverer", "Nivaes.DataTestGenerator")]
+    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.RetryInlineCaseDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]    
     public sealed class RetryInlineDataAttribute
         : DataAttribute
