@@ -13,10 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Sources\UseCultureAttribute.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Resources\FirstName.es.csv" />
     <None Remove="Resources\SecondName.es.csv" />
   </ItemGroup>
