@@ -10,11 +10,11 @@
     <Owners>Nivaes</Owners>
     <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/Nivaes/DataTestGenerator</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Nivaes/Nivaes.DataTestGenerator</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
     <NeutralLanguage>en</NeutralLanguage>
-    <Version>2.5.6</Version>
+    <Version>2.5.7</Version>
 
     <RepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))</RepoRoot>
     <BaseOutputPath>$(RepoRoot)Artifacts\$(Configuration)\bin\$(MSBuildProjectName)\</BaseOutputPath>
