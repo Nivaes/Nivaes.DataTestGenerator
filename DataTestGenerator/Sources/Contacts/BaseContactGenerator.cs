@@ -5,7 +5,6 @@
     using System.Globalization;
     using System.IO;
     using System.Text;
-    using Nivaes.DataTestGenerator.Resources;
 
     public abstract class BaseContactGenerator
     {
