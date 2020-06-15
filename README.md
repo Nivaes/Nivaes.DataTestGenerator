@@ -3,5 +3,5 @@ Random data generation for testing.
 
 ### Actions
 
-![ContinuousIntegration](https://github.com/Nivaes/Nivaes.DataTestGenerator/workflows/ContinuousIntegration/badge.svg)
+![Continuous Integration](https://github.com/Nivaes/Nivaes.DataTestGenerator/workflows/Continuous%20Integration/badge.svg)
 
