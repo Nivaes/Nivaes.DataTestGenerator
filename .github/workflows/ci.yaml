@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches-ignore: [ master ]
+    paths-ignore:
+    - '**/*.md'
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [ master ]
+    paths-ignore:
+    - '**/*.md'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.100-rc.1.20379.13
+
+    - name: Build
+      run: dotnet build --configuration Release
+
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal 

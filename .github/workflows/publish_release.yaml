@@ -1,0 +1,29 @@
+name: Publish Release
+
+on:
+  release:
+    types: [published]
+    #types: [released]
+    #types: [prereleased]
+    #types: [deleted]
+
+jobs:
+  publish_release:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    #- name: Publish nuget
+    #  if: github.event.action = "released"
+    #  run: echo $"{{ event.release.assets[].browser_download_url }}"
+
+    #- name: Publish prereleased nuget
+    #  if: github.event.action = "prereleased"
+    #  run: echo $"{{ event.release.assets[].browser_download_url }}"

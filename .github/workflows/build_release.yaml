@@ -1,0 +1,81 @@
+name: Build Release
+
+on:
+  #create:
+  #  branches:              # Not filter wiht branches name of chreate.
+  #  - 'release/**'
+  push:
+    branches:
+    - 'release/**'
+    paths-ignore:
+    - '**/*.md'
+  #pull_request:
+  #  types: [opened, synchronize, reopened]
+  #  branches: [ master ]
+  #  paths-ignore:
+  #  - '**/*.md'
+
+jobs:
+  build_release:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Branch name
+      uses: nelonoel/branch-name@v1
+
+    - name: Set version
+      run: echo ::set-env name=VERSION_NUMBER::${BRANCH_NAME}.${{ github.run_number }}
+
+    - name: Version
+      run: echo ${{ env.VERSION_NUMBER }}
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.100-rc.1.20379.13
+
+    - name: Build
+      run: dotnet build --configuration Release -p:Version=${{ env.VERSION_NUMBER }} 
+
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal
+
+    - name: Pack
+      if: github.event_name == 'push' || (github.event_name != 'pull_request')
+      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ env.VERSION_NUMBER }} 
+
+    - name: Create Release
+      if: github.event_name == 'push' || (github.event_name != 'pull_request')
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: release/${{ env.VERSION_NUMBER }} 
+        release_name: Release Version ${{ env.VERSION_NUMBER }} 
+        body: |
+          Automatic Release ${{ env.VERSION_NUMBER }}  
+          - Release automatically generated.
+        draft: true
+        prerelease: false
+
+    - name: Upload Release Asset
+      if: github.event_name == 'push' || (github.event_name != 'pull_request')
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./Artifacts/Nivaes.Async.${{ env.VERSION_NUMBER }}.nupkg
+        asset_name: Nivaes.Async.${{ env.VERSION_NUMBER }}.nupkg
+        asset_content_type: application/octet-stream
