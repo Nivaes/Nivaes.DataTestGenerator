@@ -1,16 +1,15 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit.UnitTest
+﻿using Xunit;
+using Xunit.Abstractions;
+
+namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
     using FluentAssertions;
-    using global::Xunit;
-    using global::Xunit.Abstractions;
-    using Nivaes.DataTestGenerator.Xunit;
-    using System.Collections.Generic;
 
     public class PasswordGeneratorTest
     {
         private readonly ITestOutputHelper mOutput;
 
-        public static GeneratePasswordTheoryData PasswordsMatrixData = new GeneratePasswordTheoryData(10, 20);
+        public static GenerateContactTheoryData PasswordsMatrixData = new GenerateContactTheoryData(10, 20);
 
         public PasswordGeneratorTest(ITestOutputHelper output)
         {

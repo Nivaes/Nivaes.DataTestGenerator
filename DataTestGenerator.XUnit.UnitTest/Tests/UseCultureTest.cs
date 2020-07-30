@@ -1,11 +1,11 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit.UnitTest
+﻿using Xunit;
+using Xunit.Sdk;
+
+namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
     using System;
     using System.Globalization;
     using System.Threading;
-    using global::Xunit;
-    using global::Xunit.Sdk;
-    using Nivaes.DataTestGenerator.Xunit;
 
     public class UseCultureTest
     {

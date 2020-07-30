@@ -1,10 +1,10 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit.UnitTest
+﻿using Xunit;
+using Xunit.Abstractions;
+
+namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
     using System.Collections.Generic;
     using FluentAssertions;
-    using global::Xunit;
-    using global::Xunit.Abstractions;
-    using Nivaes.DataTestGenerator.Xunit;
 
     public class ContactGeneratorTest
     {
