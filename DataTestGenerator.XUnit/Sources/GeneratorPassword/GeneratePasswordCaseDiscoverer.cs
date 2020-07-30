@@ -1,8 +1,10 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit
+﻿using Xunit.Abstractions;
+using Xunit.Sdk;
+
+namespace Nivaes.DataTestGenerator.Xunit
 {
+    using System;
     using System.Collections.Generic;
-    using global::Xunit.Abstractions;
-    using global::Xunit.Sdk;
 
     public sealed class GeneratePasswordCaseDiscoverer
         : IXunitTestCaseDiscoverer
@@ -17,16 +19,13 @@
         public IEnumerable<IXunitTestCase> Discover(ITestFrameworkDiscoveryOptions discoveryOptions, ITestMethod testMethod, IAttributeInfo factAttribute)
         {
             var dataNumber = factAttribute.GetNamedArgument<int>(nameof(GeneratePasswordInlineDataAttribute.DataNumber));
-            if (dataNumber < 1)
-                dataNumber = 1;
+            dataNumber = Math.Max(1, dataNumber);
 
             var length = factAttribute.GetNamedArgument<int>(nameof(GeneratePasswordInlineDataAttribute.Length));
-            if (length < 1)
-                length = 1;
+            length = Math.Max(1, length);
 
             var characterSet = factAttribute.GetNamedArgument<int>(nameof(GeneratePasswordInlineDataAttribute.CharacterSet));
-            if (characterSet < 1)
-                characterSet = 1;
+            characterSet = Math.Max(1, characterSet);
 
             yield return new GeneratorPasswordCase(mDiagnosticMessageSink, discoveryOptions.MethodDisplayOrDefault(), discoveryOptions.MethodDisplayOptionsOrDefault(), testMethod,
                 dataNumber, length, characterSet);

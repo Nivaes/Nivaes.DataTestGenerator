@@ -30,5 +30,13 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
                 mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
+
+        [Theory]
+        [GenerateContactInlineData(DataNumber = 3)]
+        public void ContactGeneratorExtenderContactTest(ContactTest contact)
+        {
+            contact.Should().NotBeNull();
+            mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+        }
     }
 }
