@@ -128,7 +128,6 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
             var ri = new RegionInfo(Thread.CurrentThread.CurrentCulture.LCID);
 
             Assert.Equal(attr.Culture, Thread.CurrentThread.CurrentCulture);
-            Assert.Equal(ri.TwoLetterISORegionName, RegionInfo.CurrentRegion.TwoLetterISORegionName);
 
             attr.After(null);
 
