@@ -32,6 +32,9 @@ jobs:
       with:
         dotnet-version: 5.0.100-rc.1.20379.13
 
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Build
       run: dotnet build --configuration Release -p:Version=${{ steps.get_version.outputs.version }} 
 
