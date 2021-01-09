@@ -10,6 +10,8 @@
     <Product>Data test generator</Product>
     <Description>Tool for generating data testing.</Description>
     <PackageTags>Nivaes;DataTestGenerator;test;generator;testgenerator;dni;taxgenerator</PackageTags>
+
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
