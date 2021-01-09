@@ -15,11 +15,11 @@
     public sealed class UseCultureAttribute
         : BeforeAfterTestAttribute
     {
-        readonly Lazy<CultureInfo> culture;
-        readonly Lazy<CultureInfo> uiCulture;
+        private readonly Lazy<CultureInfo> culture;
+        private readonly Lazy<CultureInfo> uiCulture;
 
-        CultureInfo originalCulture;
-        CultureInfo originalUICulture;
+        private CultureInfo? originalCulture;
+        private CultureInfo? originalUICulture;
 
         /// <summary>
         /// Replaces the culture and UI culture of the current thread with
@@ -68,8 +68,8 @@
             originalCulture = Thread.CurrentThread.CurrentCulture;
             originalUICulture = Thread.CurrentThread.CurrentUICulture;
 
-            Thread.CurrentThread.CurrentCulture = Culture;
-            Thread.CurrentThread.CurrentUICulture = UICulture;
+            Thread.CurrentThread.CurrentCulture = Culture ?? CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentUICulture = UICulture ?? CultureInfo.InstalledUICulture;
 
             CultureInfo.CurrentCulture.ClearCachedData();
             CultureInfo.CurrentUICulture.ClearCachedData();
@@ -82,8 +82,8 @@
         /// <param name="methodUnderTest">The method under test</param>
         public override void After(MethodInfo methodUnderTest)
         {
-            Thread.CurrentThread.CurrentCulture = originalCulture;
-            Thread.CurrentThread.CurrentUICulture = originalUICulture;
+            Thread.CurrentThread.CurrentCulture = originalCulture ?? CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentUICulture = originalUICulture ?? CultureInfo.InstalledUICulture;
 
             CultureInfo.CurrentCulture.ClearCachedData();
             CultureInfo.CurrentUICulture.ClearCachedData();

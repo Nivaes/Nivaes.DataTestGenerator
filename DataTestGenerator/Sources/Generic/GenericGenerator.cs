@@ -8,7 +8,7 @@
         /// <summary>Reference to <see cref="mRandom"/>.</summary>
         private Random mRandom { get; } = new Random(DateTime.Now.Second * DateTime.Now.Millisecond);
 
-        private static GenericGenerator mTestGenericGenerator;
+        private static GenericGenerator? mTestGenericGenerator;
 
         public static GenericGenerator Instance
         {

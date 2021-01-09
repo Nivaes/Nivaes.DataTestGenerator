@@ -8,7 +8,7 @@
         private ContactProporcionalGenerator()
         { }
 
-        private static ContactProporcionalGenerator mContactProporcionalGenerator;
+        private static ContactProporcionalGenerator? mContactProporcionalGenerator;
 
         public static ContactProporcionalGenerator Instance
         {

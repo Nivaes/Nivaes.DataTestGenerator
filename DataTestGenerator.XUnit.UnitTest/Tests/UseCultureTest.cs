@@ -12,8 +12,8 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         [Fact]
         public void GuardClauses()
         {
-            Assert.Throws<ArgumentNullException>(() => new UseCultureAttribute(null).Culture);
-            Assert.Throws<ArgumentNullException>(() => new UseCultureAttribute("en-US", null).UICulture);
+            Assert.Throws<ArgumentNullException>(() => new UseCultureAttribute(null!).Culture);
+            Assert.Throws<ArgumentNullException>(() => new UseCultureAttribute("en-US", null!).UICulture);
         }
 
         [Theory]
@@ -75,11 +75,11 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
             var originalCulture = Thread.CurrentThread.CurrentCulture;
             var attr = new UseCultureAttribute(culture);
 
-            attr.Before(null);
+            attr.Before(null!);
 
             Assert.Equal(attr.Culture, Thread.CurrentThread.CurrentCulture);
 
-            attr.After(null);
+            attr.After(null!);
 
             Assert.Equal(originalCulture, Thread.CurrentThread.CurrentCulture);
         }
@@ -93,11 +93,11 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
             var originalUICulture = Thread.CurrentThread.CurrentUICulture;
             var attr = new UseCultureAttribute("ru-RU", uiCulture);
 
-            attr.Before(null);
+            attr.Before(null!);
 
             Assert.Equal(attr.UICulture, Thread.CurrentThread.CurrentUICulture);
 
-            attr.After(null);
+            attr.After(null!);
 
             Assert.Equal(originalUICulture, Thread.CurrentThread.CurrentUICulture);
         }
@@ -123,13 +123,13 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
             var originalCulture = Thread.CurrentThread.CurrentCulture;
             var attr = new UseCultureAttribute(culture);
 
-            attr.Before(null);
+            attr.Before(null!);
 
-            var ri = new RegionInfo(Thread.CurrentThread.CurrentCulture.LCID);
+            _ = new RegionInfo(Thread.CurrentThread.CurrentCulture.LCID);
 
             Assert.Equal(attr.Culture, Thread.CurrentThread.CurrentCulture);
 
-            attr.After(null);
+            attr.After(null!);
 
             Assert.Equal(originalCulture, Thread.CurrentThread.CurrentCulture);
         }

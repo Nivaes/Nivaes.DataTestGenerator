@@ -21,7 +21,16 @@
 
         private static PasswordGenerator? mPasswerdGenerator;
 
-        public static PasswordGenerator Instance => mPasswerdGenerator ??= new PasswordGenerator();
+        public static PasswordGenerator Instance
+        {
+            get
+            {
+                if (mPasswerdGenerator == null)
+                    mPasswerdGenerator = new PasswordGenerator();
+
+                return mPasswerdGenerator;
+            }
+        }
 
         public string GeneratePassword()
         {

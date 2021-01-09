@@ -8,7 +8,7 @@
         private ContactGenerator()
         { }
 
-        private static ContactGenerator mContactGenerator;
+        private static ContactGenerator? mContactGenerator;
 
         public static ContactGenerator Instance
         {
