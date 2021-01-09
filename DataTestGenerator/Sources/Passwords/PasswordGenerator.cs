@@ -21,16 +21,7 @@
 
         private static PasswordGenerator? mPasswerdGenerator;
 
-        public static PasswordGenerator Instance
-        {
-            get
-            {
-                if (mPasswerdGenerator == null)
-                    mPasswerdGenerator = new PasswordGenerator();
-
-                return mPasswerdGenerator;
-            }
-        }
+        public static PasswordGenerator Instance => mPasswerdGenerator ??= new PasswordGenerator();
 
         public string GeneratePassword()
         {
@@ -66,7 +57,7 @@
             if (string.IsNullOrEmpty(characterSet))
                 characterSetInt = mCharacterSet;
             else
-                characterSetInt = new char[][] { characterSet.ToCharArray() };
+                characterSetInt = new char[][] { characterSet!.ToCharArray() };
 
             return GeneratePassword(length, characterSetInt);
         }
