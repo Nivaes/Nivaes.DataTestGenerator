@@ -10,6 +10,8 @@
     <Product>Data test generator with xunit extensions.</Product>
     <Description>Tool for generating data testing with xunit extensions.</Description>
     <PackageTags>Nivaes;DataTestGenerator;xunit;test;generator;testgenerator;dni;taxgenerator</PackageTags>
+
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
