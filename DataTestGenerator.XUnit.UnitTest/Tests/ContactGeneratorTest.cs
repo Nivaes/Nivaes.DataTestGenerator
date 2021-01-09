@@ -26,7 +26,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
                 contact.Should().NotBeNull();
                 eMails.Should().NotContain(contact.Email);
                 Assert.DoesNotContain(contact.Email, eMails);
-                eMails.Add(contact.Email);
+                eMails.Add(contact.Email!);
                 mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }

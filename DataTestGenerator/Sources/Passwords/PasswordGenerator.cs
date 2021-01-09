@@ -66,7 +66,7 @@
             if (string.IsNullOrEmpty(characterSet))
                 characterSetInt = mCharacterSet;
             else
-                characterSetInt = new char[][] { characterSet!.ToCharArray() };
+                characterSetInt = new char[][] { characterSet.ToCharArray() };
 
             return GeneratePassword(length, characterSetInt);
         }
