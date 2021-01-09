@@ -36,30 +36,28 @@
         /// <summary>Read first name.</summary>
         private static Tuple<string, double>[] ReadNames(string fileNames)
         {
-            using (var sr = new StringReader(fileNames))
+            using var sr = new StringReader(fileNames);
+            List<Tuple<string, double>> names = new List<Tuple<string, double>>();
+            string? line;
+            double n = 0;
+            while ((line = sr.ReadLine()) != null)
             {
-                List<Tuple<string, double>> names = new List<Tuple<string, double>>();
-                string? line;
-                double n = 0;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    string[] values = line.Split(';');
+                string[] values = line.Split(';');
 
-                    double p = double.Parse(values[1], CultureInfo.InvariantCulture);
-                    n += p;
-                    names.Add(Tuple.Create(values[0], p));
-                }
-
-                List<Tuple<string, double>> namesContinum = new List<Tuple<string, double>>();
-                double j=0;
-                foreach(var name in names)
-                {
-                    j += name.Item2;
-                    namesContinum.Add(new Tuple<string, double>(name.Item1,  j / n));
-                }
-
-                return namesContinum.ToArray();
+                double p = double.Parse(values[1], CultureInfo.InvariantCulture);
+                n += p;
+                names.Add(Tuple.Create(values[0], p));
             }
+
+            List<Tuple<string, double>> namesContinum = new List<Tuple<string, double>>();
+            double j = 0;
+            foreach (var name in names)
+            {
+                j += name.Item2;
+                namesContinum.Add(new Tuple<string, double>(name.Item1, j / n));
+            }
+
+            return namesContinum.ToArray();
         }
         #endregion
 

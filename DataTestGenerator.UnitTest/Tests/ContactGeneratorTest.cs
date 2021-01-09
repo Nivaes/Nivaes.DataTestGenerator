@@ -50,10 +50,8 @@
 
                 contact.Email.Should().NotBeNullOrEmpty();
 
-                if(contact != null && !string.IsNullOrEmpty(contact.Email))
-                    eMails.Add(contact.Email);
-
-                mOutput.WriteLine($"{contact?.SortName} --- {contact!.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                eMails.Add(contact!.Email!);
+                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
 
@@ -69,12 +67,8 @@
                 eMails.Should().NotContain(contact.Email);
                 Assert.DoesNotContain(contact.Email, eMails);
 
-                contact.Email.Should().NotBeNullOrEmpty();
-
-                if (contact != null && !string.IsNullOrEmpty(contact.Email))
-                    eMails.Add(contact.Email);
-
-                mOutput.WriteLine($"{contact?.SortName} --- {contact!.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                eMails.Add(contact.Email);
+                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
     }
