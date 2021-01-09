@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.IO;
     using System.Text;
@@ -38,14 +39,14 @@
             using (var sr = new StringReader(fileNames))
             {
                 List<Tuple<string, double>> names = new List<Tuple<string, double>>();
-                string line;
+                string? line;
                 double n = 0;
                 while ((line = sr.ReadLine()) != null)
                 {
                     string[] values = line.Split(';');
 
                     double p = double.Parse(values[1], CultureInfo.InvariantCulture);
-                    n += p; 
+                    n += p;
                     names.Add(Tuple.Create(values[0], p));
                 }
 
@@ -64,6 +65,7 @@
 
         #region Methods
         /// <summary>Generate a contact.</summary>
+        [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Is a name.")]
         public ContactTest GenerateContact()
         {
             string personalName = RamdonName(mPersonalNames);
@@ -84,6 +86,7 @@
         }
 
         /// <summary>Generate a contact.</summary>
+        [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Is a name.")]
         public ContactTest GenerateExtenderContact()
         {
             string personalName = RamdonName(mPersonalNames);
@@ -94,7 +97,7 @@
             var mailName = personalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "." + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "_" + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
-                + "_" + Random.Next(999999).ToString("000000");
+                + "_" + Random.Next(999999).ToString("000000", CultureInfo.InvariantCulture);
 
             return new ContactTest
             {
@@ -117,6 +120,8 @@
             return string.Format(CultureInfo.CurrentCulture, $"{personalName} {familyName1} {familyName2}");
         }
 
+        [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Is a name.")]
+        [SuppressMessage("Performance", "CA1822:Mark members as static")]
         private string ReduceFirstName(string personalName)
         {
             string reduceName = string.Empty;
@@ -134,11 +139,11 @@
         private string RandonTelephoneNumber()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("6");
+            _ = sb.Append('6');
             for(int i = 0; i < 8; i++)
             {
                 int ran = Random.Next(0, 9);
-                sb.Append(ran.ToString());
+                sb.Append(ran.ToString(CultureInfo.InvariantCulture));
             }
 
             return sb.ToString();

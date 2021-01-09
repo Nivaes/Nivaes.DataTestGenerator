@@ -19,7 +19,7 @@
                 "*$-+?_&=!%{}/".ToCharArray()
             };
 
-        private static PasswordGenerator mPasswerdGenerator;
+        private static PasswordGenerator? mPasswerdGenerator;
 
         public static PasswordGenerator Instance
         {
@@ -49,12 +49,14 @@
 
         public string GeneratePassword(string characterSet)
         {
+            if (characterSet == null) throw new ArgumentNullException(nameof(characterSet));
+
             var length = mRandom.Next(7, 20);
 
             return GeneratePassword(length, new char[][] { characterSet.ToCharArray() });
         }
 
-        public string GeneratePassword(int length, string characterSet)
+        public string GeneratePassword(int length, string? characterSet)
         {
             if(length == 0)
                 length = mRandom.Next(7, 20);
@@ -64,7 +66,7 @@
             if (string.IsNullOrEmpty(characterSet))
                 characterSetInt = mCharacterSet;
             else
-                characterSetInt = new char[][] { characterSet.ToCharArray() };
+                characterSetInt = new char[][] { characterSet!.ToCharArray() };
 
             return GeneratePassword(length, characterSetInt);
         }

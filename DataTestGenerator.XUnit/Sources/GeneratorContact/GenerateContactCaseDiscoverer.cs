@@ -18,6 +18,8 @@ namespace Nivaes.DataTestGenerator.Xunit
 
         public IEnumerable<IXunitTestCase> Discover(ITestFrameworkDiscoveryOptions discoveryOptions, ITestMethod testMethod, IAttributeInfo factAttribute)
         {
+            if (factAttribute == null) throw new ArgumentNullException(nameof(factAttribute));
+
             var dataNumber = factAttribute.GetNamedArgument<int>(nameof(GenerateContactInlineDataAttribute.DataNumber));
             dataNumber = Math.Max(1, dataNumber);
 

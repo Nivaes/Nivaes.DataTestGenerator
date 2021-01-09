@@ -3,6 +3,7 @@ using Xunit.Sdk;
 
 namespace Nivaes.DataTestGenerator.Xunit
 {
+    using System;
     using System.ComponentModel;
 
     public class GeneratorContactCase
@@ -20,6 +21,8 @@ namespace Nivaes.DataTestGenerator.Xunit
 
         public override void Serialize(IXunitSerializationInfo data)
         {
+            if (data == null) throw new ArgumentNullException(nameof(data));
+
             base.Serialize(data);
 
             data.AddValue("DataNumber", mDataNumber);
@@ -27,6 +30,8 @@ namespace Nivaes.DataTestGenerator.Xunit
 
         public override void Deserialize(IXunitSerializationInfo data)
         {
+            if (data == null) throw new ArgumentNullException(nameof(data));
+
             base.Deserialize(data);
 
             mDataNumber = data.GetValue<int>("DataNumber");

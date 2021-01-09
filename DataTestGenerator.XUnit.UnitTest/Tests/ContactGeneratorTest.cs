@@ -36,7 +36,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         public void ContactGeneratorExtenderContactTest(ContactTest contact)
         {
             contact.Should().NotBeNull();
-            mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+            mOutput.WriteLine($"{contact?.SortName} --- {contact?.LongName} ---- {contact?.PersonalName}  ---- {contact?.FamilyName} ----- {contact?.Email} ---- {contact?.TelephoneNumber}");
         }
     }
 }

@@ -7,15 +7,7 @@
     {
         #region Propeties
         /// <summary>Reference to <see cref="Random"/>.</summary>
-        private static Random mRandom;
-        #endregion
-
-        #region Constructor
-        /// <summary>Create a new instance of <see cref="TaxIdGenerator"/>.</summary>
-        static TaxIdGenerator()
-        {
-            mRandom = new Random(DateTime.Now.Millisecond);
-        }
+        private static Random mRandom = new Random(DateTime.Now.Millisecond);
         #endregion
 
         #region Methods

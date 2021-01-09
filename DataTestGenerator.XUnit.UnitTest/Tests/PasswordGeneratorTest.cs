@@ -9,7 +9,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
     {
         private readonly ITestOutputHelper mOutput;
 
-        public static GenerateContactTheoryData PasswordsMatrixData = new GenerateContactTheoryData(10, 20);
+        public static readonly GenerateContactTheoryData PasswordsMatrixData = new GenerateContactTheoryData(10, 20);
 
         public PasswordGeneratorTest(ITestOutputHelper output)
         {

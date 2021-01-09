@@ -1,11 +1,12 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit
+﻿using Xunit.Abstractions;
+using Xunit.Sdk;
+
+namespace Nivaes.DataTestGenerator.Xunit
 {
     using System;
     using System.ComponentModel;
     using System.Threading;
     using System.Threading.Tasks;
-    using global::Xunit.Abstractions;
-    using global::Xunit.Sdk;
 
     public class RetryTestCase
         : XunitTestCase
@@ -36,6 +37,9 @@
                                                         ExceptionAggregator aggregator,
                                                         CancellationTokenSource cancellationTokenSource)
         {
+            if (diagnosticMessageSink == null) throw new ArgumentNullException(nameof(diagnosticMessageSink));
+            if (aggregator == null) throw new ArgumentNullException(nameof(aggregator));
+
             var runCount = 0;
 
             while (true)
@@ -44,7 +48,7 @@
                 // contain run status) until we know we've decided to accept the final result;
                 var delayedMessageBus = new DelayedMessageBus(messageBus);
 
-                var summary = await base.RunAsync(diagnosticMessageSink, delayedMessageBus, constructorArguments, aggregator, cancellationTokenSource);
+                var summary = await base.RunAsync(diagnosticMessageSink, delayedMessageBus, constructorArguments, aggregator, cancellationTokenSource).ConfigureAwait(false);
                 if (aggregator.HasExceptions || summary.Failed == 0 || ++runCount >= mMaxRetries)
                 {
                     delayedMessageBus.Dispose();  // Sends all the delayed messages
@@ -52,7 +56,7 @@
                     return summary;
                 }
 
-                await Task.Delay(mTimeSleep);
+                await Task.Delay(mTimeSleep).ConfigureAwait(false);
 
                 diagnosticMessageSink.OnMessage(new DiagnosticMessage("Execution of '{0}' failed (attempt #{1}), retrying...", DisplayName, runCount));
             }
@@ -60,6 +64,8 @@
 
         public override void Serialize(IXunitSerializationInfo data)
         {
+            if (data == null) throw new ArgumentNullException(nameof(data));
+
             base.Serialize(data);
 
             data.AddValue("MaxRetries", mMaxRetries);
@@ -68,6 +74,8 @@
 
         public override void Deserialize(IXunitSerializationInfo data)
         {
+            if (data == null) throw new ArgumentNullException(nameof(data));
+
             base.Deserialize(data);
 
             mMaxRetries = data.GetValue<int>("MaxRetries");

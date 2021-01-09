@@ -9,9 +9,9 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
     {
         private readonly ITestOutputHelper mOutput;
 
-        public static GenerateStringTheoryData StringMatrixData = new GenerateStringTheoryData(10, 20, 50);
-        public static GenerateIntTheoryData IntMatrixData = new GenerateIntTheoryData(10, 100, 10000);
-        public static GenerateDoubleTheoryData DoubleMatrixData = new GenerateDoubleTheoryData(10, -23551.2213, 12553.32158);
+        public static readonly GenerateStringTheoryData StringMatrixData = new GenerateStringTheoryData(10, 20, 50);
+        public static readonly GenerateIntTheoryData IntMatrixData = new GenerateIntTheoryData(10, 100, 10000);
+        public static readonly GenerateDoubleTheoryData DoubleMatrixData = new GenerateDoubleTheoryData(10, -23551.2213, 12553.32158);
 
         public TestGenericGeneratorInlineDataAttributeTest(ITestOutputHelper output)
         {

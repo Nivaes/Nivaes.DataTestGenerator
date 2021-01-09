@@ -1,8 +1,10 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit
+﻿using Xunit.Abstractions;
+using Xunit.Sdk;
+
+namespace Nivaes.DataTestGenerator.Xunit
 {
+    using System;
     using System.ComponentModel;
-    using global::Xunit.Abstractions;
-    using global::Xunit.Sdk;
 
     public class GeneratorStringCase
         : XunitTestCase
@@ -25,6 +27,8 @@
 
         public override void Serialize(IXunitSerializationInfo data)
         {
+            if (data == null) throw new ArgumentNullException(nameof(data));
+
             base.Serialize(data);
 
             data.AddValue("DataNumber", mDataNumber);
@@ -34,6 +38,8 @@
 
         public override void Deserialize(IXunitSerializationInfo data)
         {
+            if (data == null) throw new ArgumentNullException(nameof(data));
+
             base.Deserialize(data);
 
             mDataNumber = data.GetValue<int>("DataNumber");

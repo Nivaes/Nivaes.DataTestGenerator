@@ -1,8 +1,10 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit
+﻿using Xunit.Abstractions;
+using Xunit.Sdk;
+
+namespace Nivaes.DataTestGenerator.Xunit
 {
+    using System;
     using System.Collections.Generic;
-    using global::Xunit.Abstractions;
-    using global::Xunit.Sdk;
 
     public sealed class RetryFactCaseDiscoverer
         : IXunitTestCaseDiscoverer
@@ -16,6 +18,8 @@
 
         public IEnumerable<IXunitTestCase> Discover(ITestFrameworkDiscoveryOptions discoveryOptions, ITestMethod testMethod, IAttributeInfo factAttribute)
         {
+            if (factAttribute == null) throw new ArgumentNullException(nameof(factAttribute));
+
             var maxRetries = factAttribute.GetNamedArgument<int>(nameof(RetryFactAttribute.MaxRetries));
             if (maxRetries < 1)
                 maxRetries = 3;

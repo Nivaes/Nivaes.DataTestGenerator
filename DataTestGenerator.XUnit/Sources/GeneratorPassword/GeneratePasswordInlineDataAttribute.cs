@@ -13,9 +13,9 @@
     {
         public int DataNumber { get; set; } = 1;
 
-        public int Length { get; set; } = 0;
+        public int Length { get; set; }
 
-        public string CharacterSet { get; set; }
+        public string? CharacterSet { get; set; }
 
         public GeneratePasswordInlineDataAttribute()
         { }
