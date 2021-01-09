@@ -11,7 +11,7 @@
         /// <summary>Reference to <see cref="mRandom"/>.</summary>
         private Random mRandom { get; } = new Random(DateTime.Now.Second * DateTime.Now.Millisecond);
 
-        private char[][] mCharacterSet = new char[][]
+        private readonly char[][] mCharacterSet = new char[][]
              {
                 "abcdefgijkmnopqrstwxyz".ToCharArray(),
                 "ABCDEFGHJKLMNPQRSTWXYZ".ToCharArray(),
@@ -21,16 +21,7 @@
 
         private static PasswordGenerator? mPasswerdGenerator;
 
-        public static PasswordGenerator Instance
-        {
-            get
-            {
-                if (mPasswerdGenerator == null)
-                    mPasswerdGenerator = new PasswordGenerator();
-
-                return mPasswerdGenerator;
-            }
-        }
+        public static PasswordGenerator Instance => mPasswerdGenerator ??= new PasswordGenerator();
 
         public string GeneratePassword()
         {
