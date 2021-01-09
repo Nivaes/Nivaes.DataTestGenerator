@@ -18,7 +18,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         [Theory]
         [InlineData(10)]
         [InlineData(1000)]
-        [RetryInlineData(4000, MaxRetries = 3)]
+        [RetryInlineData(400, MaxRetries = 3)]
         public void CreateNieTest(int n)
         {
             List<string> taxtIds = new List<string>();
