@@ -75,7 +75,7 @@
         }
 
         private string GeneratePassword(int length, char[][] characterSets)
-        { 
+        {
             if (length <= 0)
                 throw new ArgumentException("length must not be negative", nameof(length));
             if (length > int.MaxValue / 8)
