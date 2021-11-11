@@ -20,7 +20,7 @@
         [InlineData(300)]
         public void CreateNifTest(int n)
         {
-            List<string> taxtIds = new List<string>();
+            List<string> taxtIds = new();
             for (int i = 0; i < n; i++)
             {
                 string taxId = TaxIdGenerator.GenerateNif();
@@ -36,10 +36,10 @@
         [Theory]
         [InlineData(10)]
         [InlineData(1000)]
-        [InlineData(4000)]
+        [InlineData(2000)]
         public void CreateNifNieTest(int n)
         {
-            List<string> taxtIds = new List<string>();
+            List<string> taxtIds = new();
             for (int i = 0; i < n; i++)
             {
                 string taxId = TaxIdGenerator.GenerateNifNie();
