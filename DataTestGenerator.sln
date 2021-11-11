@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29613.14
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTestGenerator", "DataTestGenerator\DataTestGenerator.csproj", "{F31F06B2-9375-4345-A113-A449DF4AFA4E}"
 EndProject
@@ -21,6 +21,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTestGenerator.XUnit", "DataTestGenerator.XUnit\DataTestGenerator.XUnit.csproj", "{9EBB5FA7-3F74-434A-A68D-49C3FE129E7D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTestGenerator.XUnit.UnitTest", "DataTestGenerator.XUnit.UnitTest\DataTestGenerator.XUnit.UnitTest.csproj", "{12E2BB44-EF66-4F4A-B22F-04172595E5A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{B72FDD38-99F5-44C9-8404-7FB8ACBBEC8A}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build_release.yaml = .github\workflows\build_release.yaml
+		.github\workflows\ci.yaml = .github\workflows\ci.yaml
+		.github\workflows\publish_release.yaml = .github\workflows\publish_release.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +54,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B72FDD38-99F5-44C9-8404-7FB8ACBBEC8A} = {93A9F139-666A-4929-981C-2B0A6C8EE03A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {536B3E1F-2A10-427C-A431-59273C368B16}
