@@ -1,6 +1,14 @@
 ﻿<Project>
-  
-  <PropertyGroup>
-  </PropertyGroup>
-  
+  <ItemGroup>
+    
+    <PackageReference update="System.Globalization.Extensions" Version="4.3.0" />
+
+    <PackageReference update="FluentAssertions" Version="5.10.3" />
+    <PackageReference update="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+    <PackageReference update="Moq" Version="4.16.1" />
+    <PackageReference update="xunit" Version="2.4.1" />
+    <PackageReference update="xunit.runner.visualstudio" Version="2.4.3" />
+    <PackageReference update="xunit.extensibility.execution" Version="2.4.1" />
+    <DotNetCliToolReference update="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup> 
 </Project>
