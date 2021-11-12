@@ -103,7 +103,7 @@ public void PasswordGenerator03(string password)
 
 | NuGet Package | Latest Versions |
 | --- | --- |
-| [Nivaes.DataTestGenerator](https://www.nuget.org/packages/Nivaes.DataTestGenerator) <br />  Controls and Fluent Design for UWP apps | [![latest stable version](https://img.shields.io/nuget/v/Nivaes.DataTestGenerator.svg)](https://www.nuget.org/packages/Nivaes.DataTestGenerator) |
+| [Nivaes.DataTestGenerator](https://www.nuget.org/packages/Nivaes.DataTestGenerator) <br /> Randomly generate | [![latest stable version](https://img.shields.io/nuget/v/Nivaes.DataTestGenerator.svg)](https://www.nuget.org/packages/Nivaes.DataTestGenerator) |
 | [Nivaes.DataTestGenerator.XUnit](https://www.nuget.org/packages/Nivaes.DataTestGenerator.XUnit) <br /> Integration with xunit | [![latest prerelease version](https://img.shields.io/nuget/vpre/Nivaes.DataTestGenerator.XUnit.svg)](https://www.nuget.org/packages/Nivaes.DataTestGenerator.XUnit) | 
 
 ## Integration
