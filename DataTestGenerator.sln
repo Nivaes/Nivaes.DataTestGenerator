@@ -36,7 +36,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{3ADB6CA5-B678-414B-B5E7-F13E7E42A550}"
 	ProjectSection(SolutionItems) = preProject
 		docs\contact-generator.md = docs\contact-generator.md
-		docs\string-geneation.md = docs\string-geneation.md
+		docs\string-generator.md = docs\string-generator.md
 	EndProjectSection
 EndProject
 Global
