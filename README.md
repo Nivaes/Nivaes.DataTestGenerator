@@ -25,10 +25,11 @@ It allows to generate only one value of the contact.
 var name = ContactGenerator.Instance.GenerateName();
 ```
 
-
 ``` C#
 var name = ContactGenerator.Instance.GenerateName();
 ```
+
+[More documentation](./docs/contact-generator.md)
 
 #### String generation
 
@@ -44,6 +45,7 @@ Generates a string of characters of a certain length.
 var textString = GenericGenerator.Instance.GenerateString(3, 20);
 ```
 
+[More documentation](./docs/string-generator.md)
 
 #### Password generation
 
