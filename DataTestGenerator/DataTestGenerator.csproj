@@ -7,7 +7,7 @@
     <AssemblyName>Nivaes.DataTestGenerator</AssemblyName>
     <RootNamespace>Nivaes.DataTestGenerator</RootNamespace>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
-    <Product>Data test generator</Product>
+    <Product>Randomly generate names of contacts, password, taxid, ... Useful for testing and demonstration.</Product>
     <Description>Tool for generating data testing.</Description>
     <PackageTags>Nivaes;DataTestGenerator;test;generator;testgenerator;dni;taxgenerator</PackageTags>
 

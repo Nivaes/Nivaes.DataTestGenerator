@@ -7,7 +7,7 @@
     <AssemblyName>Nivaes.DataTestGenerator.Xunit</AssemblyName>
     <RootNamespace>Nivaes.DataTestGenerator.Xunit</RootNamespace>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
-    <Product>Data test generator with xunit extensions.</Product>
+    <Product>Data test generator with xunit extensions. Randomly generate names of contacts, password, taxid, ... Useful for testing and demonstration.</Product>
     <Description>Tool for generating data testing with xunit extensions.</Description>
     <PackageTags>Nivaes;DataTestGenerator;xunit;test;generator;testgenerator;dni;taxgenerator</PackageTags>
 

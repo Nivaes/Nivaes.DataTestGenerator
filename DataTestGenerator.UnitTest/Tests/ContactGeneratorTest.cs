@@ -39,7 +39,7 @@
         [Fact]
         public void ContactGeneratorContact02()
         {
-            List<string> eMails = new List<string>();
+            List<string> eMails = new();
             for (int i = 0; i < 50; i++)
             {
                 var contact = ContactGenerator.Instance.GenerateContact();
@@ -58,7 +58,7 @@
         [Fact]
         public void ContactGeneratorExtenderContactTest()
         {
-            List<string> eMails = new List<string>();
+            List<string> eMails = new();
             for (int i = 0; i < 1000; i++)
             {
                 var contact = ContactGenerator.Instance.GenerateExtenderContact();
@@ -67,7 +67,7 @@
                 eMails.Should().NotContain(contact.Email);
                 Assert.DoesNotContain(contact.Email, eMails);
 
-                eMails.Add(contact.Email);
+                eMails.Add(contact.Email!);
                 mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }

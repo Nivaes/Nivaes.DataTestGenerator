@@ -25,7 +25,7 @@
         [Fact]
         public void PasswordGeneratorString02()
         {
-            List<string> passwords = new List<string>();
+            List<string> passwords = new();
             for (int i = 0; i < 100; i++)
             {
                 var password = PasswordGenerator.Instance.GeneratePassword();

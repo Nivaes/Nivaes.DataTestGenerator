@@ -1,8 +1,77 @@
 # DataTestGenerator
-Random data generation for testing.
+
+Randomly generate names of contacts, password, taxid, ... Useful for testing and demonstration.
+
+## Content
+
+### Contact generator
+
+Generate contact information randomly.
+
+``` C#
+var contact = ContactGenerator.Instance.GenerateContact();
+
+var sortName = contact.SortName;
+var longName = contact.LongName;
+var personalName = contact.PersonalName;
+var familyName  = contact.FamilyName;
+var email = contact.Email;
+var telephoneNumber = contact.TelephoneNumber;
+```
+
+It allows to generate only one value of the contact.
+
+``` C#
+var name = ContactGenerator.Instance.GenerateName();
+```
 
 
-### Integration
+``` C#
+var name = ContactGenerator.Instance.GenerateName();
+```
+
+#### String generation
+
+Generates a string of characters.
+
+``` C#
+var textString = GenericGenerator.Instance.GenerateString();
+```
+
+Generates a string of characters of a certain length.
+
+``` C#
+var textString = GenericGenerator.Instance.GenerateString(3, 20);
+```
+
+
+#### Password generation
+
+Random password generation.
+
+``` C#
+var password = PasswordGenerator.Instance.GeneratePassword();
+```
+
+Generation of passwords randomly, of a certain length.
+
+``` C#
+var password = PasswordGenerator.Instance.GeneratePassword(leng);
+```
+
+Generation of passwords randomly, with a character set determizing
+
+``` C#
+var password = PasswordGenerator.Instance.GeneratePassword("BCDFGHJKLMNPQRSTUWXYZ");
+```
+
+
+
+## XUnit tool
+
+Has extensions for xunit.
+
+## Integration
 
 ![CI](https://github.com/Nivaes/Nivaes.DataTestGenerator/workflows/CI/badge.svg)
 
