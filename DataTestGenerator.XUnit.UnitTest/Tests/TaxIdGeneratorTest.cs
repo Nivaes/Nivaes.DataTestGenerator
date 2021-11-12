@@ -21,7 +21,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         [RetryInlineData(400, MaxRetries = 3)]
         public void CreateNieTest(int n)
         {
-            List<string> taxtIds = new List<string>();
+            List<string> taxtIds = new();
             for (int i = 0; i < n; i++)
             {
                 string taxId = TaxIdGenerator.GenerateNie();
@@ -39,7 +39,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         [RetryInlineData(100)]
         public void CreateCifTest(int n)
         {
-            List<string> taxtIds = new List<string>();
+            List<string> taxtIds = new();
             for (int i = 0; i < n; i++)
             {
                 string taxId = TaxIdGenerator.GenerateCif();

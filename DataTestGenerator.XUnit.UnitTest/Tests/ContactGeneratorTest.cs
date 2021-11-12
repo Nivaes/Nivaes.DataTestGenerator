@@ -18,7 +18,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         [RetryFact(MaxRetries = 5, TimeSleep = 10)]
         public void ContactGeneratorExtenderContactRetryTest()
         {
-            List<string> eMails = new List<string>();
+            List<string> eMails = new();
             for (int i = 0; i < 10000; i++)
             {
                 var contact = ContactGenerator.Instance.GenerateExtenderContact();

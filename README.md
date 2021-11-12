@@ -65,11 +65,38 @@ Generation of passwords randomly, with a character set determizing
 var password = PasswordGenerator.Instance.GeneratePassword("BCDFGHJKLMNPQRSTUWXYZ");
 ```
 
-
-
 ## XUnit tool
 
 Has extensions for xunit.
+
+### Contact generator
+
+Generación de contactos de forma aleatorio para una prueba unitaria.
+
+``` C#
+[Theory]
+[GenerateContactInlineData(DataNumber = 3)]
+public void ContactGeneratorExtenderContactTest(ContactTest contact)
+{
+    ...
+}
+```
+
+### Password generator
+
+Randomly generating password for a unit test.
+
+``` C#
+[Theory]
+[InlineData("ddefff")]
+[MemberData(nameof(PasswordsMatrixData))]
+[GeneratePasswordInlineData(DataNumber = 3)]
+public void PasswordGenerator03(string password)
+{
+    ...
+}
+```
+
 
 ## Integration
 
