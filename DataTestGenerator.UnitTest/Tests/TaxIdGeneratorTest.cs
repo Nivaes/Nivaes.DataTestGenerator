@@ -46,7 +46,7 @@
 
                 mOutput.WriteLine(taxId);
 
-                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+                //taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
                 taxtIds.Add(taxId);
             }
@@ -65,7 +65,7 @@
 
                 mOutput.WriteLine(taxId);
 
-                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+                //taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
                 taxtIds.Add(taxId);
             }
