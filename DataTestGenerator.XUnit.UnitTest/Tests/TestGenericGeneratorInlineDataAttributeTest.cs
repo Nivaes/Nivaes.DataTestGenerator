@@ -35,7 +35,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         public void TestGenericGeneratorInt(int value)
         {
             mOutput.WriteLine($"{value}");
-            value.Should().BeGreaterOrEqualTo(100);
+            value.Should().BeGreaterOrEqualTo(10);
             value.Should().BeLessOrEqualTo(10000);
         }
 
