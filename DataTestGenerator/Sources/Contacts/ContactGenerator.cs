@@ -23,9 +23,9 @@
 
         protected override string RamdonName(Tuple<string, double>[] names)
         {
-            double doubleRandom = base.Random.NextDouble();
+            int ranNumber = base.Random.Next(0, names.Length - 1);
 
-            return names[(int)(doubleRandom * names.Length)].Item1;
+            return names[ranNumber].Item1;
         }
     }
 }

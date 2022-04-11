@@ -18,6 +18,7 @@
         [InlineData(10)]
         [InlineData(100)]
         [InlineData(300)]
+        [InlineData(10000)]
         public void CreateNifTest(int n)
         {
             List<string> taxtIds = new();
@@ -27,7 +28,7 @@
 
                 mOutput.WriteLine(taxId);
 
-                //taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
                 taxtIds.Add(taxId);
             }
@@ -37,6 +38,7 @@
         [InlineData(10)]
         [InlineData(1000)]
         [InlineData(2000)]
+        [InlineData(10000)]
         public void CreateNifNieTest(int n)
         {
             List<string> taxtIds = new();
@@ -46,7 +48,7 @@
 
                 mOutput.WriteLine(taxId);
 
-                //taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
                 taxtIds.Add(taxId);
             }
@@ -56,6 +58,7 @@
         [InlineData(10)]
         [InlineData(1000)]
         [InlineData(2000)]
+        [InlineData(10000)]
         public void TaxIdTest(int n)
         {
             List<string> taxtIds = new List<string>();
@@ -65,7 +68,7 @@
 
                 mOutput.WriteLine(taxId);
 
-                //taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
                 taxtIds.Add(taxId);
             }
