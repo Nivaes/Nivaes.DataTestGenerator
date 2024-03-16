@@ -40,8 +40,8 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         }
 
         [Theory]
-        [InlineData(525)]
-        [MemberData(nameof(IntMatrixData))]
+        [InlineData(525.0)]
+        [MemberData(nameof(DoubleMatrixData))]
         [GenerateDoubleInlineData(3, -23551.2213, 12553.32158)]
         public void TestGenericGeneratorDouble(double value)
         {
