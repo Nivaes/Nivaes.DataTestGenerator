@@ -40,6 +40,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{3ADB6CA5-B
 		docs\string-generator.md = docs\string-generator.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{7897CD85-7081-4A44-B16C-F515C38469B9}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,8 +72,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B72FDD38-99F5-44C9-8404-7FB8ACBBEC8A} = {93A9F139-666A-4929-981C-2B0A6C8EE03A}
+		{B72FDD38-99F5-44C9-8404-7FB8ACBBEC8A} = {7897CD85-7081-4A44-B16C-F515C38469B9}
 		{3ADB6CA5-B678-414B-B5E7-F13E7E42A550} = {4CBB3448-7402-4B71-A817-3BA4868E39A1}
+		{7897CD85-7081-4A44-B16C-F515C38469B9} = {93A9F139-666A-4929-981C-2B0A6C8EE03A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {536B3E1F-2A10-427C-A431-59273C368B16}
