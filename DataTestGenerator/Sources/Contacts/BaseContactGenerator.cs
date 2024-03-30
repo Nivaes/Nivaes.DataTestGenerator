@@ -14,7 +14,7 @@
         protected Random Random { get; }= new Random(DateTime.Now.Second * DateTime.Now.Millisecond);
 
         /// <summary>List of personal name.</summary>
-        private readonly Tuple<string, double>[] mPersonalNames;
+        private readonly Tuple<string, double>[] mGivenNames;
 
         /// <summary>List of family name.</summary>
         private readonly Tuple<string, double>[] mFamilyNames;
@@ -27,8 +27,8 @@
         /// <summary>Static constructor of <see cref="BaseContactGenerator"/>.</summary>
         protected BaseContactGenerator()
         {
-            mPersonalNames = ReadNames(ResourceNames.FirstName);
-            mFamilyNames = ReadNames(ResourceNames.SecondName);
+            mGivenNames = ReadNames(ResourceNames.GivenName);
+            mFamilyNames = ReadNames(ResourceNames.FamilyName);
 
             mEmailDomains = new Tuple<string, double>[] { new Tuple<string, double>("mock.com", 0.4), new Tuple<string, double>("mock.es", 0.2), new Tuple<string, double>("mock.test.com", 0.2), new Tuple<string, double>("mock.test.es", 0.2) };
         }
@@ -63,20 +63,19 @@
 
         #region Methods
         /// <summary>Generate a contact.</summary>
-        [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Is a name.")]
         public ContactTest GenerateContact()
         {
-            string personalName = RamdonName(mPersonalNames);
+            string givenName = RamdonName(mGivenNames);
             string familyName1 = RamdonName(mFamilyNames);
             string familyName2 = RamdonName(mFamilyNames);
             string mailDomain = RamdonName(mEmailDomains);
-            string sortName = ReduceFirstName(personalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
+            string sortName = ReduceFirstName(givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
 
             return new ContactTest
             {
                 SortName = sortName,
-                LongName = $"{personalName} {familyName1} {familyName2}",
-                PersonalName = personalName,
+                LongName = $"{givenName} {familyName1} {familyName2}",
+                GivenName = givenName,
                 FamilyName = $"{familyName1} {familyName2}",
                 Email = $"{sortName}@{mailDomain}",
                 TelephoneNumber = RandonTelephoneNumber()
@@ -87,12 +86,12 @@
         [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Is a name.")]
         public ContactTest GenerateExtenderContact()
         {
-            string personalName = RamdonName(mPersonalNames);
+            string givenName = RamdonName(mGivenNames);
             string familyName1 = RamdonName(mFamilyNames);
             string familyName2 = RamdonName(mFamilyNames);
             string mailDomain = RamdonName(mEmailDomains);
-            string sortName = ReduceFirstName(personalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
-            var mailName = personalName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
+            string sortName = ReduceFirstName(givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
+            var mailName = givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "." + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "_" + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "_" + Random.Next(999999).ToString("000000", CultureInfo.InvariantCulture);
@@ -100,8 +99,8 @@
             return new ContactTest
             {
                 SortName = sortName,
-                LongName = $"{personalName} {familyName1} {familyName2}",
-                PersonalName = personalName,
+                LongName = $"{givenName} {familyName1} {familyName2}",
+                GivenName = givenName,
                 FamilyName = $"{familyName1} {familyName2}",
                 Email = $"{mailName}@{mailDomain}",
                 TelephoneNumber = RandonTelephoneNumber()
@@ -111,7 +110,7 @@
         /// <summary>Generate a name.</summary>
         public string GenerateName()
         {
-            string personalName = RamdonName(mPersonalNames);
+            string personalName = RamdonName(mGivenNames);
             string familyName1 = RamdonName(mFamilyNames);
             string familyName2 = RamdonName(mFamilyNames);
 

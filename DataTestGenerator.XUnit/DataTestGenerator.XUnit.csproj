@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;netstandard2.0;netstandard2.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <PackageId>Nivaes.DataTestGenerator.XUnit</PackageId>
     <Title>Nivaes Data XUnit Test Generator</Title>
     <AssemblyName>Nivaes.DataTestGenerator.Xunit</AssemblyName>
@@ -24,11 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataTestGenerator\DataTestGenerator.csproj" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
-    <Compile Remove="**\UseCultureAttribute.cs" />
-    <None Include="**\UseCultureAttribute.cs" />
   </ItemGroup>
 
 </Project>

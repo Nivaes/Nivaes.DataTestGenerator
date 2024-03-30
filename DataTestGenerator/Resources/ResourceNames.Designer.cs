@@ -10,7 +10,6 @@
 
 namespace Nivaes.DataTestGenerator {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -20,7 +19,7 @@ namespace Nivaes.DataTestGenerator {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class ResourceNames {
@@ -40,7 +39,7 @@ namespace Nivaes.DataTestGenerator {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Nivaes.DataTestGenerator.Resources.ResourceNames", typeof(ResourceNames).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Nivaes.DataTestGenerator.Resources.ResourceNames", typeof(ResourceNames).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -58,6 +57,40 @@ namespace Nivaes.DataTestGenerator {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to García;0.049374729
+        ///Gonzalez;0.031120748
+        ///Rodríguez;0.031050686
+        ///Fernández;0.03086875
+        ///López;0.029263744
+        ///Martínez;0.027998989
+        ///Sánchez;0.027393747
+        ///Pérez;0.02614918
+        ///Gómez;0.016497489
+        ///Martín;0.016435488
+        ///Jiménez;0.013060232
+        ///Ruiz;0.012313465
+        ///Hernández;0.011984441
+        ///Díaz;0.011347016
+        ///Moreno;0.010660585
+        ///Alvarez;0.009495009
+        ///Muñoz;0.009436175
+        ///Romero;0.007337332
+        ///Alonso;0.006660596
+        ///Gutiérrez;0.006518206
+        ///Navarro;0.005956206
+        ///Torres;0.005633313
+        ///Domínguez;0.005290064
+        ///Vázquez;0.004967237
+        ///Ramos;0.004833875
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FamilyName {
+            get {
+                return ResourceManager.GetString("FamilyName", resourceCulture);
             }
         }
         
@@ -88,42 +121,9 @@ namespace Nivaes.DataTestGenerator {
         ///Pablo;0.005354381
         ///S [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string FirstName {
+        internal static string GivenName {
             get {
-                return ResourceManager.GetString("FirstName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to García;0.049374729
-        ///Gonzalez;0.031120748
-        ///Rodríguez;0.031050686
-        ///Fernández;0.03086875
-        ///López;0.029263744
-        ///Martínez;0.027998989
-        ///Sánchez;0.027393747
-        ///Pérez;0.02614918
-        ///Gómez;0.016497489
-        ///Martín;0.016435488
-        ///Jiménez;0.013060232
-        ///Ruiz;0.012313465
-        ///Hernández;0.011984441
-        ///Díaz;0.011347016
-        ///Moreno;0.010660585
-        ///Alvarez;0.009495009
-        ///Muñoz;0.009436175
-        ///Romero;0.007337332
-        ///Alonso;0.006660596
-        ///Gutiérrez;0.006518206
-        ///Navarro;0.005956206
-        ///Torres;0.005633313
-        ///Domínguez;0.005290064
-        ///Vázquez;0.004967237
-        ///Ramos;0.004833875        /// [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string SecondName {
-            get {
-                return ResourceManager.GetString("SecondName", resourceCulture);
+                return ResourceManager.GetString("GivenName", resourceCulture);
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;netstandard2.0;netstandard2.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <PackageId>Nivaes.DataTestGenerator</PackageId>
     <Title>Nivaes Data Test Generator</Title>
     <AssemblyName>Nivaes.DataTestGenerator</AssemblyName>
@@ -10,12 +10,10 @@
     <Product>Randomly generate names of contacts, password, taxid, ... Useful for testing and demonstration.</Product>
     <Description>Tool for generating data testing.</Description>
     <PackageTags>Nivaes;DataTestGenerator;test;generator;testgenerator;dni;taxgenerator</PackageTags>
-
-    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\FirstName.es.csv" />
+    <None Remove="Resources\GivenName.es.csv" />
     <None Remove="Resources\SecondName.es.csv" />
   </ItemGroup>
 
@@ -24,16 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\es\FirstName.csv">
+    <EmbeddedResource Include="Resources\es\GivenName.csv">
       <CustomToolNamespace></CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\es\SecondName.csv">
+    <EmbeddedResource Include="Resources\es\FamilyName.csv">
       <CustomToolNamespace></CustomToolNamespace>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
-    <PackageReference Include="System.Globalization.Extensions" />
   </ItemGroup>
   
   <ItemGroup>
