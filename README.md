@@ -13,7 +13,7 @@ var contact = ContactGenerator.Instance.GenerateContact();
 
 var sortName = contact.SortName;
 var longName = contact.LongName;
-var personalName = contact.PersonalName;
+var givenName = contact.GivenName;
 var familyName  = contact.FamilyName;
 var email = contact.Email;
 var telephoneNumber = contact.TelephoneNumber;

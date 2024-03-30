@@ -110,22 +110,22 @@
         /// <summary>Generate a name.</summary>
         public string GenerateName()
         {
-            string personalName = RamdonName(mGivenNames);
+            string gibenName = RamdonName(mGivenNames);
             string familyName1 = RamdonName(mFamilyNames);
             string familyName2 = RamdonName(mFamilyNames);
 
-            return string.Format(CultureInfo.CurrentCulture, $"{personalName} {familyName1} {familyName2}");
+            return string.Format(CultureInfo.CurrentCulture, $"{gibenName} {familyName1} {familyName2}");
         }
 
-        [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Is a name.")]
-        [SuppressMessage("Performance", "CA1822:Mark members as static")]
-        private string ReduceFirstName(string personalName)
+        private string ReduceFirstName(string gibenName)
         {
+            ArgumentNullException.ThrowIfNull(gibenName);
+
             string reduceName = string.Empty;
-            string[] fn = personalName.Split(' ');
+            string[] fn = gibenName.Split(' ');
             foreach (string f in fn)
             {
-                reduceName += f.Substring(0, 1);
+                reduceName += f[..1];
             }
 
             return reduceName.ToLowerInvariant();

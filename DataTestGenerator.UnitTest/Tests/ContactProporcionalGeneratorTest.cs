@@ -28,7 +28,7 @@
             for (int i = 0; i < 100; i++)
             {
                 var contact = ContactProporcionalGenerator.Instance.GenerateContact();
-                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
     }

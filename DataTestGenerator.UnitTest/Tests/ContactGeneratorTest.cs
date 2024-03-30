@@ -31,7 +31,7 @@
             for (int i = 0; i < 100; i++)
             {
                 var contact = ContactGenerator.Instance.GenerateContact();
-                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
                 contact.Should().NotBeNull();
             }
         }
@@ -51,7 +51,7 @@
                 contact.Email.Should().NotBeNullOrEmpty();
 
                 eMails.Add(contact!.Email!);
-                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
 
@@ -68,7 +68,7 @@
                 Assert.DoesNotContain(contact.Email, eMails);
 
                 eMails.Add(contact.Email!);
-                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.PersonalName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
     }

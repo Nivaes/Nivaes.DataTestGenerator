@@ -6,7 +6,8 @@ namespace Nivaes.DataTestGenerator
     {
         public string? SortName {get; internal set;}
         public string? LongName { get; internal set; }
-        [Obsolete(DiagnosticId = "Use GivenName")]
+
+        [Obsolete("Use GivenName")]
         public string? PersonalName => GivenName;
         public string? GivenName { get; internal set; }
         public string? FamilyName { get; internal set; }
