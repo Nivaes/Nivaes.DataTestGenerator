@@ -29,7 +29,7 @@
       <CustomToolNamespace></CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
-  
+ 
   <ItemGroup>
     <Compile Update="Resources\ResourceNames.Designer.cs">
       <DesignTime>True</DesignTime>
