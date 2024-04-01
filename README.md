@@ -108,7 +108,7 @@ public void PasswordGenerator03(string password)
 
 ## Integration
 
-![CI](https://github.com/Nivaes/Nivaes.DataTestGenerator/workflows/CI/badge.svg)
+![CI](https://github.com/Nivaes/Nivaes.DataTestGenerator/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/Nivaes/Nivaes.DataTestGenerator/graph/badge.svg?token=KF01604P3R)](https://codecov.io/gh/Nivaes/Nivaes.DataTestGenerator)
 
 ![Build Release](https://github.com/Nivaes/Nivaes.DataTestGenerator/workflows/Build%20Release/badge.svg)
 
