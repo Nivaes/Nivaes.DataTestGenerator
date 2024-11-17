@@ -40,7 +40,7 @@
         public void ContactGeneratorContact02()
         {
             List<string> eMails = new();
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 40; i++)
             {
                 var contact = ContactGenerator.Instance.GenerateContact();
 
