@@ -35,8 +35,8 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         public void TestGenericGeneratorInt(int value)
         {
             mOutput.WriteLine($"{value}");
-            value.Should().BeGreaterOrEqualTo(10);
-            value.Should().BeLessOrEqualTo(10000);
+            value.Should().BeGreaterThanOrEqualTo(10);
+            value.Should().BeLessThanOrEqualTo(10000);
         }
 
         [Theory]
@@ -46,8 +46,8 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         public void TestGenericGeneratorDouble(double value)
         {
             mOutput.WriteLine($"{value}");
-            value.Should().BeGreaterOrEqualTo(-23551.2213);
-            value.Should().BeLessOrEqualTo(12553.32158);
+            value.Should().BeGreaterThanOrEqualTo(-23551.2213);
+            value.Should().BeLessThanOrEqualTo(12553.32158);
         }
     }
 }
