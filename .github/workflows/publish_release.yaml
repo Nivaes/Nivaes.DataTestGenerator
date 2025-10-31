@@ -14,14 +14,16 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Download Release Assets
-      uses: actions/download-artifact@v5
-      # with:
-      #   github_token: ${{ secrets.GITHUB_TOKEN }}
-      #   tag: ${{ github.event.release.tag_name }}
+    - name: Download attach assets 
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        mkdir Artifacts
+        gh release download "${{ github.event.release.tag_name }}" --dir ./Artifacts
+        
 
     - name: Show downloaded files
-      run: ls -lh
+      run: ls -lh ./Artifacts
 
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v5
