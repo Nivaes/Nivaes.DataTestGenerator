@@ -10,10 +10,14 @@
     <Product>Data test generator with xunit extensions. Randomly generate names of contacts, password, taxid, ... Useful for testing and demonstration.</Product>
     <Description>Tool for generating data testing with xunit extensions.</Description>
     <PackageTags>Nivaes;DataTestGenerator;xunit;test;generator;testgenerator;dni;taxgenerator</PackageTags>
-
-    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 
+  <!--<PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>-->
+  
   <ItemGroup>
     <None Include="Images\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
