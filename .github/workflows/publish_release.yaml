@@ -14,14 +14,19 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+
+    - name: Release
+      run: |
+        echo "Tag: ${{ github.event.release.tag_name }}"
+
     - name: Download attach assets 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        mkdir Artifacts
         gh release download "${{ github.event.release.tag_name }}" --dir ./Artifacts
-        
-
+       
     - name: Show downloaded files
       run: ls -lh ./Artifacts
 
