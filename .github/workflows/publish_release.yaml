@@ -1,57 +1,92 @@
-name: Publish Release
+﻿name: Publish Release
 
 on:
   release:
-    #types:[edited]
-    #types: [published]
     types:
       - released
       - prereleased
-    #types: [deleted]
+
+permissions:
+  contents: read
 
 jobs:
   publish_release:
     runs-on: ubuntu-22.04
 
     steps:
+    - name: Download Release Assets
+      uses: actions/download-artifact@v5
+      # with:
+      #   github_token: ${{ secrets.GITHUB_TOKEN }}
+      #   tag: ${{ github.event.release.tag_name }}
 
-    - name: Get Version
-      uses: nivaes/version-run-number@develop
-      id: version_run_number
+    - name: Show downloaded files
+      run: ls -lh
 
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-
-    - name: release
-      if: github.event.action == 'released'
-      run: echo Release
-
-    - name: prereleased
-      if: github.event.action == 'prereleased'
-      run: echo Prereleased
-
-    - name: Checkout
-      uses: actions/checkout@v5
-
-    - name: Setup .NET Core
+    - name: Setup .NET SDK
       uses: actions/setup-dotnet@v5
-      with:
-         global-json-file: ./global.json
+      # with:
+      #   dotnet-version: '9.0.x'
 
-    - name: Restore Dependencies
-      run: |
-          dotnet restore
+    # - name: Push .nupkg packages to NuGet.org
+    #   run: |
+    #       for f in *.nupkg; do
+    #         echo "📦 Publicando $f"
+    #         dotnet nuget push "$f" \
+    #           --api-key ${{ secrets.NUGET_API_KEY }} \
+    #           --source https://api.nuget.org/v3/index.json \
+    #           --skip-duplicate
+    #       done
 
-    - name: Build
-      run: dotnet build --configuration Release -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
+    #   - name: Push .snupkg symbol packages (if any)
+    #     run: |
+    #       for f in *.snupkg; do
+    #         echo "🧩 Publicando símbolos $f"
+    #         dotnet nuget push "$f" \
+    #           --api-key ${{ secrets.NUGET_API_KEY }} \
+    #           --source https://api.nuget.org/v3/index.json \
+    #           --skip-duplicate
+    #       done
+    #     continue-on-error: true
+    
 
-    - name: Test
-      run: dotnet test --configuration Release --no-build --verbosity normal --no-restore
+    # - name: Get Version
+    #   uses: nivaes/version-run-number@develop
+    #   id: version_run_number
 
-    - name: Pack
-      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
+    # - name: Dump GitHub context
+    #   env:
+    #     GITHUB_CONTEXT: ${{ toJson(github) }}
+    #   run: echo "$GITHUB_CONTEXT"
 
-    - name: Publish packages
-      run: dotnet nuget push ./Artifacts/*.nupkg --skip-duplicate --source nuget.org --api-key ${{ secrets.NIVAES_NUGET_TOKEN }}
+    # - name: release
+    #   if: github.event.action == 'released'
+    #   run: echo Release
+
+    # - name: prereleased
+    #   if: github.event.action == 'prereleased'
+    #   run: echo Prereleased
+
+    # - name: Checkout
+    #   uses: actions/checkout@v5
+
+    # - name: Setup .NET Core
+    #   uses: actions/setup-dotnet@v5
+    #   with:
+    #      global-json-file: ./global.json
+
+    # - name: Restore Dependencies
+    #   run: |
+    #       dotnet restore
+
+    # - name: Build
+    #   run: dotnet build --configuration Release -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
+
+    # - name: Test
+    #   run: dotnet test --configuration Release --no-build --verbosity normal --no-restore
+
+    # - name: Pack
+    #   run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
+
+    # - name: Publish packages
+    #   run: dotnet nuget push ./Artifacts/*.nupkg --skip-duplicate --source nuget.org --api-key ${{ secrets.NIVAES_NUGET_TOKEN }}
