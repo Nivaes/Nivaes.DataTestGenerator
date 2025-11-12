@@ -7,7 +7,6 @@
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
     <PackageVersion Include="xunit.extensibility.execution" Version="2.9.3" />
-    <PackageVersion Include="dotnet-xunit" Version="2.3.1" />
     <PackageVersion Include="AsyncFixer" Version="1.6.0" />
     <PackageVersion Include="Roslynator.Analyzers" Version="4.14.1" />
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.100" />
