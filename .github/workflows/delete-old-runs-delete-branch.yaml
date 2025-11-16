@@ -19,5 +19,6 @@ jobs:
           repository: ${{ github.repository }}
           # branch: ${{ github.event.ref }}   SOLO la rama borrada
           check_branch_existence: true
+          check_pullrequest_exist: true
           keep_minimum_runs: 0
           retain_days: 0
