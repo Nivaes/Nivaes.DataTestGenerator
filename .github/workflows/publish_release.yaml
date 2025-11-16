@@ -1,4 +1,4 @@
-﻿name: Publish Release
+name: Publish Release
 
 on:
   release:
@@ -30,9 +30,6 @@ jobs:
     - name: prereleased
       if: github.event.action == 'prereleased'
       run: echo Prereleased
-
-    - name: Checkout
-      uses: actions/checkout@v5
 
     - name: Release
       run: |

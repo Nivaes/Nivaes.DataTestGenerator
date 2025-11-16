@@ -3,12 +3,13 @@ name: CI
 on:
   push:
     branches-ignore:
-    - 'release/**'
+    - 'release/v**'  
     paths-ignore:
     - '**/*.md'
     - '**/*.sln'
   pull_request:
-    types: [opened, synchronize, reopened]
+    #types: [opened, synchronize, reopened]
+    types: [synchronize]
     paths-ignore:
     - '**/*.md'
     - '**/*.sln'
@@ -30,10 +31,10 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
       with:
-         global-json-file: ./global.json
-         source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+        global-json-file: ./global.json
+        source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
       env:
-         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Restore Dependencies
       run: |
@@ -43,10 +44,9 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test --configuration Release --no-build --verbosity normal --no-restore --collect:"XPlat Code Coverage"
+      run: dotnet test --configuration Release --no-build --verbosity normal --no-restore --no-build --collect:"XPlat Code Coverage"
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-

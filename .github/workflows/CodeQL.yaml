@@ -1,0 +1,57 @@
+name: "CodeQL"
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [ "develop" ]
+  # pull_request:
+  #   branches: [ "develop" ]
+  # schedule:
+  #   - cron: "0 3 * * 5"  # Ejecuta cada viernes a las 03:00 UTC
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ "csharp" ]   # Puedes añadir "javascript", "cpp", etc.
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v5
+      with:
+        lobal-json-file: ./global.json
+        source-url: https://nuget.pkg.github.com/Nivaes/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v4
+      with:
+        languages: ${{ matrix.language }}
+        config-file: ./.github/codeql/codeql-config.yaml
+
+    # Necesario para proyectos C#
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build the project
+      shell: pwsh
+      run: |
+        Get-ChildItem -Recurse -Filter .\sources\*.csproj |
+            ForEach-Object {
+                dotnet build $_.FullName --configuration Release --no-restore
+            }
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v4

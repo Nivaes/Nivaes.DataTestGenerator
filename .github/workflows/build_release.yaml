@@ -9,10 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
     - name: Get Version
       uses: nivaes/version-run-number@develop
       id: version_run_number
-      
+
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -24,7 +25,10 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
       with:
-         global-json-file: ./global.json
+        global-json-file: ./global.json
+        source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Restore Dependencies
       run: |
@@ -34,11 +38,11 @@ jobs:
       run: dotnet build --configuration Release -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
 
     - name: Test
-      run: dotnet test --configuration Release --no-build --verbosity normal --no-restore
+      run: dotnet test --configuration Release --no-build --verbosity normal --no-restore --no-build
 
     - name: Pack
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
-      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
+      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore --no-build
 
     - name: Create Release
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
@@ -50,7 +54,7 @@ jobs:
         tag_name: release/v${{ steps.version_run_number.outputs.version }}
         release_name: Release Version ${{ steps.version_run_number.outputs.version }}
         body: |
-          Automatic Release ${{ steps.version_run_number.outputs.version }}  
+          Automatic Release ${{ steps.version_run_number.outputs.version }}   
           - Release automatically generated.
         draft: true
         prerelease: false

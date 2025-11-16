@@ -1,0 +1,8 @@
+packs:
+  # si quieres añadir packs adicionales
+  # - codeql/csharp-queries
+
+paths:
+  - sources
+paths-ignore:
+  - tests
