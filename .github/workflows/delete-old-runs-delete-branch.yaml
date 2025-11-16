@@ -17,6 +17,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
-          branch: ${{ github.event.ref }}   # SOLO la rama borrada
+          # branch: ${{ github.event.ref }}   SOLO la rama borrada
+          check_branch_existence: true
           keep_minimum_runs: 0
           retain_days: 0
