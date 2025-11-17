@@ -26,7 +26,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build_release.yaml = .github\workflows\build_release.yaml
 		.github\workflows\ci.yaml = .github\workflows\ci.yaml
-		.github\workflows\delete-old-runs-delete-branch.yaml = .github\workflows\delete-old-runs-delete-branch.yaml
 		.github\workflows\delete-old-runs.yaml = .github\workflows\delete-old-runs.yaml
 		.github\workflows\publish_release.yaml = .github\workflows\publish_release.yaml
 	EndProjectSection
