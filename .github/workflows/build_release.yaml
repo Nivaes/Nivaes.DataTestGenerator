@@ -9,11 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-    - name: Get Version
-      uses: nivaes/version-run-number@develop
-      id: version_run_number
-
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -30,19 +25,23 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
+    - name: Get Version
+      uses: nivaes/version-run-number@v2.0
+      id: version_run_number
+
     - name: Restore Dependencies
       run: |
           dotnet restore
 
     - name: Build
-      run: dotnet build --configuration Release -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
+      run: dotnet build --configuration Release -p:Version=${{ steps.version_pack.outputs.version }} --no-restore
 
     - name: Test
       run: dotnet test --configuration Release --no-build --verbosity normal --no-restore --no-build
 
     - name: Pack
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
-      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore --no-build
+      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_pack.outputs.version }} --no-restore --no-build
 
     - name: Create Release
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
@@ -51,10 +50,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: release/v${{ steps.version_run_number.outputs.version }}
-        release_name: Release Version ${{ steps.version_run_number.outputs.version }}
+        tag_name: release/v${{ steps.pack.outputs.version }}
+        release_name: Release Version ${{ steps.version_pack.outputs.version }}
         body: |
-          Automatic Release ${{ steps.version_run_number.outputs.version }}   
+          Automatic Release ${{ steps.version_pack.outputs.version }}   
           - Release automatically generated.
         draft: true
         prerelease: false
