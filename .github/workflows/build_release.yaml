@@ -26,7 +26,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Get Version
-      uses: nivaes/version-pack@v2.0
+      uses: nivaes/version-pack@v2
       id: version_pack
 
     - name: Restore Dependencies

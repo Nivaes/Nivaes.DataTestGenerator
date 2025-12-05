@@ -14,10 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Get Version
-      uses: nivaes/version-pack@develop
-      id: version_pack
-
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -45,7 +41,19 @@ jobs:
       run: ls -lh ./Artifacts
 
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v5   
+      uses: actions/setup-dotnet@v5
+
+    - name: Get Version
+      if: github.event.action == 'prereleased'
+      uses: nivaes/version-pack@v2
+      id: version_pack
+      with:
+        prereleased: PRE
+
+    - name: Get Version
+      if: github.event.action == 'released'
+      uses: nivaes/version-pack@v2
+      id: version_pack
 
     - name: Publish packages
       run: dotnet nuget push ./Artifacts/*.nupkg --skip-duplicate --source nuget.org --api-key ${{ secrets.NIVAES_NUGET_TOKEN }}
