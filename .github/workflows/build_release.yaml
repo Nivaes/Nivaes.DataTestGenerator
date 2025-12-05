@@ -26,7 +26,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Get Version
-      uses: nivaes/version-pack@develop
+      uses: nivaes/version-pack@v2
       id: version_pack
       with:
         package-flow: preview
