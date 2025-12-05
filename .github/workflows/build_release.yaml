@@ -28,6 +28,8 @@ jobs:
     - name: Get Version
       uses: nivaes/version-pack@develop
       id: version_pack
+      with:
+        package-flow: preview
 
     - name: Restore Dependencies
       run: |

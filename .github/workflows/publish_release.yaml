@@ -48,12 +48,14 @@ jobs:
       uses: nivaes/version-pack@v2
       id: version_pack
       with:
-        prereleased: PRE
+        package-flow: Prerelease
 
     - name: Get Version
       if: github.event.action == 'released'
       uses: nivaes/version-pack@v2
       id: version_pack
+      with:
+        package-flow: Release
 
-    - name: Publish packages
-      run: dotnet nuget push ./Artifacts/*.nupkg --skip-duplicate --source nuget.org --api-key ${{ secrets.NIVAES_NUGET_TOKEN }}
+    # - name: Publish packages
+    #   run: dotnet nuget push ./Artifacts/*.nupkg --skip-duplicate --source nuget.org --api-key ${{ secrets.NIVAES_NUGET_TOKEN }}
