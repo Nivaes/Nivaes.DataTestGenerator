@@ -15,8 +15,8 @@ jobs:
 
     steps:
     - name: Get Version
-      uses: nivaes/version-run-number@develop
-      id: version_run_number
+      uses: nivaes/version-pack@develop
+      id: version_pack
 
     - name: Dump GitHub context
       env:
