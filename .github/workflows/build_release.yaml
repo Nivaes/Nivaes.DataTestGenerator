@@ -16,6 +16,8 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v5
+      with:
+          fetch-depth: 0
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
@@ -26,7 +28,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Get Version
-      uses: nivaes/version-pack@v2
+      uses: nivaes/version-pack@develop
       id: version_pack
       with:
         package-flow: preview
@@ -45,25 +47,38 @@ jobs:
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
       run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_pack.outputs.version }} --no-restore --no-build
 
+    # - name: Create Release
+    #   if: github.event_name == 'push' || (github.event_name != 'pull_request')
+    #   id: create_release
+    #   uses: actions/create-release@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     tag_name: release/v${{ steps.pack.outputs.version }}
+    #     release_name: Release Version ${{ steps.version_pack.outputs.version }}
+    #     body: |
+    #       Automatic Release ${{ steps.version_pack.outputs.version }}   
+    #       - Release automatically generated.
+    #     draft: true
+    #     prerelease: false
+
+    # - name: Upload Release Asset
+    #   uses: nivaes/upload-release-assets@master
+    #   env:
+    #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    #      targets: ./Artifacts/*.{nupkg,snupkg}
+
     - name: Create Release
-      if: github.event_name == 'push' || (github.event_name != 'pull_request')
       id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: softprops/action-gh-release@v2
       with:
-        tag_name: release/v${{ steps.pack.outputs.version }}
-        release_name: Release Version ${{ steps.version_pack.outputs.version }}
+        tag_name: ${{ steps.version_pack.outputs.version }}
+        name: "Release ${{ steps.version_pack.outputs.version }}"
         body: |
-          Automatic Release ${{ steps.version_pack.outputs.version }}   
-          - Release automatically generated.
+          Release automática generada desde GitHub Actions.
         draft: true
         prerelease: false
-
-    - name: Upload Release Asset
-      uses: nivaes/upload-release-assets@master
-      env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-         upload_url: ${{ steps.create_release.outputs.upload_url }}
-         targets: ./Artifacts/*.{nupkg,snupkg}
+        files: |
+          ./Artifacts/*.{nupkg,snupkg}

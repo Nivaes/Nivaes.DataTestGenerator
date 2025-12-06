@@ -45,14 +45,14 @@ jobs:
 
     - name: Get Version
       if: github.event.action == 'prereleased'
-      uses: nivaes/version-pack@v2
+      uses: nivaes/version-pack@develop
       id: version_pack
       with:
         package-flow: Prerelease
 
     - name: Get Version
       if: github.event.action == 'released'
-      uses: nivaes/version-pack@v2
+      uses: nivaes/version-pack@develop
       id: version_pack
       with:
         package-flow: Release
