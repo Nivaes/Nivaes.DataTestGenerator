@@ -36,14 +36,14 @@ jobs:
       uses: nivaes/version-pack@develop
       id: version_pack
       with:
-        package-flow: Preview
+        package-flow: ${{ github.event.action == 'prereleased' && 'Preview' || 'Release' }}
 
-    - name: Get Version
-      if: github.event.action == 'released'
-      uses: nivaes/version-pack@develop
-      id: version_pack
-      with:
-        package-flow: Release
+    # - name: Get Version
+    #   if: github.event.action == 'released'
+    #   uses: nivaes/version-pack@develop
+    #   id: version_pack_released
+    #   with:
+    #     package-flow: Release
 
     - name: Restore Dependencies
       run: |
