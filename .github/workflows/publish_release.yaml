@@ -29,33 +29,69 @@ jobs:
 
     - name: Release
       run: |
-        echo "Tag: ${{ github.event.release.tag_name }}"
-
-    - name: Download attach assets 
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        gh release download "${{ github.event.release.tag_name }}" --dir ./Artifacts
-       
-    - name: Show downloaded files
-      run: ls -lh ./Artifacts
-
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v5
+        echo "Tag: ${{ github.event.release.ref }}"
 
     - name: Get Version
-      if: github.event.action == 'prereleased'
+      if: github.event.action == 'prereleased
       uses: nivaes/version-pack@develop
-      id: version_pack1
+      id: version_pack
       with:
-        package-flow: Prerelease
+        package-flow: Preview
 
     - name: Get Version
-      if: github.event.action == 'released'
+      if: github.event.action == 'released
       uses: nivaes/version-pack@develop
-      id: version_pack2
+      id: version_pack
       with:
         package-flow: Release
+
+    - name: Restore Dependencies
+      run: |
+          dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore
+
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal --no-restore --no-build
+
+    - name: Pack
+      if: github.event_name == 'push' || (github.event_name != 'pull_request')
+      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore --no-build
+
+    - name: Update release
+      uses: nivaes/update-release@develop  
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+         files: |
+          ./Artifacts/*.{nupkg,snupkg}
+
+    # - name: Download attach assets 
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   run: |
+    #     gh release download "${{ github.event.release.ref }}" --dir ./Artifacts
+       
+    # - name: Show downloaded files
+    #   run: ls -lh ./Artifacts
+
+    # - name: Setup .NET SDK
+    #   uses: actions/setup-dotnet@v5
+
+    # - name: Get Version
+    #   if: github.event.action == 'prereleased'
+    #   uses: nivaes/version-pack@develop
+    #   id: version_pack1
+    #   with:
+    #     package-flow: Prerelease
+
+    # - name: Get Version
+    #   if: github.event.action == 'released'
+    #   uses: nivaes/version-pack@develop
+    #   id: version_pack2
+    #   with:
+    #     package-flow: Release
 
     # - name: Publish packages
     #   run: dotnet nuget push ./Artifacts/*.nupkg --skip-duplicate --source nuget.org --api-key ${{ secrets.NIVAES_NUGET_TOKEN }}

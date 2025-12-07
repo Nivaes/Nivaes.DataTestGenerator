@@ -77,7 +77,7 @@ jobs:
         tag_name: ${{ steps.version_pack.outputs.version-release }}
         name: "Release ${{ steps.version_pack.outputs.version-release }}"
         body: |
-          Release automática generada desde GitHub Actions.
+          Automatic release generated from GitHub Actions.
         draft: true
         prerelease: false
         files: |
