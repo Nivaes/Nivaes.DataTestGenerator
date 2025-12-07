@@ -27,6 +27,19 @@ jobs:
       if: github.event.action == 'prereleased'
       run: echo Prereleased
 
+    - name: Checkout
+      uses: actions/checkout@v5
+      with:
+          fetch-depth: 0
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v5
+      with:
+        global-json-file: ./global.json
+        source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
     - name: Release
       run: |
         echo "Tag: ${{ github.event.release.ref }}"
@@ -37,13 +50,7 @@ jobs:
       id: version_pack
       with:
         package-flow: ${{ github.event.action == 'prereleased' && 'Preview' || 'Release' }}
-
-    # - name: Get Version
-    #   if: github.event.action == 'released'
-    #   uses: nivaes/version-pack@develop
-    #   id: version_pack_released
-    #   with:
-    #     package-flow: Release
+        version: $${{ github.ref_name }}
 
     - name: Restore Dependencies
       run: |
