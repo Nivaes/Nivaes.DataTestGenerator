@@ -70,7 +70,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-         files: |
+        tag_name: ${{ github.ref }}
+        files: |
           ./Artifacts/*.{nupkg,snupkg}
 
     # - name: Download attach assets 
