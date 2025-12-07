@@ -45,7 +45,7 @@ jobs:
         echo "Tag: ${{ github.event.release.ref }}"
 
     - name: Get Version
-      uses: nivaes/version-pack@develop
+      uses: nivaes/version-pack@v2
       id: version_pack
       with:
         package-flow: ${{ github.event.action == 'prereleased' && 'Preview' || 'Release' }}
@@ -71,7 +71,7 @@ jobs:
     #     github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Update release
-      uses: nivaes/update-release@develop  
+      uses: nivaes/update-release@v2  
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
