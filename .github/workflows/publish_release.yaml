@@ -49,7 +49,7 @@ jobs:
       id: version_pack
       with:
         package-flow: ${{ github.event.action == 'prereleased' && 'Preview' || 'Release' }}
-        version: $${{ github.ref_name }}
+        version: ${{ github.ref_name }}
 
     - name: Restore Dependencies
       run: |
