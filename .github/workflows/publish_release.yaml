@@ -32,14 +32,14 @@ jobs:
         echo "Tag: ${{ github.event.release.ref }}"
 
     - name: Get Version
-      if: github.event.action == 'prereleased
+      if: github.event.action == 'prereleased'
       uses: nivaes/version-pack@develop
       id: version_pack
       with:
         package-flow: Preview
 
     - name: Get Version
-      if: github.event.action == 'released
+      if: github.event.action == 'released'
       uses: nivaes/version-pack@develop
       id: version_pack
       with:
