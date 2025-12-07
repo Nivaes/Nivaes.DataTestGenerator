@@ -75,7 +75,7 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ steps.version_pack.outputs.version-release }}
-        name: "Release ${{ steps.version_pack.outputs.version-release }}"
+        name: "Release ${{ steps.version_pack.outputs.version-number }}"
         body: |
           Automatic release generated from GitHub Actions.
         draft: true
