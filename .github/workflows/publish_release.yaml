@@ -7,7 +7,7 @@ on:
       - prereleased
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   publish_release:
