@@ -1,0 +1,7 @@
+{
+  "name": "C# .NET 10 Codespace",
+  "image": "mcr.microsoft.com/dotnet/sdk:10.0",
+  "features": {},
+  "forwardPorts": [],
+  "postCreateCommand": "dotnet --version"
+}
