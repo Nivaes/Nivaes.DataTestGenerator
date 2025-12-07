@@ -65,6 +65,11 @@ jobs:
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
       run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore --no-build
 
+    # - name: Delete current release assets
+    #   uses: andreaswilli/delete-release-assets-action@v4
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Update release
       uses: nivaes/update-release@develop  
       env:
