@@ -38,13 +38,11 @@
             return GeneratePassword(length, mCharacterSet);
         }
 
-        public string GeneratePassword(string characterSet)
+        public string GeneratePassword(string? characterSet)
         {
-            if (characterSet == null) throw new ArgumentNullException(nameof(characterSet));
-
             var length = mRandom.Next(7, 20);
 
-            return GeneratePassword(length, new char[][] { characterSet.ToCharArray() });
+            return GeneratePassword(length, characterSet);
         }
 
         public string GeneratePassword(int length, string? characterSet)
