@@ -18,6 +18,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
           keep_minimum_runs: 15
+          retain_days: 7
 
       - name: Delete runs from the deleted branch
         uses: Mattraks/delete-workflow-runs@v2
