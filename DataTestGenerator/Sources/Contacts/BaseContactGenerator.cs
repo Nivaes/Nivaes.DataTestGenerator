@@ -117,7 +117,7 @@
             return string.Format(CultureInfo.CurrentCulture, $"{gibenName} {familyName1} {familyName2}");
         }
 
-        private string ReduceFirstName(string gibenName)
+        private static string ReduceFirstName(string gibenName)
         {
             ArgumentNullException.ThrowIfNull(gibenName);
 

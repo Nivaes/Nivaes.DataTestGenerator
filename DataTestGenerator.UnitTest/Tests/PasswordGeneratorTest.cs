@@ -1,7 +1,7 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest
 {
     using System.Collections.Generic;
-    using FluentAssertions;
+    using Shouldly;
     using Xunit;
 
     public class PasswordGeneratorTest
@@ -18,7 +18,7 @@
         {
             var password = PasswordGenerator.Instance.GeneratePassword();
             mOutput.WriteLine(password);
-            password.Should().NotBeNullOrEmpty();
+            password.ShouldNotBeNullOrEmpty();
         }
 
         [Fact]
@@ -29,8 +29,8 @@
             {
                 var password = PasswordGenerator.Instance.GeneratePassword();
 
-                password.Should().NotBeNullOrEmpty();
-                passwords.Should().NotContain(password);
+                password.ShouldNotBeNullOrEmpty();
+                passwords.ShouldNotContain(password);
 
                 passwords.Add(password);
                 mOutput.WriteLine(password);

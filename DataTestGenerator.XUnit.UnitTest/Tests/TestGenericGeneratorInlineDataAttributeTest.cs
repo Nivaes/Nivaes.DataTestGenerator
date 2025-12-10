@@ -2,7 +2,7 @@
 
 namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
-    using FluentAssertions;
+    using Shouldly;
 
     public class TestGenericGeneratorInlineDataAttributeTest
     {
@@ -24,7 +24,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         public void TestGenericGeneratorString(string value)
         {
             mOutput.WriteLine(value);
-            value.Should().NotBeNullOrEmpty();
+            value.ShouldNotBeNullOrEmpty();
         }
 
         [Theory]
@@ -34,8 +34,8 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         public void TestGenericGeneratorInt(int value)
         {
             mOutput.WriteLine($"{value}");
-            value.Should().BeGreaterThanOrEqualTo(10);
-            value.Should().BeLessThanOrEqualTo(10000);
+            value.ShouldBeGreaterThanOrEqualTo(10);
+            value.ShouldBeLessThanOrEqualTo(10000);
         }
 
         [Theory]
@@ -45,8 +45,8 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         public void TestGenericGeneratorDouble(double value)
         {
             mOutput.WriteLine($"{value}");
-            value.Should().BeGreaterThanOrEqualTo(-23551.2213);
-            value.Should().BeLessThanOrEqualTo(12553.32158);
+            value.ShouldBeGreaterThanOrEqualTo(-23551.2213);
+            value.ShouldBeLessThanOrEqualTo(12553.32158);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest
 {
-    using FluentAssertions;
+    using Shouldly;
     using Xunit;
 
     public class GenericGeneratorTest
@@ -19,7 +19,7 @@
             {
                 var strGenerate = GenericGenerator.Instance.GenerateString();
                 mOutput.WriteLine(strGenerate);
-                strGenerate.Should().NotBeNullOrEmpty();
+                strGenerate.ShouldNotBeNullOrEmpty();
             }
         }
 
@@ -29,8 +29,8 @@
             for (int i = 1000; i < 1100; i++)
             {
                 var strGenerate = GenericGenerator.Instance.GenerateString(i);
-                strGenerate.Should().NotBeNullOrEmpty();
-                strGenerate.Length.Should().Be(i);
+                strGenerate.ShouldNotBeNullOrEmpty();
+                strGenerate.Length.ShouldBe(i);
             }
         }
 
@@ -42,9 +42,9 @@
                 for (int j = 1200; j < i + 1300; j++)
                 {
                     var strGenerate = GenericGenerator.Instance.GenerateString(i, j);
-                    strGenerate.Should().NotBeNullOrEmpty();
-                    strGenerate.Length.Should().BeGreaterThanOrEqualTo(i);
-                    strGenerate.Length.Should().BeLessThanOrEqualTo(j);
+                    strGenerate.ShouldNotBeNullOrEmpty();
+                    strGenerate.Length.ShouldBeGreaterThanOrEqualTo(i);
+                    strGenerate.Length.ShouldBeLessThanOrEqualTo(j);
                 }
             }
         }
@@ -56,8 +56,8 @@
             {
                 var intGenerate = GenericGenerator.Instance.GenerateInt();
                 mOutput.WriteLine($"{intGenerate}");
-                intGenerate.Should().BeLessThanOrEqualTo(int.MaxValue);
-                intGenerate.Should().BeGreaterThanOrEqualTo(int.MinValue);
+                intGenerate.ShouldBeLessThanOrEqualTo(int.MaxValue);
+                intGenerate.ShouldBeGreaterThanOrEqualTo(int.MinValue);
             }
         }
 
@@ -68,7 +68,7 @@
             {
                 var intGenerate = GenericGenerator.Instance.GenerateInt(i);
                 mOutput.WriteLine($"{intGenerate}");
-                intGenerate.Should().BeLessThanOrEqualTo(i);
+                intGenerate.ShouldBeLessThanOrEqualTo(i);
             }
         }
 
@@ -81,8 +81,8 @@
                 {
                     var intGenerate = GenericGenerator.Instance.GenerateInt(i, j);
                     mOutput.WriteLine($"{intGenerate}");
-                    intGenerate.Should().BeGreaterThanOrEqualTo(i);
-                    intGenerate.Should().BeLessThanOrEqualTo(j);
+                    intGenerate.ShouldBeGreaterThanOrEqualTo(i);
+                    intGenerate.ShouldBeLessThanOrEqualTo(j);
                 }
             }
         }
@@ -96,7 +96,7 @@
                 {
                     var doubleGenerate = GenericGenerator.Instance.GenerateDouble(i, j);
                     mOutput.WriteLine($"{doubleGenerate}");
-                    doubleGenerate.Should().BeInRange(i, j);
+                    doubleGenerate.ShouldBeInRange(i, j);
                 }
             }
         }

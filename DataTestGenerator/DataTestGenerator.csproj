@@ -36,6 +36,10 @@
       <CustomToolNamespace></CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Shouldly" />
+  </ItemGroup>
  
   <ItemGroup>
     <Compile Update="Resources\ResourceNames.Designer.cs">

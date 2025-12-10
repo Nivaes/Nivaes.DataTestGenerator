@@ -1,10 +1,10 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest
 {
     using System.Collections.Generic;
-    using FluentAssertions;
+    using Shouldly;
     using Xunit;
 
-    public class ContactGeneratorTest
+     public class ContactGeneratorTest
     {
         private readonly ITestOutputHelper mOutput;
 
@@ -20,7 +20,7 @@
             {
                 var name = ContactGenerator.Instance.GenerateName();
                 mOutput.WriteLine(name);
-                name.Should().NotBeNullOrEmpty();
+                name.ShouldNotBeNullOrEmpty();
             }
         }
 
@@ -31,7 +31,7 @@
             {
                 var contact = ContactGenerator.Instance.GenerateContact();
                 mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
-                contact.Should().NotBeNull();
+                contact.ShouldNotBeNull();
             }
         }
 
@@ -43,11 +43,11 @@
             {
                 var contact = ContactGenerator.Instance.GenerateContact();
 
-                contact.Should().NotBeNull();
-                eMails.Should().NotContain(contact.Email);
+                contact.ShouldNotBeNull();
+                eMails.ShouldNotContain(contact.Email);
                 Assert.DoesNotContain(contact.Email, eMails);
 
-                contact.Email.Should().NotBeNullOrEmpty();
+                contact.Email.ShouldNotBeNullOrEmpty();
 
                 eMails.Add(contact!.Email!);
                 mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
@@ -62,8 +62,8 @@
             {
                 var contact = ContactGenerator.Instance.GenerateExtenderContact();
 
-                contact.Should().NotBeNull();
-                eMails.Should().NotContain(contact.Email);
+                contact.ShouldNotBeNull();
+                eMails.ShouldNotContain(contact.Email);
                 Assert.DoesNotContain(contact.Email, eMails);
 
                 eMails.Add(contact.Email!);

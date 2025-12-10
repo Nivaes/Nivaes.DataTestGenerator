@@ -2,7 +2,7 @@
 
 namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
-    using FluentAssertions;
+    using Shouldly;
 
     public class PasswordGeneratorTest
     {
@@ -23,7 +23,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         public void PasswordGenerator03(string password)
         {
             mOutput.WriteLine(password);
-            password.Should().NotBeNullOrEmpty();
+            password.ShouldNotBeNullOrEmpty();
         }
     }
 }

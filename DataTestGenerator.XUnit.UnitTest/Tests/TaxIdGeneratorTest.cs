@@ -4,7 +4,7 @@ using Xunit.v3;
 namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
     using System.Collections.Generic;
-    using FluentAssertions;
+    using Shouldly;
 
     public class TaxIdGeneratorTest
     {
@@ -27,7 +27,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 
                 mOutput.WriteLine(taxId);
 
-                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+                taxtIds.ShouldNotContain(taxId, $"Repetido en {i} interacciones.");
 
                 taxtIds.Add(taxId);
             }
@@ -44,7 +44,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 
                 mOutput.WriteLine(taxId);
 
-                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+                taxtIds.ShouldNotContain(taxId, $"Repetido en {i} interacciones.");
 
                 taxtIds.Add(taxId);
             }

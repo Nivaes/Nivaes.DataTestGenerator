@@ -3,7 +3,7 @@
 namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
     using System.Collections.Generic;
-    using FluentAssertions;
+    using Shouldly;
 
     public class ContactGeneratorTest
     {
@@ -22,8 +22,8 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
             {
                 var contact = ContactGenerator.Instance.GenerateExtenderContact();
 
-                contact.Should().NotBeNull();
-                eMails.Should().NotContain(contact.Email);
+                contact.ShouldNotBeNull();
+                eMails.ShouldNotContain(contact.Email);
                 Assert.DoesNotContain(contact.Email, eMails);
                 eMails.Add(contact.Email!);
                 mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
@@ -34,13 +34,13 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         [GenerateContactInlineData(DataNumber = 10)]
         public void ContactGeneratorExtenderContactTest(ContactTest contact)
         {
-            contact.Should().NotBeNull();
-            contact.GivenName.Should().NotBeNullOrWhiteSpace();
-            contact.FamilyName.Should().NotBeNullOrWhiteSpace();
-            contact.LongName.Should().NotBeNullOrWhiteSpace();
-            contact.SortName.Should().NotBeNullOrWhiteSpace();
-            contact.Email.Should().NotBeNullOrWhiteSpace();
-            contact.TelephoneNumber.Should().NotBeNullOrWhiteSpace();
+            contact.ShouldNotBeNull();
+            contact.GivenName.ShouldNotBeNullOrWhiteSpace();
+            contact.FamilyName.ShouldNotBeNullOrWhiteSpace();
+            contact.LongName.ShouldNotBeNullOrWhiteSpace();
+            contact.SortName.ShouldNotBeNullOrWhiteSpace();
+            contact.Email.ShouldNotBeNullOrWhiteSpace();
+            contact.TelephoneNumber.ShouldNotBeNullOrWhiteSpace();
             mOutput.WriteLine($"{contact?.SortName} --- {contact?.LongName} ---- {contact?.GivenName}  ---- {contact?.FamilyName} ----- {contact?.Email} ---- {contact?.TelephoneNumber}");
         }
     }
