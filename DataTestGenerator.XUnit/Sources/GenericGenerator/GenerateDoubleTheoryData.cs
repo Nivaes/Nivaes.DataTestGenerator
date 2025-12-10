@@ -5,11 +5,11 @@
     public sealed class GenerateDoubleTheoryData
         : TheoryData<double>
     {
-        public GenerateDoubleTheoryData(int dataNumber, double maxSize, double minSize)
+        public GenerateDoubleTheoryData(int dataNumber, double minSize, double maxSize)
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(GenericGenerator.Instance.GenerateDouble(maxSize, minSize));
+                base.Add(GenericGenerator.Instance.GenerateDouble(minSize, maxSize));
             }
         }
     }

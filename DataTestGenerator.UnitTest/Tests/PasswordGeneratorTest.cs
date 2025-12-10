@@ -1,9 +1,8 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest
 {
-    using FluentAssertions;
-    using global::Xunit;
-    using global::Xunit.Abstractions;
     using System.Collections.Generic;
+    using FluentAssertions;
+    using Xunit;
 
     public class PasswordGeneratorTest
     {

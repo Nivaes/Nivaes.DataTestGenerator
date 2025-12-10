@@ -1,12 +1,17 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit
+﻿using Xunit;
+using Xunit.v3;
+using Xunit.Sdk;
+
+namespace Nivaes.DataTestGenerator.Xunit
 {
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-    using global::Xunit.Sdk;
+    using System.Threading.Tasks;
 
-    [DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
-    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.GenerateDoubleCaseDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
+
+    //[DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
+    //[XunitTestCaseDiscoverer(typeof(Nivaes.DataTestGenerator.Xunit.GenerateDoubleCaseDiscoverer))]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class GenerateDoubleInlineDataAttribute
         : DataAttribute
@@ -31,12 +36,15 @@
             MaxValue = maxValue;
         }
 
-        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        public override ValueTask<IReadOnlyCollection<ITheoryDataRow>> GetData(MethodInfo testMethod, DisposalTracker disposalTracker)
         {
-            for (int i = 0; i < DataNumber; i++)
-            {
-                yield return new object[] { GenericGenerator.Instance.GenerateDouble(MinValue, MaxValue) };
-            }
+            var data = new GenerateDoubleTheoryData(DataNumber, MinValue, MaxValue);
+            return new(data);
+        }
+
+        public override bool SupportsDiscoveryEnumeration()
+        {
+            return true;
         }
     }
 }

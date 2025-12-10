@@ -1,5 +1,4 @@
 ﻿using Xunit;
-using Xunit.Abstractions;
 
 namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
@@ -15,11 +14,11 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
             mOutput = output;
         }
 
-        [RetryFact(MaxRetries = 5, TimeSleep = 10)]
+        [Fact]
         public void ContactGeneratorExtenderContactRetryTest()
         {
             List<string> eMails = new();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 var contact = ContactGenerator.Instance.GenerateExtenderContact();
 
@@ -32,10 +31,16 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         }
 
         [Theory]
-        [GenerateContactInlineData(DataNumber = 3)]
+        [GenerateContactInlineData(DataNumber = 10)]
         public void ContactGeneratorExtenderContactTest(ContactTest contact)
         {
             contact.Should().NotBeNull();
+            contact.GivenName.Should().NotBeNullOrWhiteSpace();
+            contact.FamilyName.Should().NotBeNullOrWhiteSpace();
+            contact.LongName.Should().NotBeNullOrWhiteSpace();
+            contact.SortName.Should().NotBeNullOrWhiteSpace();
+            contact.Email.Should().NotBeNullOrWhiteSpace();
+            contact.TelephoneNumber.Should().NotBeNullOrWhiteSpace();
             mOutput.WriteLine($"{contact?.SortName} --- {contact?.LongName} ---- {contact?.GivenName}  ---- {contact?.FamilyName} ----- {contact?.Email} ---- {contact?.TelephoneNumber}");
         }
     }

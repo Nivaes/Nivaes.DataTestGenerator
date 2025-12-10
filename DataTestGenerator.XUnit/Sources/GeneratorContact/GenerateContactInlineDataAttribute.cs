@@ -1,12 +1,15 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit
+﻿using Xunit;
+using Xunit.v3;
+using Xunit.Sdk;
+
+namespace Nivaes.DataTestGenerator.Xunit
 {
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-    using global::Xunit.Sdk;
+    using System.Threading.Tasks;
 
-    [DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
-    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.GenerateContactCaseDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
+    //[XunitTestCaseDiscoverer(typeof(GenerateContactCaseDiscoverer))]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class GenerateContactInlineDataAttribute
         : DataAttribute
@@ -21,12 +24,15 @@
             DataNumber = dataNumber;
         }
 
-        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        public override ValueTask<IReadOnlyCollection<ITheoryDataRow>> GetData(MethodInfo testMethod, DisposalTracker disposalTracker)
         {
-            for (int i = 0; i < DataNumber; i++)
-            {
-                yield return new[] { ContactGenerator.Instance.GenerateContact() };
-            }
+            var data = new GenerateContactTheoryData(DataNumber);
+            return new(data);
+        }
+
+        public override bool SupportsDiscoveryEnumeration()
+        {
+            return true;
         }
     }
 }

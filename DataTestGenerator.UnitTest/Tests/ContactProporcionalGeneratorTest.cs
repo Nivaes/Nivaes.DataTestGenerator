@@ -1,7 +1,8 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest
 {
-    using global::Xunit;
-    using global::Xunit.Abstractions;
+    using System.Xml.Linq;
+    using FluentAssertions;
+    using Xunit;
 
     public class ContactProporcionalGeneratorTest
     {
@@ -18,6 +19,7 @@
             for (int i = 0; i < 10; i++)
             {
                 var name = ContactProporcionalGenerator.Instance.GenerateName();
+                name.Should().NotBeNullOrWhiteSpace();
                 mOutput.WriteLine(name);
             }
         }
@@ -28,6 +30,13 @@
             for (int i = 0; i < 100; i++)
             {
                 var contact = ContactProporcionalGenerator.Instance.GenerateContact();
+                contact.Should().NotBeNull();
+                contact.GivenName.Should().NotBeNullOrWhiteSpace();
+                contact.FamilyName.Should().NotBeNullOrWhiteSpace();
+                contact.LongName.Should().NotBeNullOrWhiteSpace();
+                contact.SortName.Should().NotBeNullOrWhiteSpace();
+                contact.Email.Should().NotBeNullOrWhiteSpace();
+                contact.TelephoneNumber.Should().NotBeNullOrWhiteSpace();
                 mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }

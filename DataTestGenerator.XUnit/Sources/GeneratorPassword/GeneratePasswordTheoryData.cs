@@ -1,7 +1,8 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit
-{
-    using global::Xunit;
+﻿using System.Runtime.Serialization.DataContracts;
+using Xunit;
 
+namespace Nivaes.DataTestGenerator.Xunit
+{
     public sealed class GeneratePasswordTheoryData
         : TheoryData<string>
     {
@@ -26,7 +27,7 @@
             }
         }
 
-        public GeneratePasswordTheoryData(int dataNumber, string characterSet)
+        public GeneratePasswordTheoryData(int dataNumber, string? characterSet)
         {
             for (int i = 0; i < dataNumber; i++)
             {
@@ -34,7 +35,7 @@
             }
         }
 
-        public GeneratePasswordTheoryData(int dataNumber, int length, string characterSet)
+        public GeneratePasswordTheoryData(int dataNumber, int length, string? characterSet)
         {
             for (int i = 0; i < dataNumber; i++)
             {

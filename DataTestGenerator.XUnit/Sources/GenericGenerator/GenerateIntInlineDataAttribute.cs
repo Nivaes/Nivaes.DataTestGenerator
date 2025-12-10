@@ -1,12 +1,15 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit
+﻿using Xunit;
+using Xunit.Sdk;
+using Xunit.v3;
+
+namespace Nivaes.DataTestGenerator.Xunit
 {
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-    using global::Xunit.Sdk;
+    using System.Threading.Tasks;
 
-    [DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
-    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.GenerateIntCaseDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
+    //[XunitTestCaseDiscoverer(typeof(GenerateIntCaseDiscoverer))]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class GenerateIntInlineDataAttribute
         : DataAttribute
@@ -25,12 +28,15 @@
             DataNumber = dataNumber;
         }
 
-        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        public override ValueTask<IReadOnlyCollection<ITheoryDataRow>> GetData(MethodInfo testMethod, DisposalTracker disposalTracker)
         {
-            for (int i = 0; i < DataNumber; i++)
-            {
-                yield return new object[] { GenericGenerator.Instance.GenerateInt(MinValue, MaxValue) };
-            }
+            var data = new GenerateIntTheoryData(DataNumber, MinValue, MaxValue);
+            return new(data);
+        }
+
+        public override bool SupportsDiscoveryEnumeration()
+        {
+            return true;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Xunit;
-using Xunit.Abstractions;
 
 namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
@@ -9,7 +8,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
     {
         private readonly ITestOutputHelper mOutput;
 
-        public static readonly GenerateContactTheoryData PasswordsMatrixData = new GenerateContactTheoryData(10, 20);
+        public static readonly GeneratePasswordTheoryData PasswordsMatrixData = new GeneratePasswordTheoryData(10, 20);
 
         public PasswordGeneratorTest(ITestOutputHelper output)
         {
@@ -17,7 +16,8 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         }
 
         [Theory]
-        [InlineData("ddefff")]
+        [InlineData("password")]
+        [ClassData(typeof(GeneratePasswordTheoryData))]
         [MemberData(nameof(PasswordsMatrixData))]
         [GeneratePasswordInlineData(DataNumber = 3)]
         public void PasswordGenerator03(string password)

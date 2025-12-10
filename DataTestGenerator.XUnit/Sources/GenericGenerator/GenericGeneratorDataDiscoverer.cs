@@ -1,14 +1,17 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit
+﻿using Xunit.Sdk;
+using Xunit.v3;
+
+namespace Nivaes.DataTestGenerator.Xunit
 {
-    using global::Xunit.Abstractions;
-    using global::Xunit.Sdk;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public class GenericGeneratorDataDiscoverer
-        : DataDiscoverer
+        : IXunitTestCaseDiscoverer
     {
-        public override bool SupportsDiscoveryEnumeration(IAttributeInfo dataAttribute, IMethodInfo testMethod)
+        public ValueTask<IReadOnlyCollection<IXunitTestCase>> Discover(ITestFrameworkDiscoveryOptions discoveryOptions, IXunitTestMethod testMethod, IFactAttribute factAttribute)
         {
-            return true;
+            throw new System.NotImplementedException();
         }
     }
 }

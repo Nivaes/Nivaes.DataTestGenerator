@@ -1,12 +1,15 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit
+﻿using Xunit;
+using Xunit.v3;
+
+namespace Nivaes.DataTestGenerator.Xunit
 {
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+    using System.Threading.Tasks;
     using global::Xunit.Sdk;
 
-    [DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
-    [XunitTestCaseDiscoverer("Nivaes.DataTestGenerator.Xunit.GeneratePasswordCaseDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
+    //[XunitTestCaseDiscoverer(typeof(GeneratePasswordCaseDiscoverer))]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class GeneratePasswordInlineDataAttribute
         : DataAttribute
@@ -25,12 +28,15 @@
             DataNumber = dataNumber;
         }
 
-        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        public override ValueTask<IReadOnlyCollection<ITheoryDataRow>> GetData(MethodInfo testMethod, DisposalTracker disposalTracker)
         {
-            for (int i = 0; i < DataNumber; i++)
-            {
-                yield return new[] { PasswordGenerator.Instance.GeneratePassword(Length, CharacterSet) };
-            }
+            var data = new GeneratePasswordTheoryData(DataNumber, Length, CharacterSet);
+            return new(data);
+        }
+
+        public override bool SupportsDiscoveryEnumeration()
+        {
+            return true;
         }
     }
 }

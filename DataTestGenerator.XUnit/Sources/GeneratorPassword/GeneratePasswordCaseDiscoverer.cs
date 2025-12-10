@@ -1,36 +1,40 @@
-﻿using Xunit.Abstractions;
-using Xunit.Sdk;
+﻿//using Xunit.v3;
+//using Xunit.Sdk;
 
-namespace Nivaes.DataTestGenerator.Xunit
-{
-    using System;
-    using System.Collections.Generic;
+//namespace Nivaes.DataTestGenerator.Xunit
+//{
+//    using System;
+//    using System.Collections.Generic;
+//    using System.Threading.Tasks;
 
-    public sealed class GeneratePasswordCaseDiscoverer
-        : IXunitTestCaseDiscoverer
-    {
-        private readonly IMessageSink mDiagnosticMessageSink;
+//    public sealed class GeneratePasswordCaseDiscoverer
+//        : IXunitTestCaseDiscoverer
+//    {
+//        private readonly IMessageSink mDiagnosticMessageSink;
 
-        public GeneratePasswordCaseDiscoverer(IMessageSink diagnosticMessageSink)
-        {
-            mDiagnosticMessageSink = diagnosticMessageSink;
-        }
+//        public GeneratePasswordCaseDiscoverer(IMessageSink diagnosticMessageSink)
+//        {
+//            mDiagnosticMessageSink = diagnosticMessageSink;
+//        }
 
-        public IEnumerable<IXunitTestCase> Discover(ITestFrameworkDiscoveryOptions discoveryOptions, ITestMethod testMethod, IAttributeInfo factAttribute)
-        {
-            if (factAttribute == null) throw new ArgumentNullException(nameof(factAttribute));
+//        public ValueTask<IReadOnlyCollection<IXunitTestCase>> Discover(ITestFrameworkDiscoveryOptions discoveryOptions, IXunitTestMethod testMethod, IFactAttribute factAttribute)
+//        {
+//            if (factAttribute == null) throw new ArgumentNullException(nameof(factAttribute));
 
-            var dataNumber = factAttribute.GetNamedArgument<int>(nameof(GeneratePasswordInlineDataAttribute.DataNumber));
-            dataNumber = Math.Max(1, dataNumber);
+//            System.Diagnostics.Debugger.Launch();
 
-            var length = factAttribute.GetNamedArgument<int>(nameof(GeneratePasswordInlineDataAttribute.Length));
-            length = Math.Max(1, length);
+//            //throw new InvalidOperationException();
+//            //var dataNumber = factAttribute.GetNamedArgument<int>(nameof(GeneratePasswordInlineDataAttribute.DataNumber));
+//            //dataNumber = Math.Max(1, dataNumber);
 
-            var characterSet = factAttribute.GetNamedArgument<int>(nameof(GeneratePasswordInlineDataAttribute.CharacterSet));
-            characterSet = Math.Max(1, characterSet);
+//            //var length = factAttribute.GetNamedArgument<int>(nameof(GeneratePasswordInlineDataAttribute.Length));
+//            //length = Math.Max(1, length);
 
-            yield return new GeneratorPasswordCase(mDiagnosticMessageSink, discoveryOptions.MethodDisplayOrDefault(), discoveryOptions.MethodDisplayOptionsOrDefault(), testMethod,
-                dataNumber, length, characterSet);
-        }
-    }
-}
+//            //var characterSet = factAttribute.GetNamedArgument<int>(nameof(GeneratePasswordInlineDataAttribute.CharacterSet));
+//            //characterSet = Math.Max(1, characterSet);
+
+//            //yield return new GeneratorPasswordCase(mDiagnosticMessageSink, discoveryOptions.MethodDisplayOrDefault(), discoveryOptions.MethodDisplayOptionsOrDefault(), testMethod,
+//            //    dataNumber, length, characterSet);
+//        }
+//    }
+//}

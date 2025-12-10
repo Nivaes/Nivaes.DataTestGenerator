@@ -1,39 +1,46 @@
-﻿using Xunit.Abstractions;
-using Xunit.Sdk;
+﻿////using Xunit.v3;
+//using Xunit.Sdk;
 
-namespace Nivaes.DataTestGenerator.Xunit
-{
-    using System;
-    using System.Collections.Generic;
+//namespace Nivaes.DataTestGenerator.Xunit
+//{
+//    using System;
+//    using System.Collections.Generic;
+//    using System.Threading.Tasks;
+//    using global::Xunit.v3;
 
-    public sealed class GenerateStringCaseDiscoverer
-        : IXunitTestCaseDiscoverer
-    {
-        private readonly IMessageSink mDiagnosticMessageSink;
+//    public sealed class GenerateStringCaseDiscoverer
+//        : IXunitTestCaseDiscoverer
+//    {
+//        private readonly IMessageSink mDiagnosticMessageSink;
 
-        public GenerateStringCaseDiscoverer(IMessageSink diagnosticMessageSink)
-        {
-            mDiagnosticMessageSink = diagnosticMessageSink;
-        }
+//        public GenerateStringCaseDiscoverer(IMessageSink diagnosticMessageSink)
+//        {
+//            mDiagnosticMessageSink = diagnosticMessageSink;
+//        }
 
-        public IEnumerable<IXunitTestCase> Discover(ITestFrameworkDiscoveryOptions discoveryOptions, ITestMethod testMethod, IAttributeInfo factAttribute)
-        {
-            if (factAttribute == null) throw new ArgumentNullException(nameof(factAttribute));
+//        //public IEnumerable<IXunitTestCase> Discover(ITestFrameworkDiscoveryOptions discoveryOptions, ITestMethod testMethod, IAttributeInfo factAttribute)
+//        //{
+//        //    if (factAttribute == null) throw new ArgumentNullException(nameof(factAttribute));
 
-            var dataNumber = factAttribute.GetNamedArgument<int>(nameof(GenerateStringInlineDataAttribute.DataNumber));
-            if (dataNumber < 1)
-                dataNumber = 1;
+//        //    var dataNumber = factAttribute.GetNamedArgument<int>(nameof(GenerateStringInlineDataAttribute.DataNumber));
+//        //    if (dataNumber < 1)
+//        //        dataNumber = 1;
 
-            var maxSize = factAttribute.GetNamedArgument<int>(nameof(GenerateStringInlineDataAttribute.MaxSize));
-            if (maxSize < 1)
-                maxSize = 1;
+//        //    var maxSize = factAttribute.GetNamedArgument<int>(nameof(GenerateStringInlineDataAttribute.MaxSize));
+//        //    if (maxSize < 1)
+//                maxSize = 1;
 
-            var minSize = factAttribute.GetNamedArgument<int>(nameof(GenerateStringInlineDataAttribute.MinSize));
-            if (minSize < 1)
-                minSize = 1;
+//        //    var minSize = factAttribute.GetNamedArgument<int>(nameof(GenerateStringInlineDataAttribute.MinSize));
+//        //    if (minSize < 1)
+//        //        minSize = 1;
 
-            yield return new GeneratorStringCase(mDiagnosticMessageSink, discoveryOptions.MethodDisplayOrDefault(), discoveryOptions.MethodDisplayOptionsOrDefault(), testMethod,
-                dataNumber, maxSize, minSize);
-        }
-    }
-}
+//        //    yield return new GeneratorStringCase(mDiagnosticMessageSink, discoveryOptions.MethodDisplayOrDefault(), discoveryOptions.MethodDisplayOptionsOrDefault(), testMethod,
+//        //        dataNumber, maxSize, minSize);
+//        //}
+
+//        public ValueTask<IReadOnlyCollection<IXunitTestCase>> Discover(ITestFrameworkDiscoveryOptions discoveryOptions, IXunitTestMethod testMethod, IFactAttribute factAttribute)
+//        {
+//            throw new NotImplementedException();
+//        }
+//    }
+//}

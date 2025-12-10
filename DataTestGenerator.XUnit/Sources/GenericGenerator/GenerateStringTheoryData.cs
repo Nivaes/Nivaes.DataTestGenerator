@@ -1,7 +1,7 @@
-﻿namespace Nivaes.DataTestGenerator.Xunit
-{
-    using global::Xunit;
+﻿using Xunit;
 
+namespace Nivaes.DataTestGenerator.Xunit
+{
     public sealed class GenerateStringTheoryData
         : TheoryData<string>
     {
@@ -18,11 +18,11 @@
             }
         }
 
-        public GenerateStringTheoryData(int dataNumber, int maxSize, int minSize)
+        public GenerateStringTheoryData(int dataNumber, int minSize, int maxSize)
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(GenericGenerator.Instance.GenerateString(maxSize, minSize));
+                base.Add(GenericGenerator.Instance.GenerateString(minSize, maxSize));
             }
         }
     }
