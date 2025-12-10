@@ -9,7 +9,6 @@ namespace Nivaes.DataTestGenerator.Xunit
     using System.Reflection;
     using System.Threading.Tasks;
 
-    //[XunitTestCaseDiscoverer(typeof(GenerateIntCaseDiscoverer))]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class GenerateIntInlineDataAttribute
         : DataAttribute

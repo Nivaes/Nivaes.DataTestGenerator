@@ -1,55 +1,53 @@
-﻿//using Xunit;
-//using Xunit.v3;
+﻿using Xunit;
+using Xunit.v3;
 
-//namespace Nivaes.DataTestGenerator.Xunit.UnitTest
-//{
-//    using System.Collections.Generic;
-//    using FluentAssertions;
+namespace Nivaes.DataTestGenerator.Xunit.UnitTest
+{
+    using System.Collections.Generic;
+    using FluentAssertions;
 
-//    public class TaxIdGeneratorTest
-//    {
-//        private readonly ITestOutputHelper mOutput;
+    public class TaxIdGeneratorTest
+    {
+        private readonly ITestOutputHelper mOutput;
 
-//        public TaxIdGeneratorTest(ITestOutputHelper output)
-//        {
-//            mOutput = output;
-//        }
+        public TaxIdGeneratorTest(ITestOutputHelper output)
+        {
+            mOutput = output;
+        }
 
-//        [Theory]
-//        [InlineData(10)]
-//        [InlineData(1000)]
-//        [RetryInlineData(400, MaxRetries = 3)]
-//        public void CreateNieTest(int n)
-//        {
-//            List<string> taxtIds = new();
-//            for (int i = 0; i < n; i++)
-//            {
-//                string taxId = TaxIdGenerator.GenerateNie();
+        [Theory]
+        [InlineData(10)]
+        [InlineData(1000)]
+        public void CreateNieTest(int n)
+        {
+            List<string> taxtIds = new();
+            for (int i = 0; i < n; i++)
+            {
+                string taxId = TaxIdGenerator.GenerateNie();
 
-//                mOutput.WriteLine(taxId);
+                mOutput.WriteLine(taxId);
 
-//                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
-//                taxtIds.Add(taxId);
-//            }
-//        }
+                taxtIds.Add(taxId);
+            }
+        }
 
-//        [Theory]
-//        [InlineData(10)]
-//        [RetryInlineData(100)]
-//        public void CreateCifTest(int n)
-//        {
-//            List<string> taxtIds = new();
-//            for (int i = 0; i < n; i++)
-//            {
-//                string taxId = TaxIdGenerator.GenerateCif();
+        [Theory]
+        [InlineData(10)]
+        public void CreateCifTest(int n)
+        {
+            List<string> taxtIds = new();
+            for (int i = 0; i < n; i++)
+            {
+                string taxId = TaxIdGenerator.GenerateCif();
 
-//                mOutput.WriteLine(taxId);
+                mOutput.WriteLine(taxId);
 
-//                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
+                taxtIds.Should().NotContain(taxId, "Repetido en {0} interacciones.", i);
 
-//                taxtIds.Add(taxId);
-//            }
-//        }
-//    }
-//}
+                taxtIds.Add(taxId);
+            }
+        }
+    }
+}

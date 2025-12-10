@@ -9,9 +9,6 @@ namespace Nivaes.DataTestGenerator.Xunit
     using System.Reflection;
     using System.Threading.Tasks;
 
-
-    //[DataDiscoverer("Nivaes.DataTestGenerator.Xunit.GenericGeneratorDataDiscoverer", "Nivaes.DataTestGenerator.Xunit")]
-    //[XunitTestCaseDiscoverer(typeof(Nivaes.DataTestGenerator.Xunit.GenerateDoubleCaseDiscoverer))]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class GenerateDoubleInlineDataAttribute
         : DataAttribute

@@ -9,7 +9,6 @@ namespace Nivaes.DataTestGenerator.Xunit
     using System.Threading.Tasks;
     using global::Xunit.Sdk;
 
-    //[XunitTestCaseDiscoverer(typeof(GeneratePasswordCaseDiscoverer))]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class GeneratePasswordInlineDataAttribute
         : DataAttribute
