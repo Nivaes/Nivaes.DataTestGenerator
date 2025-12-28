@@ -106,4 +106,4 @@ jobs:
     #     package-flow: Release
 
     - name: Publish packages
-      run: dotnet nuget push ./Artifacts/*.nupkg --skip-duplicate --source nuget.org --api-key ${{ secrets.NIVAES_NUGET_TOKEN }}
+      run: dotnet nuget push ./Artifacts/*.{nupkg,snupkg} --skip-duplicate --source nuget.org --api-key ${{ secrets.NIVAES_NUGET_TOKEN }}
