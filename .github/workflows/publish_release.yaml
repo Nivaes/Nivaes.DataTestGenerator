@@ -72,7 +72,7 @@ jobs:
       with:
         tag_name: ${{ github.ref_name }}
         files: |
-          ./Artifacts/*.{nupkg,snupkg}
+          ./Artifacts/*.nupkg
 
     - name: Publish packages
       run: dotnet nuget push ./Artifacts/*.{nupkg,snupkg} --skip-duplicate --source nuget.org --api-key ${{ secrets.NIVAES_NUGET_TOKEN }}
