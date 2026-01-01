@@ -112,4 +112,3 @@ public void PasswordGenerator03(string password)
 
 ![Build Release](https://github.com/Nivaes/Nivaes.DataTestGenerator/workflows/Build%20Release/badge.svg)
 
-![Publish Release](https://github.com/Nivaes/Nivaes.DataTestGenerator/workflows/Publish%20Release/badge.svg)
