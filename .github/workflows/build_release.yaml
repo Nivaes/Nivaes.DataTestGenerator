@@ -47,29 +47,6 @@ jobs:
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
       run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore
 
-    # - name: Create Release
-    #   if: github.event_name == 'push' || (github.event_name != 'pull_request')
-    #   id: create_release
-    #   uses: actions/create-release@v1
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   with:
-    #     tag_name: release/v${{ steps.pack.outputs.version }}
-    #     release_name: Release Version ${{ steps.version_pack.outputs.version }}
-    #     body: |
-    #       Automatic Release ${{ steps.version_pack.outputs.version }}   
-    #       - Release automatically generated.
-    #     draft: true
-    #     prerelease: false
-
-    # - name: Upload Release Asset
-    #   uses: nivaes/upload-release-assets@master
-    #   env:
-    #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   with:
-    #      upload_url: ${{ steps.create_release.outputs.upload_url }}
-    #      targets: ./Artifacts/*.{nupkg,snupkg}
-
     - name: Create Release
       id: create_release
       uses: softprops/action-gh-release@v2
