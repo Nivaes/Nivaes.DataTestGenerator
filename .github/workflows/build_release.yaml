@@ -27,11 +27,18 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
+    # - name: Get Version
+    #   uses: nivaes/version-pack@v2
+    #   id: version_pack
+    #   with:
+    #     package-flow: preview
+
     - name: Get Version
       uses: nivaes/version-pack@v2
       id: version_pack
       with:
-        package-flow: preview
+        version: ${{ github.ref_name }}
+        # package-flow: ${{ github.event.action == 'prereleased' && 'Preview' || 'Release' }}
 
     - name: Restore Dependencies
       run: |
