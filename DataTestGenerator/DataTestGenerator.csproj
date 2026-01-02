@@ -19,9 +19,6 @@
 
   <PropertyGroup>
     <IsAotCompatible>true</IsAotCompatible>
-    <!--<IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>-->
-    <!--<DebugType>portable</DebugType>-->
   </PropertyGroup>
   
   <ItemGroup>
