@@ -27,18 +27,9 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    # - name: Get Version
-    #   uses: nivaes/version-pack@v2
-    #   id: version_pack
-    #   with:
-    #     package-flow: preview
-
     - name: Get Version
-      uses: nivaes/version-pack@v2
+      uses: nivaes/version-pack@v3
       id: version_pack
-      with:
-        version: ${{ github.ref_name }}
-        # package-flow: ${{ github.event.action == 'prereleased' && 'Preview' || 'Release' }}
 
     - name: Restore Dependencies
       run: |
@@ -63,6 +54,7 @@ jobs:
         body: |
           Automatic release generated from GitHub Actions.
         draft: true
+        target_commitish: ${{ github.ref_name }}
         prerelease: false
         files: |
           ./Artifacts/*.{nupkg,snupkg}

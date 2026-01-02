@@ -19,6 +19,11 @@ jobs:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
 
+    - name: Checkout
+      uses: actions/checkout@v5
+      with:
+          fetch-depth: 0
+
     - name: release
       if: github.event.action == 'released'
       run: echo Release
