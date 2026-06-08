@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
     <AssemblyName>Nivaes.DataTestGenerator.Xunit.UnitTest</AssemblyName>
     <RootNamespace>Nivaes.DataTestGenerator.Xunit.UnitTest</RootNamespace>
