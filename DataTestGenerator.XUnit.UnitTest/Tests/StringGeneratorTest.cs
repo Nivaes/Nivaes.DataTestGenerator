@@ -19,7 +19,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         [InlineData("text")]
         public void String_generate_inline(string password)
         {
-            mOutput.WriteLine(password);
+            mOutput.WriteLine($"{nameof(String_generate_inline)}: {password}");
             password.ShouldNotBeNullOrEmpty();
         }
 
@@ -27,7 +27,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         [ClassData(typeof(GenerateStringTheoryData))]
         public void StringGenerateTeoryData(string password)
         {
-            mOutput.WriteLine(password);
+            mOutput.WriteLine($"{nameof(StringGenerateTeoryData)}: {password}");
             password.ShouldNotBeNullOrEmpty();
         }
 
@@ -35,7 +35,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         [MemberData(nameof(PasswordsMatrixData))]
         public void StringGenerateMemberData(string password)
         {
-            mOutput.WriteLine(password);
+            mOutput.WriteLine($"{nameof(StringGenerateMemberData)}: {password}");
             password.ShouldNotBeNullOrEmpty();
         }
 
@@ -43,7 +43,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         [GenerateStringInlineData(DataNumber = 3)]
         public void StringGenerateStringInline(string password)
         {
-            mOutput.WriteLine(password);
+            mOutput.WriteLine($"{nameof(StringGenerateStringInline)}: {password}");
             password.ShouldNotBeNullOrEmpty();
         }
 
@@ -54,7 +54,7 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
         [GenerateStringInlineData(DataNumber = 3)]
         public void StringGenerateAll(string password)
         {
-            mOutput.WriteLine(password);
+            mOutput.WriteLine($"{nameof(StringGenerateAll)}: {password}");
             password.ShouldNotBeNullOrEmpty();
         }
     }

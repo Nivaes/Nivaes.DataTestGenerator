@@ -39,11 +39,11 @@ jobs:
       run: dotnet build --configuration Release -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore
 
     - name: Test
-      run: dotnet test --configuration Release --verbosity normal --no-build --no-restore
+      run: dotnet test --configuration Release --no-build --verbosity normal --no-restore --no-build
 
     - name: Pack
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
-      run: dotnet pack --configuration Release --no-build --no-restore --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_pack.outputs.version-pack }} 
+      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore
 
     - name: Create Release
       id: create_release
@@ -54,7 +54,6 @@ jobs:
         body: |
           Automatic release generated from GitHub Actions.
         draft: true
-        target_commitish: ${{ github.ref_name }}
         prerelease: false
         files: |
           ./Artifacts/*.{nupkg,snupkg}
