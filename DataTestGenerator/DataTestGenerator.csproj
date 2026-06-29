@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+
+    <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <PackageId>Nivaes.DataTestGenerator</PackageId>
     <Title>Nivaes Data Test Generator</Title>
     <AssemblyName>Nivaes.DataTestGenerator</AssemblyName>
@@ -20,7 +25,7 @@
   <PropertyGroup>
     <IsAotCompatible>true</IsAotCompatible>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <None Include="Images\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
@@ -37,7 +42,7 @@
   <ItemGroup>
     <PackageReference Include="Shouldly" />
   </ItemGroup>
- 
+
   <ItemGroup>
     <Compile Update="Resources\ResourceNames.Designer.cs">
       <DesignTime>True</DesignTime>
