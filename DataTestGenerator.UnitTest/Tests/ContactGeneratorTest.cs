@@ -4,7 +4,7 @@
     using Shouldly;
     using Xunit;
 
-     public class ContactGeneratorTest
+    public class ContactGeneratorTest
     {
         private readonly ITestOutputHelper mOutput;
 
@@ -14,7 +14,7 @@
         }
 
         [Fact]
-        public void  ContactGeneratorName()
+        public void ContactGeneratorName()
         {
             for (int i = 0; i < 10; i++)
             {

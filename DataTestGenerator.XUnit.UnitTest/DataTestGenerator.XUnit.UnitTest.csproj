@@ -6,6 +6,9 @@
     <IsPackable>false</IsPackable>
     <AssemblyName>Nivaes.DataTestGenerator.Xunit.UnitTest</AssemblyName>
     <RootNamespace>Nivaes.DataTestGenerator.Xunit.UnitTest</RootNamespace>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +23,11 @@
   
   <ItemGroup>
     <ProjectReference Include="..\DataTestGenerator.XUnit\DataTestGenerator.XUnit.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+    <Using Include="Shouldly" />
   </ItemGroup>
   
   <ItemGroup>

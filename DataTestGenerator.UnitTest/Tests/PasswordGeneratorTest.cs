@@ -1,9 +1,5 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest
 {
-    using System.Collections.Generic;
-    using Shouldly;
-    using Xunit;
-
     public class PasswordGeneratorTest
     {
         private readonly ITestOutputHelper mOutput;

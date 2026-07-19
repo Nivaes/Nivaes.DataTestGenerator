@@ -1,9 +1,5 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest
 {
-    using System.Xml.Linq;
-    using Shouldly;
-    using Xunit;
-
     public class ContactProporcionalGeneratorTest
     {
         private readonly ITestOutputHelper mOutput;

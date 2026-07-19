@@ -1,8 +1,5 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest
 {
-    using Shouldly;
-    using Xunit;
-
     public class GenericGeneratorTest
     {
         private readonly ITestOutputHelper mOutput;

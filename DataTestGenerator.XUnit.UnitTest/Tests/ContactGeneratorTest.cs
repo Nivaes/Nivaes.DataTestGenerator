@@ -1,10 +1,5 @@
-﻿using Xunit;
-
-namespace Nivaes.DataTestGenerator.Xunit.UnitTest
+﻿namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
-    using System.Collections.Generic;
-    using Shouldly;
-
     public class ContactGeneratorTest
     {
         private readonly ITestOutputHelper mOutput;

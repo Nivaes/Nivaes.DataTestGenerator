@@ -31,6 +31,6 @@
   </Folder>
   <Project Path="DataTestGenerator.UnitTest/DataTestGenerator.UnitTest.csproj" />
   <Project Path="DataTestGenerator.XUnit.UnitTest/DataTestGenerator.XUnit.UnitTest.csproj" />
-  <Project Path="DataTestGenerator.XUnit/DataTestGenerator.XUnit.csproj" />
+  <Project Path="DataTestGenerator.XUnit/DataTestGenerator.XUnit.csproj" DisplayName="DataTestGenerator.Xunit" />
   <Project Path="DataTestGenerator/DataTestGenerator.csproj" />
 </Solution>

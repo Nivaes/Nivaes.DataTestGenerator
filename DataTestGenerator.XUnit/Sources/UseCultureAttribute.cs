@@ -1,12 +1,9 @@
-﻿using Xunit.v3;
+﻿using System.Globalization;
+using System.Reflection;
+using Xunit.v3;
 
 namespace Nivaes.DataTestGenerator.Xunit
 {
-    using System;
-    using System.Globalization;
-    using System.Reflection;
-    using System.Threading;
-
     /// <summary>
     /// Apply this attribute to your test method to replace the
     /// <see cref="Thread.CurrentThread" /> <see cref="CultureInfo.CurrentCulture" /> and
