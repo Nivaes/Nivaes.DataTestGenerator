@@ -9,6 +9,6 @@
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="11.0.100-preview.4.26230.115" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.27.0.140913" />
     <PackageVersion Include="xunit.v3" Version="4.0.0-pre.128" />
-    <PackageVersion Include="xunit.v3.extensibility.core" Version="4.0.0-pre.128" />
+    <PackageVersion Include="xunit.v3.extensibility.core" Version="4.0.0-pre.154" />
   </ItemGroup>
 </Project>
