@@ -16,9 +16,7 @@
     <File Path="global.json" />
     <File Path="README.md" />
   </Folder>
-  <Folder Name="/Solution Items/.github/">
-    <File Path=".github/dependabot.yml" />
-  </Folder>
+  <Folder Name="/Solution Items/.github/" />
   <Folder Name="/Solution Items/.github/codeql/">
     <File Path=".github/codeql/codeql-config.yaml" />
   </Folder>
@@ -31,6 +29,6 @@
   </Folder>
   <Project Path="DataTestGenerator.UnitTest/DataTestGenerator.UnitTest.csproj" />
   <Project Path="DataTestGenerator.XUnit.UnitTest/DataTestGenerator.XUnit.UnitTest.csproj" />
-  <Project Path="DataTestGenerator.XUnit/DataTestGenerator.XUnit.csproj" DisplayName="DataTestGenerator.Xunit" />
+  <Project Path="DataTestGenerator.XUnit/DataTestGenerator.XUnit.csproj" />
   <Project Path="DataTestGenerator/DataTestGenerator.csproj" />
 </Solution>
