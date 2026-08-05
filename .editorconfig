@@ -216,3 +216,6 @@ csharp_space_between_square_brackets = false:warning
 # Wrapping Options
 csharp_preserve_single_line_blocks = true:warning
 csharp_preserve_single_line_statements = false:warning
+
+# S4144: Methods should not have identical implementations
+dotnet_diagnostic.S4144.severity = none
