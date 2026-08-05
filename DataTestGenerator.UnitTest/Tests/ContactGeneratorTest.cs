@@ -49,7 +49,7 @@
 
                 contact.Email.ShouldNotBeNullOrEmpty();
 
-                eMails.Add(contact!.Email!);
+                eMails.Add(contact.Email);
                 mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }

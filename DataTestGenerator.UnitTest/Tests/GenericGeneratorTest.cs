@@ -14,7 +14,7 @@
         {
             for (int i = 0; i < 10; i++)
             {
-                var strGenerate = GenericGenerator.Instance.GenerateString();
+                var strGenerate = GenericGenerator.GenerateString();
                 mOutput.WriteLine(strGenerate);
                 strGenerate.ShouldNotBeNullOrEmpty();
             }
@@ -25,7 +25,7 @@
         {
             for (int i = 1000; i < 1100; i++)
             {
-                var strGenerate = GenericGenerator.Instance.GenerateString(i);
+                var strGenerate = GenericGenerator.GenerateString(i);
                 strGenerate.ShouldNotBeNullOrEmpty();
                 strGenerate.Length.ShouldBe(i);
             }
@@ -38,7 +38,7 @@
             {
                 for (int j = 1200; j < i + 1300; j++)
                 {
-                    var strGenerate = GenericGenerator.Instance.GenerateString(i, j);
+                    var strGenerate = GenericGenerator.GenerateString(i, j);
                     strGenerate.ShouldNotBeNullOrEmpty();
                     strGenerate.Length.ShouldBeGreaterThanOrEqualTo(i);
                     strGenerate.Length.ShouldBeLessThanOrEqualTo(j);
@@ -51,7 +51,7 @@
         {
             for (int i = 0; i < 10; i++)
             {
-                var intGenerate = GenericGenerator.Instance.GenerateInt();
+                var intGenerate = GenericGenerator.GenerateInt();
                 mOutput.WriteLine($"{intGenerate}");
                 intGenerate.ShouldBeLessThanOrEqualTo(int.MaxValue);
                 intGenerate.ShouldBeGreaterThanOrEqualTo(int.MinValue);
@@ -63,7 +63,7 @@
         {
             for (int i = 1000; i < 100000; i++)
             {
-                var intGenerate = GenericGenerator.Instance.GenerateInt(i);
+                var intGenerate = GenericGenerator.GenerateInt(i);
                 mOutput.WriteLine($"{intGenerate}");
                 intGenerate.ShouldBeLessThanOrEqualTo(i);
             }
@@ -76,7 +76,7 @@
             {
                 for (int j = 1000; j < 1500; j++)
                 {
-                    var intGenerate = GenericGenerator.Instance.GenerateInt(i, j);
+                    var intGenerate = GenericGenerator.GenerateInt(i, j);
                     mOutput.WriteLine($"{intGenerate}");
                     intGenerate.ShouldBeGreaterThanOrEqualTo(i);
                     intGenerate.ShouldBeLessThanOrEqualTo(j);
@@ -91,7 +91,7 @@
             {
                 for (double j = 12653.32158; j < 12533453.32158; j += 25783.35)
                 {
-                    var doubleGenerate = GenericGenerator.Instance.GenerateDouble(i, j);
+                    var doubleGenerate = GenericGenerator.GenerateDouble(i, j);
                     mOutput.WriteLine($"{doubleGenerate}");
                     doubleGenerate.ShouldBeInRange(i, j);
                 }

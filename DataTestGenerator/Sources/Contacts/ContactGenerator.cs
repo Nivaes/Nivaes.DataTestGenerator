@@ -23,7 +23,7 @@
 
         protected override string RamdonName(Tuple<string, double>[] names)
         {
-            int ranNumber = base.Random.Next(0, names.Length - 1);
+            int ranNumber = Random.Shared.Next(0, names.Length - 1);
 
             return names[ranNumber].Item1;
         }

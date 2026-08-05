@@ -7,14 +7,14 @@ namespace Nivaes.DataTestGenerator.Xunit
     {
         public GenerateStringTheoryData()
         {
-            base.Add(GenericGenerator.Instance.GenerateString());
+            base.Add(GenericGenerator.GenerateString());
         }
 
         public GenerateStringTheoryData(int dataNumber)
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(GenericGenerator.Instance.GenerateString());
+                base.Add(GenericGenerator.GenerateString());
             }
         }
 
@@ -22,7 +22,7 @@ namespace Nivaes.DataTestGenerator.Xunit
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(GenericGenerator.Instance.GenerateString(minSize, maxSize));
+                base.Add(GenericGenerator.GenerateString(minSize, maxSize));
             }
         }
     }

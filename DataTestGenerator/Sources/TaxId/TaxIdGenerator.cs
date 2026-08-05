@@ -7,9 +7,6 @@
     public static class TaxIdGenerator
     {
         #region Random number
-        /// <summary>Reference to <see cref="System.Random"/>.</summary>
-        private static readonly Random Random = new Random(DateTime.Now.Millisecond);
-
         /// <summary>Set of generate numbers.</summary>
         private static readonly HashSet<int> GenerateNumbers = new HashSet<int>();
 
@@ -19,7 +16,7 @@
             int num;
             do
             {
-                num = Random.Next(1000, 99999999);
+                num = Random.Shared.Next(1000, 99999999);
             } while (GenerateNumbers.Contains(num));
 
             GenerateNumbers.Add(num);
@@ -46,7 +43,7 @@
         /// <summary>Genera un NIF o NIE.</summary>
         public static string GenerateNifNie()
         {
-            if(Random.Next(0, 4) == 0)
+            if(Random.Shared.Next(0, 4) == 0)
             {
                 return GenerateNie();
             }
@@ -66,7 +63,7 @@
         private static char LetraNie()
         {
             string nie = "XYZ";
-            return nie[Random.Next(0, 3)];
+            return nie[Random.Shared.Next(0, 3)];
         }
 
         //http://utilidesarrollo.blogspot.com.es/2010/11/generadores-de-documentos-dni-nie-y-cif.html
@@ -100,7 +97,7 @@
         /// <summary>Genera un TaxId.</summary>
         public static string GenerateTaxId()
         {
-            int num = Random.Next(0, 10);
+            int num = Random.Shared.Next(0, 10);
             if (num < 2)
                 return GenerateCif();
             else if (num < 5)

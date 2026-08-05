@@ -8,9 +8,6 @@
 
     public sealed class PasswordGenerator
     {
-        /// <summary>Reference to <see cref="mRandom"/>.</summary>
-        private Random mRandom { get; } = new Random(DateTime.Now.Second * DateTime.Now.Millisecond);
-
         private readonly char[][] mCharacterSet = new char[][]
              {
                 "abcdefgijkmnopqrstwxyz".ToCharArray(),
@@ -25,7 +22,7 @@
 
         public string GeneratePassword()
         {
-            var length = mRandom.Next(7, 20);
+            var length = Random.Shared.Next(7, 20);
 
             return GeneratePassword(length);
         }
@@ -33,14 +30,14 @@
         public string GeneratePassword(int length)
         {
             if(length == 0)
-                length = mRandom.Next(7, 20);
+                length = Random.Shared.Next(7, 20);
 
             return GeneratePassword(length, mCharacterSet);
         }
 
         public string GeneratePassword(string? characterSet)
         {
-            var length = mRandom.Next(7, 20);
+            var length = Random.Shared.Next(7, 20);
 
             return GeneratePassword(length, characterSet);
         }
@@ -48,21 +45,21 @@
         public string GeneratePassword(int length, string? characterSet)
         {
             if(length == 0)
-                length = mRandom.Next(7, 20);
+                length = Random.Shared.Next(7, 20);
 
             char[][] characterSetInt;
 
             if (string.IsNullOrEmpty(characterSet))
                 characterSetInt = mCharacterSet;
             else
-                characterSetInt = new char[][] { characterSet!.ToCharArray() };
+                characterSetInt = [characterSet.ToCharArray()];
 
             return GeneratePassword(length, characterSetInt);
         }
 
         public string GeneratePassword(IEnumerable<IEnumerable<char>> characterSet)
         {
-            var length = mRandom.Next(7, 20);
+            var length = Random.Shared.Next(7, 20);
 
             return GeneratePassword(length, characterSet.Select(i => i.ToArray()).ToArray());
         }
@@ -91,10 +88,10 @@
             int n = length;
             while (0 < n--)
             {
-                var characterSetsUser = mRandom.Next(characterSets.Length);
+                var characterSetsUser = Random.Shared.Next(characterSets.Length);
                 var characterSet = characterSets[characterSetsUser];
 
-                res.Append(characterSet[mRandom.Next(characterSet.Length)]);
+                res.Append(characterSet[Random.Shared.Next(characterSet.Length)]);
 
                 characterSetUse.Set(characterSetsUser, true);
             }

@@ -9,7 +9,7 @@
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(GenericGenerator.Instance.GenerateDouble(minSize, maxSize));
+                base.Add(GenericGenerator.GenerateDouble(minSize, maxSize));
             }
         }
     }

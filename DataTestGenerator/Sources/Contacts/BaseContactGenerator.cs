@@ -10,27 +10,24 @@
     public abstract class BaseContactGenerator
     {
         #region Propeties
-        /// <summary>Reference to <see cref="Random"/>.</summary>
-        protected Random Random { get; }= new Random(DateTime.Now.Second * DateTime.Now.Millisecond);
-
         /// <summary>List of personal name.</summary>
-        private readonly Tuple<string, double>[] mGivenNames;
+        private readonly Tuple<string, double>[] givenNames;
 
         /// <summary>List of family name.</summary>
-        private readonly Tuple<string, double>[] mFamilyNames;
+        private readonly Tuple<string, double>[] familyNames;
 
         /// <summary>List of email domain.</summary>
-        private readonly Tuple<string, double>[] mEmailDomains;
+        private readonly Tuple<string, double>[] emailDomains;
         #endregion
 
         #region Constructor
         /// <summary>Static constructor of <see cref="BaseContactGenerator"/>.</summary>
         protected BaseContactGenerator()
         {
-            mGivenNames = ReadNames(ResourceNames.GivenName);
-            mFamilyNames = ReadNames(ResourceNames.FamilyName);
+            givenNames = ReadNames(ResourceNames.GivenName);
+            familyNames = ReadNames(ResourceNames.FamilyName);
 
-            mEmailDomains = new Tuple<string, double>[] { new Tuple<string, double>("mock.com", 0.4), new Tuple<string, double>("mock.es", 0.2), new Tuple<string, double>("mock.test.com", 0.2), new Tuple<string, double>("mock.test.es", 0.2) };
+            emailDomains = new Tuple<string, double>[] { new Tuple<string, double>("mock.com", 0.4), new Tuple<string, double>("mock.es", 0.2), new Tuple<string, double>("mock.test.com", 0.2), new Tuple<string, double>("mock.test.es", 0.2) };
         }
 
         /// <summary>Read first name.</summary>
@@ -65,10 +62,10 @@
         /// <summary>Generate a contact.</summary>
         public ContactTest GenerateContact()
         {
-            string givenName = RamdonName(mGivenNames);
-            string familyName1 = RamdonName(mFamilyNames);
-            string familyName2 = RamdonName(mFamilyNames);
-            string mailDomain = RamdonName(mEmailDomains);
+            string givenName = RamdonName(givenNames);
+            string familyName1 = RamdonName(familyNames);
+            string familyName2 = RamdonName(familyNames);
+            string mailDomain = RamdonName(emailDomains);
             string sortName = ReduceFirstName(givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
 
             return new ContactTest
@@ -86,15 +83,15 @@
         [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Is a name.")]
         public ContactTest GenerateExtenderContact()
         {
-            string givenName = RamdonName(mGivenNames);
-            string familyName1 = RamdonName(mFamilyNames);
-            string familyName2 = RamdonName(mFamilyNames);
-            string mailDomain = RamdonName(mEmailDomains);
+            string givenName = RamdonName(givenNames);
+            string familyName1 = RamdonName(familyNames);
+            string familyName2 = RamdonName(familyNames);
+            string mailDomain = RamdonName(emailDomains);
             string sortName = ReduceFirstName(givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
             var mailName = givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "." + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "_" + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
-                + "_" + Random.Next(999999).ToString("000000", CultureInfo.InvariantCulture);
+                + "_" + Random.Shared.Next(999999).ToString("000000", CultureInfo.InvariantCulture);
 
             return new ContactTest
             {
@@ -110,9 +107,9 @@
         /// <summary>Generate a name.</summary>
         public string GenerateName()
         {
-            string gibenName = RamdonName(mGivenNames);
-            string familyName1 = RamdonName(mFamilyNames);
-            string familyName2 = RamdonName(mFamilyNames);
+            string gibenName = RamdonName(givenNames);
+            string familyName1 = RamdonName(familyNames);
+            string familyName2 = RamdonName(familyNames);
 
             return string.Format(CultureInfo.CurrentCulture, $"{gibenName} {familyName1} {familyName2}");
         }
@@ -121,25 +118,25 @@
         {
             ArgumentNullException.ThrowIfNull(gibenName);
 
-            string reduceName = string.Empty;
+            var reduceName = new StringBuilder();
             string[] fn = gibenName.Split(' ');
             foreach (string f in fn)
             {
-                reduceName += f[..1];
+                reduceName.Append(f[..1]);
             }
 
-            return reduceName.ToLowerInvariant();
+            return reduceName.ToString().ToLowerInvariant();
         }
 
         protected abstract string RamdonName(Tuple<string, double>[] names);
 
-        private string RandonTelephoneNumber()
+        private static string RandonTelephoneNumber()
         {
             StringBuilder sb = new StringBuilder();
             _ = sb.Append('6');
             for(int i = 0; i < 8; i++)
             {
-                int ran = Random.Next(0, 9);
+                int ran = Random.Shared.Next(0, 9);
                 sb.Append(ran.ToString(CultureInfo.InvariantCulture));
             }
 
