@@ -3,8 +3,7 @@ name: Publish Release
 on:
   release:
     types:
-      - released
-      - prereleased
+      - published
 
 permissions:
   contents: write
@@ -65,10 +64,6 @@ jobs:
     - name: Pack
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
       run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore
-
-    - name: Remove SourceGenerator symbols
-      run: |
-        rm -f ./Artifacts/*.SourceGenerator.*.snupkg
 
     - name: Update release
       uses: nivaes/update-release@v2  

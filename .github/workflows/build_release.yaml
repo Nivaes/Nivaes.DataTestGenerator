@@ -2,6 +2,18 @@ name: Build Release
 
 on:
   workflow_dispatch:
+    inputs:
+      prerelease:
+        description: "Prerelease identifier"
+        type: choice
+        required: false
+        options:
+          - ""
+          - Alpha
+          - Beta
+          - RC  
+          - Release
+        default: ""
 
 jobs:
   build_release:
@@ -28,8 +40,10 @@ jobs:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Get Version
-      uses: nivaes/version-pack@v3
+      uses: nivaes/version-pack@v2
       id: version_pack
+      with:
+        package-flow: preview
 
     - name: Restore Dependencies
       run: |

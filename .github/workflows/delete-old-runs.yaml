@@ -2,7 +2,7 @@ name: Delete old workflow runs
 
 on:
   schedule:
-    - cron: "0 3 * * 0"   # Todos los domingos a las 03:00 UTC
+    - cron: "7 3 * * 0"   # Todos los domingos a las 03:07 UTC
   workflow_dispatch:
 
 jobs:

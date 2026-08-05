@@ -17,17 +17,17 @@ namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 
         [Theory]
         [InlineData("text")]
-        public void String_generate_inline(string password)
+        public void StringGenerateInline(string password)
         {
-            mOutput.WriteLine($"{nameof(String_generate_inline)}: {password}");
+            mOutput.WriteLine($"{nameof(StringGenerateInline)}: {password}");
             password.ShouldNotBeNullOrEmpty();
         }
 
         [Theory]
         [ClassData(typeof(GenerateStringTheoryData))]
-        public void StringGenerateTeoryData(string password)
+        public void StringGenerateTheoryData(string password)
         {
-            mOutput.WriteLine($"{nameof(StringGenerateTeoryData)}: {password}");
+            mOutput.WriteLine($"{nameof(StringGenerateTheoryData)}: {password}");
             password.ShouldNotBeNullOrEmpty();
         }
 
