@@ -7,6 +7,7 @@
     {
         private static GenericGenerator? mTestGenericGenerator;
 
+        [Obsolete("Use static methods instead.")]
         public static GenericGenerator Instance
         {
             get
