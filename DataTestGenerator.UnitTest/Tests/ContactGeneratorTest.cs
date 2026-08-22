@@ -14,7 +14,7 @@
         {
             for (int i = 0; i < 10; i++)
             {
-                var name = ContactGenerator.Instance.GenerateName();
+                var name = ContactGenerator.GenerateName();
                 mOutput.WriteLine(name);
                 name.ShouldNotBeNullOrEmpty();
             }
@@ -25,7 +25,7 @@
         {
             for (int i = 0; i < 100; i++)
             {
-                var contact = ContactGenerator.Instance.GenerateContact();
+                var contact = ContactGenerator.GenerateContact();
                 mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
                 contact.ShouldNotBeNull();
             }
@@ -37,7 +37,7 @@
             List<string> eMails = new();
             for (int i = 0; i < 40; i++)
             {
-                var contact = ContactGenerator.Instance.GenerateContact();
+                var contact = ContactGenerator.GenerateContact();
 
                 contact.ShouldNotBeNull();
                 eMails.ShouldNotContain(contact.Email);
@@ -56,7 +56,7 @@
             List<string> eMails = new();
             for (int i = 0; i < 1000; i++)
             {
-                var contact = ContactGenerator.Instance.GenerateExtenderContact();
+                var contact = ContactGenerator.GenerateExtenderContact();
 
                 contact.ShouldNotBeNull();
                 eMails.ShouldNotContain(contact.Email);

@@ -4,20 +4,6 @@ namespace Nivaes.DataTestGenerator
 {
     public sealed class GenericGenerator
     {
-        private static GenericGenerator? mTestGenericGenerator;
-
-        [Obsolete("Use static methods instead.")]
-        public static GenericGenerator Instance
-        {
-            get
-            {
-                if (mTestGenericGenerator == null)
-                    mTestGenericGenerator = new GenericGenerator();
-
-                return mTestGenericGenerator;
-            }
-        }
-
         public static string GenerateString()
         {
             var size = Random.Shared.Next(5000);

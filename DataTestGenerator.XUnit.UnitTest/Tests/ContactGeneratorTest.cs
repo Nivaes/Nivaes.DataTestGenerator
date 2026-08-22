@@ -15,7 +15,7 @@
             List<string> eMails = new();
             for (int i = 0; i < 1000; i++)
             {
-                var contact = ContactGenerator.Instance.GenerateExtenderContact();
+                var contact = ContactGenerator.GenerateExtenderContact();
 
                 contact.ShouldNotBeNull();
                 eMails.ShouldNotContain(contact.Email);

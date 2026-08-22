@@ -219,3 +219,6 @@ csharp_preserve_single_line_statements = false:warning
 
 # S4144: Methods should not have identical implementations
 dotnet_diagnostic.S4144.severity = none
+
+# IDE1006: Naming Styles
+dotnet_diagnostic.IDE1006.severity = none

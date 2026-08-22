@@ -9,7 +9,7 @@ Randomly generate names of contacts, password, taxid, ... Useful for testing and
 Generate contact information randomly.
 
 ``` C#
-var contact = ContactGenerator.Instance.GenerateContact();
+var contact = ContactGenerator.GenerateContact();
 
 var sortName = contact.SortName;
 var longName = contact.LongName;
@@ -22,11 +22,11 @@ var telephoneNumber = contact.TelephoneNumber;
 It allows to generate only one value of the contact.
 
 ``` C#
-var name = ContactGenerator.Instance.GenerateName();
+var name = ContactGenerator.GenerateName();
 ```
 
 ``` C#
-var name = ContactGenerator.Instance.GenerateName();
+var name = ContactGenerator.GenerateName();
 ```
 
 [More documentation](./docs/contact-generator.md)
@@ -36,13 +36,13 @@ var name = ContactGenerator.Instance.GenerateName();
 Generates a string of characters.
 
 ``` C#
-var textString = GenericGenerator.Instance.GenerateString();
+var textString = GenericGenerator.GenerateString();
 ```
 
 Generates a string of characters of a certain length.
 
 ``` C#
-var textString = GenericGenerator.Instance.GenerateString(3, 20);
+var textString = GenericGenerator.GenerateString(3, 20);
 ```
 
 [More documentation](./docs/string-generator.md)
@@ -52,19 +52,19 @@ var textString = GenericGenerator.Instance.GenerateString(3, 20);
 Random password generation.
 
 ``` C#
-var password = PasswordGenerator.Instance.GeneratePassword();
+var password = PasswordGenerator.GeneratePassword();
 ```
 
 Generation of passwords randomly, of a certain length.
 
 ``` C#
-var password = PasswordGenerator.Instance.GeneratePassword(leng);
+var password = PasswordGenerator.GeneratePassword(leng);
 ```
 
 Generation of passwords randomly, with a character set determizing
 
 ``` C#
-var password = PasswordGenerator.Instance.GeneratePassword("BCDFGHJKLMNPQRSTUWXYZ");
+var password = PasswordGenerator.GeneratePassword("BCDFGHJKLMNPQRSTUWXYZ");
 ```
 
 ## XUnit tool

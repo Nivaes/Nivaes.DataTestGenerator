@@ -5,14 +5,14 @@
     {
         public GenerateContactTheoryData()
         {
-            base.Add(ContactProporcionalGenerator.Instance.GenerateContact());
+            base.Add(ContactGenerator.GenerateContact());
         }
 
         public GenerateContactTheoryData(int dataNumber)
         {
             for (int i = 0; i < dataNumber; i++)
             {
-                base.Add(ContactProporcionalGenerator.Instance.GenerateContact());
+                base.Add(ContactGenerator.GenerateContact());
             }
         }
     }
