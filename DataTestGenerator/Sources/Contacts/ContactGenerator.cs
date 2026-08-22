@@ -23,7 +23,8 @@ namespace Nivaes.DataTestGenerator
             string familyName1 = RamdonName(familyNames);
             string familyName2 = RamdonName(familyNames);
             string mailDomain = RamdonName(emailDomains);
-            string sortName = ReduceFirstName(givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
+            string sortName = ReduceGibenName(givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
+            string mail = givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant() + "." + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
 
             return new ContactTest
             {
@@ -31,7 +32,7 @@ namespace Nivaes.DataTestGenerator
                 LongName = $"{givenName} {familyName1} {familyName2}",
                 GivenName = givenName,
                 FamilyName = $"{familyName1} {familyName2}",
-                Email = $"{sortName}@{mailDomain}",
+                Email = $"{mail}@{mailDomain}",
                 TelephoneNumber = RandonTelephoneNumber()
             };
         }
@@ -43,7 +44,7 @@ namespace Nivaes.DataTestGenerator
             string familyName1 = RamdonName(familyNames);
             string familyName2 = RamdonName(familyNames);
             string mailDomain = RamdonName(emailDomains);
-            string sortName = ReduceFirstName(givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
+            string sortName = ReduceGibenName(givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()) + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant();
             var mailName = givenName.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "." + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
                 + "_" + familyName1.Replace(" ", string.Empty).RemovingAccents().ToLowerInvariant()
@@ -70,7 +71,7 @@ namespace Nivaes.DataTestGenerator
             return string.Format(CultureInfo.CurrentCulture, $"{gibenName} {familyName1} {familyName2}");
         }
 
-        private static string ReduceFirstName(string gibenName)
+        private static string ReduceGibenName(string gibenName)
         {
             ArgumentNullException.ThrowIfNull(gibenName);
 

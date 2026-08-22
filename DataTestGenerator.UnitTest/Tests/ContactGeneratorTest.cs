@@ -2,11 +2,11 @@
 {
     public class ContactGeneratorTest
     {
-        private readonly ITestOutputHelper mOutput;
+        private readonly ITestOutputHelper _output;
 
         public ContactGeneratorTest(ITestOutputHelper output)
         {
-            mOutput = output;
+            _output = output;
         }
 
         [Fact]
@@ -15,7 +15,7 @@
             for (int i = 0; i < 10; i++)
             {
                 var name = ContactGenerator.GenerateName();
-                mOutput.WriteLine(name);
+                _output.WriteLine(name);
                 name.ShouldNotBeNullOrEmpty();
             }
         }
@@ -26,7 +26,7 @@
             for (int i = 0; i < 100; i++)
             {
                 var contact = ContactGenerator.GenerateContact();
-                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                _output.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
                 contact.ShouldNotBeNull();
             }
         }
@@ -34,19 +34,22 @@
         [Fact]
         public void ContactGeneratorContact02()
         {
-            List<string> eMails = new();
-            for (int i = 0; i < 40; i++)
+            List<string> longNames = new();
+            for (int i = 0; i < 400; i++)
             {
                 var contact = ContactGenerator.GenerateContact();
 
                 contact.ShouldNotBeNull();
-                eMails.ShouldNotContain(contact.Email);
-                Assert.DoesNotContain(contact.Email, eMails);
 
+                contact.LongName.ShouldNotBeNullOrEmpty();
+                contact.SortName.ShouldNotBeNullOrEmpty();
                 contact.Email.ShouldNotBeNullOrEmpty();
 
-                eMails.Add(contact.Email);
-                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                contact.ShouldNotBeNull();
+                longNames.ShouldNotContain(contact.LongName);
+
+                longNames.Add(contact.LongName);
+                _output.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
 
@@ -63,7 +66,7 @@
                 Assert.DoesNotContain(contact.Email, eMails);
 
                 eMails.Add(contact.Email!);
-                mOutput.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
+                _output.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
             }
         }
     }
