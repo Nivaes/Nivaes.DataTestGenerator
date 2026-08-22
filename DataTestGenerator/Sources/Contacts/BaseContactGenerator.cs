@@ -1,12 +1,9 @@
-﻿namespace Nivaes.DataTestGenerator
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
-    using System.IO;
-    using System.Text;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Text;
 
+namespace Nivaes.DataTestGenerator
+{
     public abstract class BaseContactGenerator
     {
         #region Propeties
