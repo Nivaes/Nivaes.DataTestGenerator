@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Nivaes.DataTestGenerator.Xunit.UnitTest
+﻿namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
     using Shouldly;
 

@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Nivaes.DataTestGenerator.Xunit
+﻿namespace Nivaes.DataTestGenerator.Xunit
 {
     public sealed class GenerateStringTheoryData
         : TheoryData<string>

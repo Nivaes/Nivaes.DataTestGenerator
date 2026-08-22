@@ -1,9 +1,8 @@
-﻿namespace Nivaes.DataTestGenerator
-{
-    using System;
-    using System.Globalization;
-    using System.Text;
+﻿using System.Globalization;
+using System.Text;
 
+namespace Nivaes.DataTestGenerator
+{
     internal static class StringExtensions
     {
         public static string RemovingAccents(this string text)

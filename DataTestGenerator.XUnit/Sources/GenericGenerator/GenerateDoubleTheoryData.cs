@@ -1,7 +1,5 @@
 ﻿namespace Nivaes.DataTestGenerator.Xunit
 {
-    using global::Xunit;
-
     public sealed class GenerateDoubleTheoryData
         : TheoryData<double>
     {

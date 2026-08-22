@@ -1,7 +1,4 @@
-﻿using System.Runtime.Serialization.DataContracts;
-using Xunit;
-
-namespace Nivaes.DataTestGenerator.Xunit
+﻿namespace Nivaes.DataTestGenerator.Xunit
 {
     public sealed class GeneratePasswordTheoryData
         : TheoryData<string>

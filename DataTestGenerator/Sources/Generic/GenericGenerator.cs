@@ -1,8 +1,7 @@
-﻿namespace Nivaes.DataTestGenerator
-{
-    using System;
-    using System.Text;
+﻿using System.Text;
 
+namespace Nivaes.DataTestGenerator
+{
     public sealed class GenericGenerator
     {
         private static GenericGenerator? mTestGenericGenerator;

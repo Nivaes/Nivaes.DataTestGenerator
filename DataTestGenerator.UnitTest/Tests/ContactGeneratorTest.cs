@@ -1,9 +1,5 @@
 ﻿namespace Nivaes.DataTestGenerator.UnitTest
 {
-    using System.Collections.Generic;
-    using Shouldly;
-    using Xunit;
-
     public class ContactGeneratorTest
     {
         private readonly ITestOutputHelper mOutput;

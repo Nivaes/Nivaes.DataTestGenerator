@@ -1,9 +1,7 @@
-﻿namespace Nivaes.DataTestGenerator
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
+﻿using System.Globalization;
 
+namespace Nivaes.DataTestGenerator
+{
     public static class TaxIdGenerator
     {
         #region Random number

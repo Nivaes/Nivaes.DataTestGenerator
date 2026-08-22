@@ -1,14 +1,11 @@
-﻿namespace Nivaes.DataTestGenerator
-{
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+﻿using System.Collections;
+using System.Text;
 
+namespace Nivaes.DataTestGenerator
+{
     public sealed class PasswordGenerator
     {
-        private readonly char[][] mCharacterSet = new char[][]
+        private readonly char[][] _characterSet = new char[][]
              {
                 "abcdefgijkmnopqrstwxyz".ToCharArray(),
                 "ABCDEFGHJKLMNPQRSTWXYZ".ToCharArray(),
@@ -32,7 +29,7 @@
             if(length == 0)
                 length = Random.Shared.Next(7, 20);
 
-            return GeneratePassword(length, mCharacterSet);
+            return GeneratePassword(length, _characterSet);
         }
 
         public string GeneratePassword(string? characterSet)
@@ -50,7 +47,7 @@
             char[][] characterSetInt;
 
             if (string.IsNullOrEmpty(characterSet))
-                characterSetInt = mCharacterSet;
+                characterSetInt = _characterSet;
             else
                 characterSetInt = [characterSet.ToCharArray()];
 

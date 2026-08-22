@@ -1,7 +1,4 @@
-﻿using Xunit;
-using Xunit.v3;
-
-namespace Nivaes.DataTestGenerator.Xunit.UnitTest
+﻿namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
     using System.Collections.Generic;
     using Shouldly;

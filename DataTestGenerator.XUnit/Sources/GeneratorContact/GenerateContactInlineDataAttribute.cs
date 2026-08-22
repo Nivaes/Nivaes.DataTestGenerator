@@ -1,6 +1,5 @@
-﻿using Xunit;
+﻿using Xunit.Sdk;
 using Xunit.v3;
-using Xunit.Sdk;
 
 namespace Nivaes.DataTestGenerator.Xunit
 {

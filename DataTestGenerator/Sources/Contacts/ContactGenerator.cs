@@ -1,7 +1,5 @@
 ﻿namespace Nivaes.DataTestGenerator
 {
-    using System;
-
     public sealed class ContactGenerator
         : BaseContactGenerator
     {

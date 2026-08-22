@@ -1,9 +1,5 @@
-﻿using Xunit;
-
-namespace Nivaes.DataTestGenerator.Xunit.UnitTest
+﻿namespace Nivaes.DataTestGenerator.Xunit.UnitTest
 {
-    using Shouldly;
-
     public class TestGenericGeneratorInlineDataAttributeTest
     {
         private readonly ITestOutputHelper mOutput;
