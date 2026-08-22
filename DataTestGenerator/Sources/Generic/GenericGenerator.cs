@@ -2,7 +2,7 @@
 
 namespace Nivaes.DataTestGenerator
 {
-    public sealed class GenericGenerator
+    public static class GenericGenerator
     {
         public static string GenerateString()
         {

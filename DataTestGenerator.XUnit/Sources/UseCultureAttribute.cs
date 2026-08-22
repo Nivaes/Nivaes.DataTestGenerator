@@ -61,6 +61,7 @@ namespace Nivaes.DataTestGenerator.Xunit
         /// and replaces them with the new cultures defined in the constructor.
         /// </summary>
         /// <param name="methodUnderTest">The method under test</param>
+        /// <param name="test">Test.</param>
         public override void Before(MethodInfo methodUnderTest, IXunitTest test)
         {
             originalCulture = Thread.CurrentThread.CurrentCulture;
@@ -78,6 +79,7 @@ namespace Nivaes.DataTestGenerator.Xunit
         /// <see cref="CultureInfo.CurrentUICulture" /> to <see cref="Thread.CurrentPrincipal" />
         /// </summary>
         /// <param name="methodUnderTest">The method under test</param>
+        /// <param name="test">Test</param>
         public override void After(MethodInfo methodUnderTest, IXunitTest test)
         {
             Thread.CurrentThread.CurrentCulture = originalCulture ?? CultureInfo.InvariantCulture;
