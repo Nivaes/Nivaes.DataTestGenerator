@@ -17,3 +17,5 @@ on:
 jobs:
   build:
     uses: Nivaes/Nivaes.Workflows/.github/workflows/basic_lib_ci.yaml@develop
+    with:
+      runs-on: ubuntu-slim
