@@ -28,6 +28,9 @@
     <IsTestProject>$(MSBuildProjectName.Contains('UnitTest'))</IsTestProject>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <_CommonTargets>net8.0;net9.0;net10.0;net11.0</_CommonTargets>
+  </PropertyGroup>
 
   <PropertyGroup>
     <EnablePackageValidation>true</EnablePackageValidation>
