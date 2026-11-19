@@ -12,6 +12,7 @@
     
  <PropertyGroup>
     <PackageId>Nivaes.DataTestGenerator.XUnit</PackageId>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
     <Title>Nivaes Data XUnit Test Generator</Title>
     <AssemblyName>Nivaes.DataTestGenerator.Xunit</AssemblyName>
     
@@ -22,6 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Docs\Readme.md" Pack="true" PackagePath="\" />
     <None Include="Images\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 

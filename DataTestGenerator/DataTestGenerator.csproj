@@ -12,6 +12,7 @@
 
   <PropertyGroup>
     <PackageId>Nivaes.DataTestGenerator</PackageId>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
     <Title>Nivaes Data Test Generator</Title>
   
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
@@ -30,6 +31,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Docs\Readme.md" Pack="true" PackagePath="\" />
     <None Include="Images\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
