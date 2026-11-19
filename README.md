@@ -119,3 +119,15 @@ public class ContactTests
 ```
 
 Los atributos disponibles son `GenerateContactInlineData`, `GeneratePasswordInlineData`, `GenerateStringInlineData`, `GenerateIntInlineData` y `GenerateDoubleInlineData`. Todos proporcionan datos generados para una teoría. Los atributos de contacto, contraseña, cadena y entero permiten indicar el número de casos; los de contraseña y cadena también permiten configurar la longitud, y el de cadena permite establecer un rango de longitudes. `GenerateDoubleInlineData` acepta `(minValue, maxValue)` o `(dataNumber, minValue, maxValue)`.
+
+## Packages
+
+| NuGet Package | Latest Versions |
+| --- | --- |
+| [Nivaes.DataTestGenerator](https://www.nuget.org/packages/Nivaes.DataTestGenerator) <br /> Randomly generate | [![latest stable version](https://img.shields.io/nuget/v/Nivaes.DataTestGenerator.svg)](https://www.nuget.org/packages/Nivaes.DataTestGenerator) |
+| [Nivaes.DataTestGenerator.XUnit](https://www.nuget.org/packages/Nivaes.DataTestGenerator.XUnit) <br /> Integration with xunit | [![latest prerelease version](https://img.shields.io/nuget/vpre/Nivaes.DataTestGenerator.XUnit.svg)](https://www.nuget.org/packages/Nivaes.DataTestGenerator.XUnit) | 
+
+## Integration
+
+![CI](https://github.com/Nivaes/Nivaes.DataTestGenerator/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/Nivaes/Nivaes.DataTestGenerator/graph/badge.svg?token=KF01604P3R)](https://codecov.io/gh/Nivaes/Nivaes.DataTestGenerator) ![Build Release](https://github.com/Nivaes/Nivaes.DataTestGenerator/workflows/Build%20Release/badge.svg)
+![Publis Release](https://github.com/Nivaes/Nivaes.DataTestGenerator/workflows/publis%20release/badge.svg)
