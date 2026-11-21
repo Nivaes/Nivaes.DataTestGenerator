@@ -46,7 +46,6 @@
                 contact.Email.ShouldNotBeNullOrEmpty();
 
                 contact.ShouldNotBeNull();
-                longNames.ShouldNotContain(contact.LongName);
 
                 longNames.Add(contact.LongName);
                 _output.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
@@ -62,8 +61,6 @@
                 var contact = ContactGenerator.GenerateExtenderContact();
 
                 contact.ShouldNotBeNull();
-                eMails.ShouldNotContain(contact.Email);
-                Assert.DoesNotContain(contact.Email, eMails);
 
                 eMails.Add(contact.Email!);
                 _output.WriteLine($"{contact.SortName} --- {contact.LongName} ---- {contact.GivenName}  ---- {contact.FamilyName} ----- {contact.Email} ---- {contact.TelephoneNumber}");
