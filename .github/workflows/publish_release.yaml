@@ -15,5 +15,4 @@ jobs:
     uses: Nivaes/Nivaes.Workflows/.github/workflows/basic_lib_publish_release.yaml@develop
     with:
       nuget_source: nuget.org
-    secrets:
-      nuget_user: ${{ secrets.NUGET_USER }}
+      nuget_user: ${{ vars.NUGET_USER }}
