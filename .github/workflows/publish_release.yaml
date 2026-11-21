@@ -16,3 +16,43 @@ jobs:
     with:
       nuget_source: nuget.org
       nuget_user: ${{ vars.NUGET_USER }}
+
+  publish_nuget:
+    name: Publish packages to NuGet.org
+    needs: build_release
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+    - name: Download NuGet packages
+      uses: actions/download-artifact@v8
+      with:
+        name: nuget-packages
+        path: ./Artifacts
+
+    - name: NuGet login (OIDC)
+      uses: NuGet/login@v1.2.0
+      id: login
+      with:
+        user: ${{ vars.NUGET_USER }}
+
+    - name: Publish packages
+      shell: bash
+      env:
+        NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+      run: |
+        shopt -s nullglob
+        packages=(./Artifacts/*.nupkg)
+
+        if (( ${#packages[@]} == 0 )); then
+        echo "No se encontraron paquetes .nupkg en ./Artifacts"
+        exit 1
+        fi
+
+        dotnet nuget push "${packages[@]}" \
+        --source https://api.nuget.org/v3/index.json \
+        --skip-duplicate \
+        --api-key "$NUGET_API_KEY"
